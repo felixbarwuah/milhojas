@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flashcards from '../../components/Flashcards';
+---
+
+<BaseLayout title="Karteikarten" description="Spanische Vokabeln mit Spaced Repetition lernen">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <p class="hero-eyebrow">Karteikarten</p>
+    <h2>Spaced Repetition</h2>
+    <p class="hero-sub" style="font-size: 16px;">Wörter die du nicht kannst kommen öfter. Die du kannst, seltener.</p>
+  </section>
+
+  <Flashcards client:load />
+</BaseLayout>

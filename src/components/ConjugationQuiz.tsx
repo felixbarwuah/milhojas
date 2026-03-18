@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { verbs, persons, personLabels, tenseLabels, type Verb, type Person } from '../data/conjugations';
+import { loadSRS, saveSRS, recordCorrect, recordWrong, addXP } from '../data/srs';
 
 type GameState = 'config' | 'playing' | 'result' | 'summary';
 
@@ -108,9 +109,17 @@ export default function ConjugationQuiz() {
 
     setAnswers(prev => [...prev, { question: q, given: input.trim(), correct }]);
 
+    // SRS tracking
+    const cardId = `conj:${q.verb.infinitive}:${q.tense}:${q.person}`;
+    const srs = loadSRS();
+    const updated = correct ? recordCorrect(srs, cardId) : recordWrong(srs, cardId);
+    saveSRS(updated);
+
     if (correct) {
       const streakBonus = streak * 5;
-      setScore(prev => prev + 100 + streakBonus);
+      const earned = 100 + streakBonus;
+      setScore(prev => prev + earned);
+      addXP(Math.round(earned / 10));
       setStreak(prev => {
         const next = prev + 1;
         setBestStreak(b => Math.max(b, next));

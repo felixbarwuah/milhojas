@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
+import { loadSRS, saveSRS, startSession, recordCorrect, recordWrong, addXP } from '../data/srs';
 
 type Direction = 'es-de' | 'de-es';
 type GameState = 'config' | 'playing' | 'result' | 'summary';
@@ -93,13 +94,22 @@ export default function VocabTrainer() {
   const handleAnswer = useCallback((idx: number) => {
     if (selected !== null) return;
     setSelected(idx);
-    const correct = idx === questions[current].correctIndex;
+    const q = questions[current];
+    const correct = idx === q.correctIndex;
     setAnswers(prev => [...prev, correct]);
+
+    // SRS tracking
+    const cardId = `vocab:${q.word.id}`;
+    const srs = loadSRS();
+    const updated = correct ? recordCorrect(srs, cardId) : recordWrong(srs, cardId);
+    saveSRS(updated);
 
     if (correct) {
       const timeBonus = Math.max(0, Math.floor((5000 - (Date.now() - startTime)) / 50));
       const streakBonus = streak * 5;
-      setScore(prev => prev + 100 + timeBonus + streakBonus);
+      const earned = 100 + timeBonus + streakBonus;
+      setScore(prev => prev + earned);
+      addXP(Math.round(earned / 10)); // 1 XP per 10 quiz points
       setStreak(prev => {
         const next = prev + 1;
         setBestStreak(b => Math.max(b, next));

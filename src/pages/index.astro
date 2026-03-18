@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Dashboard from '../components/Dashboard';
 ---
 
 <BaseLayout title="Aprende Español">
@@ -10,7 +11,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <div class="container">
-    <div class="mode-cards">
+    <Dashboard client:load />
+
+    <div class="mode-cards four-cols">
+      <a href="/karteikarten" class="card mode-card">
+        <div class="mode-icon-wrap mode-icon-green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Karteikarten</h3>
+        <p>Spaced Repetition. Was du nicht kannst, kommt öfter.</p>
+        <span class="mode-cta">Lernen</span>
+      </a>
+      <a href="/schreiben" class="card mode-card">
+        <div class="mode-icon-wrap mode-icon-amber">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="17" y1="10" x2="3" y2="10"/>
+            <line x1="21" y1="6" x2="3" y2="6"/>
+            <line x1="21" y1="14" x2="3" y2="14"/>
+            <line x1="17" y1="18" x2="3" y2="18"/>
+          </svg>
+        </div>
+        <h3>Schreiben</h3>
+        <p>Übersetzung selbst tippen. Schwerer, aber effektiver.</p>
+        <span class="mode-cta">Üben</span>
+      </a>
       <a href="/vocabulario" class="card mode-card">
         <div class="mode-icon-wrap mode-icon-red">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -21,8 +49,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </svg>
         </div>
         <h3>Vocabulario</h3>
-        <p>200+ Wörter in 12 Kategorien. Multiple Choice mit Speed- und Streak-Bonus.</p>
-        <span class="mode-cta">Quiz starten</span>
+        <p>Multiple Choice Quiz. 200+ Wörter in 12 Kategorien.</p>
+        <span class="mode-cta">Quiz</span>
       </a>
       <a href="/conjugacion" class="card mode-card">
         <div class="mode-icon-wrap mode-icon-blue">
@@ -32,8 +60,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </svg>
         </div>
         <h3>Conjugacion</h3>
-        <p>35 Verben in 3 Zeitformen. Tippe die richtige konjugierte Form ein.</p>
-        <span class="mode-cta">Quiz starten</span>
+        <p>35 Verben in 3 Zeitformen konjugieren.</p>
+        <span class="mode-cta">Quiz</span>
       </a>
     </div>
   </div>
@@ -42,7 +70,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="stats-inner">
         <div class="stat-item">
-          <span class="stat-num">200+</span>
+          <span class="stat-num">237</span>
           <span class="stat-desc">Wörter</span>
         </div>
         <div class="stat-item">
@@ -50,8 +78,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="stat-desc">Verben</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">3</span>
-          <span class="stat-desc">Zeitformen</span>
+          <span class="stat-num">4</span>
+          <span class="stat-desc">Lernmodi</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">12</span>
@@ -79,6 +107,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .mode-icon-blue {
     background: rgba(0, 57, 166, 0.06);
     color: var(--chile-blue);
+  }
+  .mode-icon-green {
+    background: rgba(22, 163, 74, 0.08);
+    color: #16A34A;
+  }
+  .mode-icon-amber {
+    background: rgba(217, 119, 6, 0.08);
+    color: #D97706;
   }
   .mode-cta {
     font-family: var(--mono);

@@ -35,8 +35,10 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
           <span class="logo-text">MILHOJAS</span>
         </a>
         <nav class="nav">
-          <a href="/vocabulario" class={Astro.url.pathname.startsWith('/vocabulario') ? 'active' : ''}>Vocabulario</a>
-          <a href="/conjugacion" class={Astro.url.pathname.startsWith('/conjugacion') ? 'active' : ''}>Conjugacion</a>
+          <a href="/karteikarten" class={Astro.url.pathname.startsWith('/karteikarten') ? 'active' : ''}>Lernen</a>
+          <a href="/schreiben" class={Astro.url.pathname.startsWith('/schreiben') ? 'active' : ''}>Schreiben</a>
+          <a href="/vocabulario" class={Astro.url.pathname.startsWith('/vocabulario') ? 'active' : ''}>Quiz</a>
+          <a href="/conjugacion" class={Astro.url.pathname.startsWith('/conjugacion') ? 'active' : ''}>Verben</a>
         </nav>
       </div>
     </header>

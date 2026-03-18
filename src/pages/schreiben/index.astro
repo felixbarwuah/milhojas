@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WriteMode from '../../components/WriteMode';
+---
+
+<BaseLayout title="Schreiben" description="Spanische Vokabeln schreiben statt raten">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <p class="hero-eyebrow">Schreib-Modus</p>
+    <h2>Aktiv Erinnern</h2>
+    <p class="hero-sub" style="font-size: 16px;">Schreibe die Übersetzung selbst. Schwerer als Multiple Choice, aber effektiver.</p>
+  </section>
+
+  <WriteMode client:load />
+</BaseLayout>
