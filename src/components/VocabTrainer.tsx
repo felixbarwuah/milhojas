@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
 import { loadSRS, saveSRS, startSession, recordCorrect, recordWrong, addXP } from '../data/srs';
+import SpeakButton from './SpeakButton';
 
 type Direction = 'es-de' | 'de-es';
 type GameState = 'config' | 'playing' | 'result' | 'summary';
@@ -280,6 +281,7 @@ export default function VocabTrainer() {
           {categoryLabels[q.word.category]}
         </span>
         <h2 className="question-word">{prompt}</h2>
+        {isEsToDe && <SpeakButton text={q.word.es} />}
         {state === 'result' && q.word.example && (
           <p className="question-example">"{q.word.example}"</p>
         )}

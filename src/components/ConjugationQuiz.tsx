@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { verbs, persons, personLabels, tenseLabels, type Verb, type Person } from '../data/conjugations';
 import { loadSRS, saveSRS, recordCorrect, recordWrong, addXP } from '../data/srs';
+import SpeakButton from './SpeakButton';
 
 type GameState = 'config' | 'playing' | 'result' | 'summary';
 
@@ -282,6 +283,7 @@ export default function ConjugationQuiz() {
       <div className="question-card conjugation-card">
         <span className="label">{tenseLabels[q.tense]}</span>
         <h2 className="question-word">{q.verb.infinitive}</h2>
+        <SpeakButton text={q.verb.infinitive} />
         <p className="verb-translation">{q.verb.de}</p>
         <div className="person-badge">
           {personLabels[q.person]}

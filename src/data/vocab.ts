@@ -19,7 +19,8 @@ export type VocabCategory =
   | 'familia'
   | 'tiempo'
   | 'frases'
-  | 'verbos';
+  | 'verbos'
+  | 'custom';
 
 export const categoryLabels: Record<VocabCategory, string> = {
   comida: 'Comida y Bebida',
@@ -34,6 +35,7 @@ export const categoryLabels: Record<VocabCategory, string> = {
   tiempo: 'Tiempo y Clima',
   frases: 'Frases Cotidianas',
   verbos: 'Verbos Importantes',
+  custom: 'Meine Wörter',
 };
 
 export const categoryColors: Record<VocabCategory, string> = {
@@ -49,7 +51,20 @@ export const categoryColors: Record<VocabCategory, string> = {
   tiempo: '#2563EB',
   frases: '#059669',
   verbos: '#DC2626',
+  custom: '#8B5CF6',
 };
+
+/** Get all vocab including custom user-added words */
+export function getAllVocab(): VocabWord[] {
+  try {
+    const raw = localStorage.getItem('milhojas-custom-vocab');
+    if (!raw) return vocab;
+    const custom = JSON.parse(raw) as VocabWord[];
+    return [...vocab, ...custom];
+  } catch {
+    return vocab;
+  }
+}
 
 export const vocab: VocabWord[] = [
   // ─── Comida y Bebida ───

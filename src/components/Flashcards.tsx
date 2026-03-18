@@ -1,20 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
+import SpeakButton from './SpeakButton';
 import {
   loadSRS, saveSRS, startSession, getDueCards, getCardState,
-  recordCorrect, recordWrong, getSRSStats, loadXP, addXP,
+  recordCorrect, recordWrong, getSRSStats, getStateLabel,
+  loadXP, addXP, State,
 } from '../data/srs';
 
 type GameState = 'config' | 'card-front' | 'card-back' | 'summary';
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 export default function Flashcards() {
   const [state, setState] = useState<GameState>('config');
@@ -64,7 +57,7 @@ export default function Flashcards() {
   const handleKnew = (knew: boolean) => {
     const word = cards[current];
     const cardId = `vocab:${word.id}`;
-    let newSrs = knew ? recordCorrect(srs, cardId) : recordWrong(srs, cardId);
+    const newSrs = knew ? recordCorrect(srs, cardId) : recordWrong(srs, cardId);
     setSrs(newSrs);
     saveSRS(newSrs);
 
@@ -84,7 +77,6 @@ export default function Flashcards() {
     }
   };
 
-  // Keyboard
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (state === 'card-front' && e.key === ' ') {
@@ -108,30 +100,31 @@ export default function Flashcards() {
       <div className="quiz-config">
         <div className="srs-overview">
           <div className="srs-boxes">
-            <div className="srs-box" data-box="1">
-              <span className="srs-box-count">{stats.box1}</span>
+            <div className="srs-box" data-state="new">
+              <span className="srs-box-count">{stats.newCount}</span>
               <span className="srs-box-label">Neu</span>
             </div>
-            <div className="srs-box" data-box="2">
-              <span className="srs-box-count">{stats.box2}</span>
-              <span className="srs-box-label">Box 2</span>
+            <div className="srs-box" data-state="learning">
+              <span className="srs-box-count">{stats.learning}</span>
+              <span className="srs-box-label">Lernen</span>
             </div>
-            <div className="srs-box" data-box="3">
-              <span className="srs-box-count">{stats.box3}</span>
-              <span className="srs-box-label">Box 3</span>
+            <div className="srs-box" data-state="review">
+              <span className="srs-box-count">{stats.review}</span>
+              <span className="srs-box-label">Review</span>
             </div>
-            <div className="srs-box" data-box="4">
-              <span className="srs-box-count">{stats.box4}</span>
-              <span className="srs-box-label">Box 4</span>
-            </div>
-            <div className="srs-box" data-box="5">
-              <span className="srs-box-count">{stats.box5}</span>
-              <span className="srs-box-label">Gelernt</span>
+            <div className="srs-box" data-state="relearning">
+              <span className="srs-box-count">{stats.relearning}</span>
+              <span className="srs-box-label">Nochmal</span>
             </div>
           </div>
-          {stats.unseen > 0 && (
-            <p className="srs-unseen">{stats.unseen} neue Wörter noch nicht gesehen</p>
-          )}
+          <div className="srs-due-row">
+            {stats.dueNow > 0 && (
+              <p className="srs-due-count">{stats.dueNow} Karten fällig</p>
+            )}
+            {stats.unseen > 0 && (
+              <p className="srs-unseen">{stats.unseen} noch nicht gesehen</p>
+            )}
+          </div>
         </div>
 
         <div className="config-section">
@@ -181,7 +174,7 @@ export default function Flashcards() {
           </div>
         </div>
         <div className="summary-words">
-          {results.map((r, i) => (
+          {results.map((r) => (
             <div key={r.word.id} className={`summary-word ${r.knew ? 'correct' : 'wrong'}`}>
               <span className="summary-indicator">{r.knew ? '✓' : '✗'}</span>
               <span className="summary-es">{r.word.es}</span>
@@ -198,7 +191,7 @@ export default function Flashcards() {
 
   // Card view
   const cardState = getCardState(srs, `vocab:${word.id}`);
-  const boxLabel = ['', 'Neu', 'Bekannt', 'Vertraut', 'Sicher', 'Gelernt'][cardState.box];
+  const stateLabel = getStateLabel(cardState.card.state);
 
   return (
     <div className="quiz-play">
@@ -208,7 +201,7 @@ export default function Flashcards() {
         </div>
         <div className="quiz-meta">
           <span className="label">{current + 1} / {cards.length}</span>
-          <span className="label" style={{ color: categoryColors[word.category] }}>{boxLabel}</span>
+          <span className="label" style={{ color: categoryColors[word.category] }}>{stateLabel}</span>
         </div>
       </div>
 
@@ -222,6 +215,7 @@ export default function Flashcards() {
               {categoryLabels[word.category]}
             </span>
             <h2 className="flashcard-word">{word.es}</h2>
+            <SpeakButton text={word.es} />
             <p className="flashcard-hint">Antippen zum Aufdecken</p>
           </div>
           <div className="flashcard-back">

@@ -1,42 +1,64 @@
 /**
- * Spaced Repetition System (Leitner-Box)
+ * Spaced Repetition System (FSRS - Free Spaced Repetition Scheduler)
  *
- * Box 1: Review every session (new / wrong answers)
- * Box 2: Review every 2nd session
- * Box 3: Review every 4th session
- * Box 4: Review every 8th session
- * Box 5: Mastered (review every 16th session)
- *
- * Correct → move up one box
- * Wrong → back to box 1
+ * Uses ts-fsrs for scientifically-optimized review intervals (same algorithm as Anki).
+ * Cards progress through states: New → Learning → Review (with Relearning on lapse).
+ * Review intervals adapt based on card difficulty and user performance.
  */
 
+import {
+  fsrs,
+  generatorParameters,
+  createEmptyCard,
+  Rating,
+  State,
+  type Card,
+  type RecordLogItem,
+} from 'ts-fsrs';
+
 const STORAGE_KEY = 'milhojas-srs';
+const BACKUP_KEY = 'milhojas-srs-backup-v1';
 const XP_KEY = 'milhojas-xp';
 
-export interface CardState {
-  box: number;        // 1-5 (Leitner box)
-  lastSeen: number;   // timestamp
+// FSRS instance (singleton)
+const params = generatorParameters({ maximum_interval: 365 });
+const f = fsrs(params);
+
+// ── Types ──
+
+export interface FSRSCardState {
+  card: Card;
   timesCorrect: number;
   timesWrong: number;
-  sessionLastSeen: number; // session number when last reviewed
 }
 
 export interface SRSData {
-  cards: Record<string, CardState>; // key = card id (e.g. "vocab:c01", "conj:hablar:presente:yo")
-  sessionCount: number;
-  lastSessionDate: string; // YYYY-MM-DD
+  version: 2;
+  cards: Record<string, FSRSCardState>;
 }
 
 export interface XPData {
   totalXP: number;
   todayXP: number;
-  todayDate: string;   // YYYY-MM-DD
+  todayDate: string;
   streak: number;
   longestStreak: number;
-  dailyGoal: number;   // default 50
-  history: { date: string; xp: number }[]; // last 30 days
+  dailyGoal: number;
+  history: { date: string; xp: number }[];
 }
+
+export interface SRSStats {
+  newCount: number;
+  learning: number;
+  review: number;
+  relearning: number;
+  dueNow: number;
+  unseen: number;
+  total: number;
+}
+
+// Re-export for components
+export { Rating, State };
 
 // ── Helpers ──
 
@@ -60,121 +82,278 @@ function saveJSON<T>(key: string, data: T): void {
   } catch {}
 }
 
-// ── SRS ──
+/** Reconstruct Date objects from JSON strings in a Card */
+function reviveCard(card: Card): Card {
+  return {
+    ...card,
+    due: new Date(card.due),
+    last_review: card.last_review ? new Date(card.last_review) : undefined,
+  } as Card;
+}
+
+/** Revive all cards in SRSData after JSON.parse */
+function reviveSRSData(data: SRSData): SRSData {
+  const cards: Record<string, FSRSCardState> = {};
+  for (const [id, state] of Object.entries(data.cards)) {
+    cards[id] = {
+      ...state,
+      card: reviveCard(state.card),
+    };
+  }
+  return { ...data, cards };
+}
+
+// ── Migration from Leitner ──
+
+interface OldCardState {
+  box: number;
+  lastSeen: number;
+  timesCorrect: number;
+  timesWrong: number;
+  sessionLastSeen: number;
+}
+
+interface OldSRSData {
+  cards: Record<string, OldCardState>;
+  sessionCount: number;
+  lastSessionDate: string;
+}
+
+function isOldFormat(data: unknown): data is OldSRSData {
+  return typeof data === 'object' && data !== null && !('version' in data) && 'cards' in data;
+}
+
+function migrateFromLeitner(old: OldSRSData): SRSData {
+  const cards: Record<string, FSRSCardState> = {};
+  const now = new Date();
+
+  for (const [id, oldCard] of Object.entries(old.cards)) {
+    const card = createEmptyCard(now);
+
+    if (oldCard.box >= 4) {
+      card.state = State.Review;
+      card.stability = oldCard.box === 5 ? 30 : 15;
+      card.reps = oldCard.timesCorrect;
+      card.difficulty = 5;
+    } else if (oldCard.box >= 2) {
+      card.state = State.Learning;
+      card.stability = oldCard.box * 2;
+      card.reps = oldCard.timesCorrect;
+      card.difficulty = 6;
+    } else {
+      card.state = oldCard.timesWrong > 0 ? State.Relearning : State.New;
+      card.reps = oldCard.timesCorrect;
+      card.lapses = oldCard.timesWrong;
+    }
+
+    if (oldCard.lastSeen > 0) {
+      card.last_review = new Date(oldCard.lastSeen);
+      const intervalDays = Math.pow(2, oldCard.box - 1);
+      card.due = new Date(oldCard.lastSeen + intervalDays * 86400000);
+    }
+
+    cards[id] = {
+      card,
+      timesCorrect: oldCard.timesCorrect,
+      timesWrong: oldCard.timesWrong,
+    };
+  }
+
+  return { version: 2, cards };
+}
+
+// ── SRS Core ──
 
 function defaultSRS(): SRSData {
-  return { cards: {}, sessionCount: 0, lastSessionDate: '' };
+  return { version: 2, cards: {} };
 }
 
 export function loadSRS(): SRSData {
-  return loadJSON(STORAGE_KEY, defaultSRS());
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultSRS();
+
+    const parsed = JSON.parse(raw);
+
+    // Migrate from old Leitner format
+    if (isOldFormat(parsed)) {
+      saveJSON(BACKUP_KEY, parsed); // backup old data
+      const migrated = migrateFromLeitner(parsed);
+      saveSRS(migrated);
+      return migrated;
+    }
+
+    return reviveSRSData(parsed as SRSData);
+  } catch {
+    return defaultSRS();
+  }
 }
 
 export function saveSRS(data: SRSData): void {
   saveJSON(STORAGE_KEY, data);
 }
 
-export function getCardState(srs: SRSData, cardId: string): CardState {
-  return srs.cards[cardId] || {
-    box: 1,
-    lastSeen: 0,
+export function getCardState(srs: SRSData, cardId: string): FSRSCardState {
+  if (srs.cards[cardId]) return srs.cards[cardId];
+  return {
+    card: createEmptyCard(new Date()),
     timesCorrect: 0,
     timesWrong: 0,
-    sessionLastSeen: 0,
   };
 }
 
-/** Should this card be reviewed in the current session? */
-export function isDue(card: CardState, sessionCount: number): boolean {
-  if (card.sessionLastSeen === 0) return true; // never seen
-  const interval = Math.pow(2, card.box - 1); // box1=1, box2=2, box3=4, box4=8, box5=16
-  return (sessionCount - card.sessionLastSeen) >= interval;
+/** Is this card due for review now? */
+export function isDue(cardState: FSRSCardState): boolean {
+  return cardState.card.due <= new Date();
 }
 
-/** Record a correct answer */
+/** Record a correct answer (Rating.Good) */
 export function recordCorrect(srs: SRSData, cardId: string): SRSData {
-  const card = getCardState(srs, cardId);
+  const state = getCardState(srs, cardId);
+  const now = new Date();
+  const scheduling = f.repeat(state.card, now);
+  const result = (scheduling as any)[Rating.Good] as RecordLogItem;
+
   return {
     ...srs,
     cards: {
       ...srs.cards,
       [cardId]: {
-        ...card,
-        box: Math.min(card.box + 1, 5),
-        lastSeen: Date.now(),
-        timesCorrect: card.timesCorrect + 1,
-        sessionLastSeen: srs.sessionCount,
+        card: result.card,
+        timesCorrect: state.timesCorrect + 1,
+        timesWrong: state.timesWrong,
       },
     },
   };
 }
 
-/** Record a wrong answer - back to box 1 */
+/** Record a wrong answer (Rating.Again) */
 export function recordWrong(srs: SRSData, cardId: string): SRSData {
-  const card = getCardState(srs, cardId);
+  const state = getCardState(srs, cardId);
+  const now = new Date();
+  const scheduling = f.repeat(state.card, now);
+  const result = (scheduling as any)[Rating.Again] as RecordLogItem;
+
   return {
     ...srs,
     cards: {
       ...srs.cards,
       [cardId]: {
-        ...card,
-        box: 1,
-        lastSeen: Date.now(),
-        timesWrong: card.timesWrong + 1,
-        sessionLastSeen: srs.sessionCount,
+        card: result.card,
+        timesCorrect: state.timesCorrect,
+        timesWrong: state.timesWrong + 1,
       },
     },
   };
 }
 
-/** Start a new session (call once when user begins a quiz) */
-export function startSession(srs: SRSData): SRSData {
-  const d = today();
-  const isNewDay = srs.lastSessionDate !== d;
+/** Record answer with specific FSRS rating (for flashcard 4-button mode) */
+export function recordAnswer(srs: SRSData, cardId: string, rating: Rating): SRSData {
+  const state = getCardState(srs, cardId);
+  const now = new Date();
+  const scheduling = f.repeat(state.card, now);
+  const result = (scheduling as any)[rating] as RecordLogItem;
+  const isCorrect = rating !== Rating.Again;
+
   return {
     ...srs,
-    sessionCount: srs.sessionCount + 1,
-    lastSessionDate: d,
+    cards: {
+      ...srs.cards,
+      [cardId]: {
+        card: result.card,
+        timesCorrect: state.timesCorrect + (isCorrect ? 1 : 0),
+        timesWrong: state.timesWrong + (isCorrect ? 0 : 1),
+      },
+    },
   };
 }
 
-/** Get cards sorted by priority: due first, then by box (lower = higher priority) */
+/** Get next review intervals for display (e.g. "1m", "10m", "1d", "3d") */
+export function getSchedulingInfo(srs: SRSData, cardId: string): Record<Rating, string> {
+  const state = getCardState(srs, cardId);
+  const now = new Date();
+  const scheduling = f.repeat(state.card, now);
+
+  const formatInterval = (item: RecordLogItem): string => {
+    const due = new Date(item.card.due);
+    const diffMs = due.getTime() - now.getTime();
+    const diffMin = Math.round(diffMs / 60000);
+    const diffHours = Math.round(diffMs / 3600000);
+    const diffDays = Math.round(diffMs / 86400000);
+
+    if (diffMin < 60) return `${Math.max(1, diffMin)}m`;
+    if (diffHours < 24) return `${diffHours}h`;
+    if (diffDays < 30) return `${diffDays}d`;
+    return `${Math.round(diffDays / 30)}mo`;
+  };
+
+  return {
+    [Rating.Again]: formatInterval((scheduling as any)[Rating.Again]),
+    [Rating.Hard]: formatInterval((scheduling as any)[Rating.Hard]),
+    [Rating.Good]: formatInterval((scheduling as any)[Rating.Good]),
+    [Rating.Easy]: formatInterval((scheduling as any)[Rating.Easy]),
+  } as Record<Rating, string>;
+}
+
+/** Start a new session (no-op for FSRS, kept for API compatibility) */
+export function startSession(srs: SRSData): SRSData {
+  return srs;
+}
+
+/** Get cards sorted by priority: due first (most overdue first), then by due date */
 export function getDueCards(srs: SRSData, cardIds: string[]): string[] {
-  const session = srs.sessionCount;
-  const due: { id: string; card: CardState; priority: number }[] = [];
-  const notDue: { id: string; card: CardState; priority: number }[] = [];
+  const now = new Date();
+  const due: { id: string; dueDate: number }[] = [];
+  const notDue: { id: string; dueDate: number }[] = [];
 
   for (const id of cardIds) {
-    const card = getCardState(srs, id);
-    const d = isDue(card, session);
-    const priority = card.box * 100 - card.timesWrong; // lower box = higher priority
-    if (d) due.push({ id, card, priority });
-    else notDue.push({ id, card, priority });
+    const state = getCardState(srs, id);
+    const dueTime = state.card.due.getTime();
+    if (dueTime <= now.getTime()) {
+      due.push({ id, dueDate: dueTime });
+    } else {
+      notDue.push({ id, dueDate: dueTime });
+    }
   }
 
-  // Sort due by priority (box 1 first, then more errors first)
-  due.sort((a, b) => a.priority - b.priority);
-  notDue.sort((a, b) => a.priority - b.priority);
+  due.sort((a, b) => a.dueDate - b.dueDate);
+  notDue.sort((a, b) => a.dueDate - b.dueDate);
 
   return [...due.map(d => d.id), ...notDue.map(d => d.id)];
 }
 
-/** Get stats for progress display */
-export function getSRSStats(srs: SRSData, cardIds: string[]) {
-  let box1 = 0, box2 = 0, box3 = 0, box4 = 0, box5 = 0, unseen = 0;
+/** Get SRS stats for display */
+export function getSRSStats(srs: SRSData, cardIds: string[]): SRSStats {
+  const now = new Date();
+  let newCount = 0, learning = 0, review = 0, relearning = 0, unseen = 0, dueNow = 0;
+
   for (const id of cardIds) {
-    const card = getCardState(srs, id);
-    if (card.sessionLastSeen === 0) { unseen++; continue; }
-    if (card.box === 1) box1++;
-    else if (card.box === 2) box2++;
-    else if (card.box === 3) box3++;
-    else if (card.box === 4) box4++;
-    else box5++;
+    if (!srs.cards[id]) { unseen++; continue; }
+    const state = srs.cards[id];
+    const s = state.card.state;
+    if (s === State.New) newCount++;
+    else if (s === State.Learning) learning++;
+    else if (s === State.Review) review++;
+    else if (s === State.Relearning) relearning++;
+
+    if (state.card.due <= now) dueNow++;
   }
-  return { box1, box2, box3, box4, box5, unseen, total: cardIds.length };
+
+  return { newCount, learning, review, relearning, dueNow, unseen, total: cardIds.length };
 }
 
-// ── XP & Streak ──
+/** Get state label in German */
+export function getStateLabel(state: State): string {
+  switch (state) {
+    case State.New: return 'Neu';
+    case State.Learning: return 'Lernen';
+    case State.Review: return 'Wiederholen';
+    case State.Relearning: return 'Nochmal';
+    default: return '';
+  }
+}
+
+// ── XP & Streak (unchanged) ──
 
 function defaultXP(): XPData {
   return {
@@ -192,22 +371,18 @@ export function loadXP(): XPData {
   const data = loadJSON(XP_KEY, defaultXP());
   const d = today();
 
-  // Roll over to new day
   if (data.todayDate !== d) {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().slice(0, 10);
 
-    // Save yesterday's XP to history
     if (data.todayXP > 0) {
       data.history = [...data.history, { date: data.todayDate, xp: data.todayXP }].slice(-30);
     }
 
-    // Check streak: did they meet the goal yesterday?
     if (data.todayDate === yesterdayStr && data.todayXP >= data.dailyGoal) {
       data.streak += 1;
-    } else if (data.todayXP < data.dailyGoal) {
-      // Streak broken (unless they just opened the app today without playing yesterday)
+    } else {
       const dayDiff = Math.floor((new Date(d).getTime() - new Date(data.todayDate).getTime()) / 86400000);
       if (dayDiff > 1) {
         data.streak = 0;
@@ -232,7 +407,6 @@ export function addXP(amount: number): XPData {
   data.totalXP += amount;
   data.todayXP += amount;
 
-  // Check if daily goal just reached
   if (data.todayXP >= data.dailyGoal && (data.todayXP - amount) < data.dailyGoal) {
     data.streak += 1;
     data.longestStreak = Math.max(data.longestStreak, data.streak);

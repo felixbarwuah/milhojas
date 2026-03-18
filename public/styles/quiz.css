@@ -547,6 +547,130 @@
   margin-top: var(--space-sm);
 }
 
+/* ── Speak Button ── */
+.speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: var(--space-xs);
+}
+.speak-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: rgba(0, 57, 166, 0.06);
+}
+
+/* ── Sentence Miner ── */
+.miner-input, .miner-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+.miner-textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: var(--space-md);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+.miner-textarea:focus { border-color: var(--accent-blue); }
+
+.miner-text {
+  padding: var(--space-lg);
+  line-height: 2.2;
+  font-size: 17px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.miner-token {
+  display: inline;
+  padding: 2px 4px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.miner-token:hover { background: rgba(0, 57, 166, 0.08); }
+.miner-token.known { color: var(--correct); }
+.miner-token.selected { background: rgba(0, 57, 166, 0.12); font-weight: 600; }
+
+.word-detail {
+  margin-top: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.2s ease-out;
+}
+.word-detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.word-detail-header h3 { font-size: 24px; font-weight: 800; }
+.word-detail-actions { margin-left: auto; }
+.word-phonetic { font-family: var(--mono); font-size: 14px; color: var(--text-muted); }
+.word-meanings { margin-top: var(--space-md); }
+.word-meaning { margin-bottom: var(--space-md); }
+.word-pos {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-blue);
+}
+.word-def { font-size: 15px; color: var(--text-secondary); margin: 4px 0; }
+.word-example { color: var(--text-muted); font-style: italic; }
+.word-not-found { color: var(--text-muted); font-size: 14px; margin-top: var(--space-sm); }
+
+.add-word-form {
+  display: flex;
+  gap: 10px;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+.add-word-input {
+  flex: 1;
+  padding: 10px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+}
+.add-word-input:focus { border-color: var(--accent-blue); }
+
+.miner-added {
+  margin-top: var(--space-xl);
+}
+.miner-added-summary {
+  margin-top: var(--space-md);
+  text-align: center;
+}
+.miner-actions {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
 /* 4-column mode grid */
 .mode-cards.four-cols {
   grid-template-columns: repeat(4, 1fr);
@@ -674,11 +798,22 @@
   border-radius: var(--radius);
 }
 
-.srs-box[data-box="1"] { background: rgba(213, 43, 30, 0.08); }
-.srs-box[data-box="2"] { background: rgba(217, 119, 6, 0.08); }
-.srs-box[data-box="3"] { background: rgba(234, 179, 8, 0.08); }
-.srs-box[data-box="4"] { background: rgba(22, 163, 74, 0.06); }
-.srs-box[data-box="5"] { background: rgba(0, 57, 166, 0.06); }
+.srs-box[data-state="new"] { background: rgba(213, 43, 30, 0.08); }
+.srs-box[data-state="learning"] { background: rgba(217, 119, 6, 0.08); }
+.srs-box[data-state="review"] { background: rgba(22, 163, 74, 0.06); }
+.srs-box[data-state="relearning"] { background: rgba(0, 57, 166, 0.06); }
+
+.srs-due-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-sm);
+  font-size: 13px;
+}
+
+.srs-due-count {
+  color: var(--accent);
+  font-weight: 600;
+}
 
 .srs-box-count {
   font-family: var(--mono);

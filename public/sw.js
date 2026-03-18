@@ -1,8 +1,11 @@
-const CACHE_NAME = 'milhojas-v1';
+const CACHE_NAME = 'milhojas-v2';
 const PRECACHE = [
   '/',
   '/vocabulario',
   '/conjugacion',
+  '/karteikarten',
+  '/schreiben',
+  '/texte',
   '/styles/global.css',
   '/styles/quiz.css',
   '/fonts/fonts.css',

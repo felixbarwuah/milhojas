@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
+import SpeakButton from './SpeakButton';
 import {
   loadSRS, saveSRS, startSession, getDueCards,
   recordCorrect, recordWrong, loadXP, addXP,
@@ -236,6 +237,7 @@ export default function WriteMode() {
           {isEsToDe ? 'Übersetze ins Deutsche' : 'Übersetze ins Spanische'}
         </span>
         <h2 className="question-word">{prompt}</h2>
+        {isEsToDe && <SpeakButton text={word.es} />}
       </div>
 
       <div className="conjugation-input-area">
