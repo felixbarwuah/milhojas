@@ -5,7 +5,7 @@
 
 export interface GrammarLesson {
   id: string;
-  level: 'A1' | 'A2';
+  level: 'A1' | 'A2' | 'B1';
   topic: GrammarTopic;
   title: string;
   explanation: string;  // German explanation with Spanish examples
