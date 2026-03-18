@@ -898,7 +898,7 @@
 }
 .four-cols .mode-card p {
   font-size: 12px;
-  text-wrap: initial;
+  text-wrap: balance;
 }
 
 /* ── Dashboard ── */
