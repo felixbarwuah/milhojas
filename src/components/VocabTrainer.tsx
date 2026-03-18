@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
+import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory, type Level } from '../data/vocab';
 import { loadSRS, saveSRS, startSession, recordCorrect, recordWrong, addXP } from '../data/srs';
 import SpeakButton from './SpeakButton';
+import LevelFilter from './LevelFilter';
 import ErrorBoundary from './ErrorBoundary';
 
 type Direction = 'es-de' | 'de-es';
@@ -47,6 +48,7 @@ export default function VocabTrainer() {
   const [direction, setDirection] = useState<Direction>('es-de');
   const [selectedCategories, setSelectedCategories] = useState<Set<VocabCategory>>(new Set());
   const [difficulty, setDifficulty] = useState<'all' | 'easy' | 'medium' | 'hard'>('all');
+  const [level, setLevel] = useState<Level | 'all'>('all');
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -72,6 +74,9 @@ export default function VocabTrainer() {
 
   const startGame = () => {
     let pool = [...vocab];
+    if (level !== 'all') {
+      pool = pool.filter(w => !w.level || w.level === level);
+    }
     if (selectedCategories.size > 0) {
       pool = pool.filter(w => selectedCategories.has(w.category));
     }
@@ -169,6 +174,8 @@ export default function VocabTrainer() {
             <span className="score">{highScore} pts</span>
           </div>
         )}
+
+        <LevelFilter value={level} onChange={setLevel} />
 
         <div className="config-section">
           <h3 className="config-title">Richtung</h3>

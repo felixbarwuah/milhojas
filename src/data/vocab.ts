@@ -1,9 +1,12 @@
+export type Level = 'A1' | 'A2' | 'B1';
+
 export interface VocabWord {
   id: string;
   es: string;
   de: string;
   category: VocabCategory;
   difficulty: 'easy' | 'medium' | 'hard';
+  level?: Level;
   example?: string;
 }
 
@@ -632,4 +635,149 @@ export const vocab: VocabWord[] = [
   { id: 'u28', es: 'el cambio', de: 'das Wechselgeld', category: 'ciudad', difficulty: 'medium' },
   { id: 'u29', es: 'el regalo', de: 'das Geschenk', category: 'ciudad', difficulty: 'easy' },
   { id: 'u30', es: 'la oferta', de: 'das Angebot', category: 'ciudad', difficulty: 'medium' },
+
+  // ═══════════════════════════════════════
+  // A2 WORTSCHATZ
+  // ═══════════════════════════════════════
+
+  // ─── A2: Gefühle & Emotionen ───
+  { id: 'a2e01', es: 'la alegría', de: 'die Freude', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e02', es: 'la tristeza', de: 'die Traurigkeit', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e03', es: 'el miedo', de: 'die Angst', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e04', es: 'la sorpresa', de: 'die Überraschung', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e05', es: 'la vergüenza', de: 'die Scham', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2e06', es: 'el orgullo', de: 'der Stolz', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2e07', es: 'la confianza', de: 'das Vertrauen', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e08', es: 'la esperanza', de: 'die Hoffnung', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e09', es: 'el aburrimiento', de: 'die Langeweile', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2e10', es: 'la soledad', de: 'die Einsamkeit', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2e11', es: 'nervioso', de: 'nervös', category: 'frases', difficulty: 'easy', level: 'A2' },
+  { id: 'a2e12', es: 'preocupado', de: 'besorgt', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e13', es: 'emocionado', de: 'aufgeregt/begeistert', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2e14', es: 'decepcionado', de: 'enttäuscht', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2e15', es: 'celoso', de: 'eifersüchtig', category: 'frases', difficulty: 'hard', level: 'A2' },
+
+  // ─── A2: Reisen & Unterkunft ───
+  { id: 'a2v01', es: 'la reserva', de: 'die Reservierung', category: 'viaje', difficulty: 'medium', level: 'A2' },
+  { id: 'a2v02', es: 'el alojamiento', de: 'die Unterkunft', category: 'viaje', difficulty: 'hard', level: 'A2' },
+  { id: 'a2v03', es: 'la recepción', de: 'die Rezeption', category: 'viaje', difficulty: 'medium', level: 'A2' },
+  { id: 'a2v04', es: 'la llave de la habitación', de: 'der Zimmerschlüssel', category: 'viaje', difficulty: 'medium', level: 'A2' },
+  { id: 'a2v05', es: 'el equipaje de mano', de: 'das Handgepäck', category: 'viaje', difficulty: 'medium', level: 'A2' },
+  { id: 'a2v06', es: 'la tarjeta de embarque', de: 'die Bordkarte', category: 'viaje', difficulty: 'hard', level: 'A2' },
+  { id: 'a2v07', es: 'el seguro de viaje', de: 'die Reiseversicherung', category: 'viaje', difficulty: 'hard', level: 'A2' },
+  { id: 'a2v08', es: 'el itinerario', de: 'die Reiseroute', category: 'viaje', difficulty: 'hard', level: 'A2' },
+  { id: 'a2v09', es: 'la excursión', de: 'der Ausflug', category: 'viaje', difficulty: 'medium', level: 'A2' },
+  { id: 'a2v10', es: 'el pasajero', de: 'der Passagier', category: 'viaje', difficulty: 'medium', level: 'A2' },
+
+  // ─── A2: Gesundheit & Arzt ───
+  { id: 'a2s01', es: 'la cita médica', de: 'der Arzttermin', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s02', es: 'la receta médica', de: 'das Rezept (Arzt)', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s03', es: 'la alergia', de: 'die Allergie', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s04', es: 'el resfriado', de: 'die Erkältung', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s05', es: 'la gripe', de: 'die Grippe', category: 'cuerpo', difficulty: 'easy', level: 'A2' },
+  { id: 'a2s06', es: 'la tos', de: 'der Husten', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s07', es: 'la herida', de: 'die Wunde', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s08', es: 'la operación', de: 'die Operation', category: 'cuerpo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2s09', es: 'el embarazo', de: 'die Schwangerschaft', category: 'cuerpo', difficulty: 'hard', level: 'A2' },
+  { id: 'a2s10', es: 'la dieta', de: 'die Diät', category: 'cuerpo', difficulty: 'easy', level: 'A2' },
+
+  // ─── A2: Arbeit & Karriere ───
+  { id: 'a2t01', es: 'el curriculum', de: 'der Lebenslauf', category: 'trabajo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2t02', es: 'el puesto', de: 'die Stelle/Position', category: 'trabajo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2t03', es: 'el desempleo', de: 'die Arbeitslosigkeit', category: 'trabajo', difficulty: 'hard', level: 'A2' },
+  { id: 'a2t04', es: 'las vacaciones', de: 'der Urlaub', category: 'trabajo', difficulty: 'easy', level: 'A2' },
+  { id: 'a2t05', es: 'la jubilación', de: 'die Rente/Pension', category: 'trabajo', difficulty: 'hard', level: 'A2' },
+  { id: 'a2t06', es: 'el sindicato', de: 'die Gewerkschaft', category: 'trabajo', difficulty: 'hard', level: 'A2' },
+  { id: 'a2t07', es: 'la experiencia', de: 'die Erfahrung', category: 'trabajo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2t08', es: 'la formación', de: 'die Ausbildung', category: 'trabajo', difficulty: 'medium', level: 'A2' },
+  { id: 'a2t09', es: 'el cliente', de: 'der Kunde', category: 'trabajo', difficulty: 'easy', level: 'A2' },
+  { id: 'a2t10', es: 'la solicitud', de: 'die Bewerbung', category: 'trabajo', difficulty: 'hard', level: 'A2' },
+
+  // ─── A2: Technik & Medien ───
+  { id: 'a2m01', es: 'la contraseña', de: 'das Passwort', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m02', es: 'el archivo', de: 'die Datei', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m03', es: 'la aplicación', de: 'die App', category: 'schule', difficulty: 'easy', level: 'A2' },
+  { id: 'a2m04', es: 'la red social', de: 'das soziale Netzwerk', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m05', es: 'el enlace', de: 'der Link', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m06', es: 'la batería', de: 'der Akku', category: 'schule', difficulty: 'easy', level: 'A2' },
+  { id: 'a2m07', es: 'el cargador', de: 'das Ladegerät', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m08', es: 'la impresora', de: 'der Drucker', category: 'schule', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m09', es: 'descargar', de: 'herunterladen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2m10', es: 'compartir', de: 'teilen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+
+  // ─── A2: Natur & Umwelt ───
+  { id: 'a2n01', es: 'el medio ambiente', de: 'die Umwelt', category: 'naturaleza', difficulty: 'medium', level: 'A2' },
+  { id: 'a2n02', es: 'la contaminación', de: 'die Verschmutzung', category: 'naturaleza', difficulty: 'hard', level: 'A2' },
+  { id: 'a2n03', es: 'el reciclaje', de: 'das Recycling', category: 'naturaleza', difficulty: 'easy', level: 'A2' },
+  { id: 'a2n04', es: 'la energía solar', de: 'die Solarenergie', category: 'naturaleza', difficulty: 'easy', level: 'A2' },
+  { id: 'a2n05', es: 'el cambio climático', de: 'der Klimawandel', category: 'naturaleza', difficulty: 'medium', level: 'A2' },
+  { id: 'a2n06', es: 'la sequía', de: 'die Dürre', category: 'naturaleza', difficulty: 'hard', level: 'A2' },
+  { id: 'a2n07', es: 'la inundación', de: 'die Überschwemmung', category: 'naturaleza', difficulty: 'hard', level: 'A2' },
+  { id: 'a2n08', es: 'la cosecha', de: 'die Ernte', category: 'naturaleza', difficulty: 'hard', level: 'A2' },
+  { id: 'a2n09', es: 'el paisaje', de: 'die Landschaft', category: 'naturaleza', difficulty: 'medium', level: 'A2' },
+  { id: 'a2n10', es: 'la selva', de: 'der Dschungel', category: 'naturaleza', difficulty: 'medium', level: 'A2' },
+
+  // ─── A2: Haus & Wohnung ───
+  { id: 'a2h01', es: 'el alquiler', de: 'die Miete', category: 'casa', difficulty: 'medium', level: 'A2' },
+  { id: 'a2h02', es: 'el propietario', de: 'der Vermieter', category: 'casa', difficulty: 'hard', level: 'A2' },
+  { id: 'a2h03', es: 'la mudanza', de: 'der Umzug', category: 'casa', difficulty: 'hard', level: 'A2' },
+  { id: 'a2h04', es: 'el piso', de: 'die Wohnung/Etage', category: 'casa', difficulty: 'easy', level: 'A2' },
+  { id: 'a2h05', es: 'el ascensor', de: 'der Aufzug', category: 'casa', difficulty: 'medium', level: 'A2' },
+  { id: 'a2h06', es: 'la calefacción', de: 'die Heizung', category: 'casa', difficulty: 'hard', level: 'A2' },
+  { id: 'a2h07', es: 'la lavadora', de: 'die Waschmaschine', category: 'casa', difficulty: 'medium', level: 'A2' },
+  { id: 'a2h08', es: 'el microondas', de: 'die Mikrowelle', category: 'casa', difficulty: 'easy', level: 'A2' },
+
+  // ─── A2: Essen & Restaurant ───
+  { id: 'a2c01', es: 'el menú', de: 'die Speisekarte', category: 'comida', difficulty: 'easy', level: 'A2' },
+  { id: 'a2c02', es: 'la propina', de: 'das Trinkgeld', category: 'comida', difficulty: 'medium', level: 'A2' },
+  { id: 'a2c03', es: 'el plato principal', de: 'das Hauptgericht', category: 'comida', difficulty: 'medium', level: 'A2' },
+  { id: 'a2c04', es: 'el postre', de: 'die Nachspeise', category: 'comida', difficulty: 'easy', level: 'A2' },
+  { id: 'a2c05', es: 'el aperitivo', de: 'die Vorspeise', category: 'comida', difficulty: 'medium', level: 'A2' },
+  { id: 'a2c06', es: 'vegetariano', de: 'vegetarisch', category: 'comida', difficulty: 'easy', level: 'A2' },
+  { id: 'a2c07', es: 'la especialidad', de: 'die Spezialität', category: 'comida', difficulty: 'medium', level: 'A2' },
+  { id: 'a2c08', es: 'picante', de: 'scharf (Essen)', category: 'comida', difficulty: 'easy', level: 'A2' },
+
+  // ─── A2: Weitere Verben ───
+  { id: 'a2vb01', es: 'conseguir', de: 'bekommen/erreichen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb02', es: 'explicar', de: 'erklären', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb03', es: 'discutir', de: 'diskutieren/streiten', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb04', es: 'construir', de: 'bauen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb05', es: 'destruir', de: 'zerstören', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb06', es: 'mejorar', de: 'verbessern', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb07', es: 'empeorar', de: 'verschlechtern', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb08', es: 'elegir', de: 'wählen/auswählen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb09', es: 'ofrecer', de: 'anbieten', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb10', es: 'proponer', de: 'vorschlagen', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb11', es: 'desarrollar', de: 'entwickeln', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb12', es: 'mantener', de: 'beibehalten/pflegen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb13', es: 'proteger', de: 'schützen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb14', es: 'permitir', de: 'erlauben', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb15', es: 'prohibir', de: 'verbieten', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb16', es: 'exigir', de: 'verlangen/fordern', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb17', es: 'mudarse', de: 'umziehen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb18', es: 'quejarse', de: 'sich beschweren', category: 'verbos', difficulty: 'hard', level: 'A2' },
+  { id: 'a2vb19', es: 'preocuparse', de: 'sich Sorgen machen', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2vb20', es: 'darse cuenta', de: 'bemerken/realisieren', category: 'verbos', difficulty: 'hard', level: 'A2' },
+
+  // ─── A2: Weitere Alltagssätze ───
+  { id: 'a2p01', es: '¿Podría repetir, por favor?', de: 'Könnten Sie das wiederholen?', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p02', es: 'Estoy de acuerdo', de: 'Ich bin einverstanden', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p03', es: 'No estoy de acuerdo', de: 'Ich bin nicht einverstanden', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p04', es: 'Me da igual', de: 'Mir ist es egal', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p05', es: 'Depende', de: 'Kommt drauf an', category: 'frases', difficulty: 'easy', level: 'A2' },
+  { id: 'a2p06', es: 'Por un lado... por otro lado', de: 'Einerseits... andererseits', category: 'frases', difficulty: 'hard', level: 'A2' },
+  { id: 'a2p07', es: 'En mi opinión', de: 'Meiner Meinung nach', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p08', es: 'Tengo ganas de...', de: 'Ich habe Lust auf...', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p09', es: 'Vale la pena', de: 'Es lohnt sich', category: 'frases', difficulty: 'medium', level: 'A2' },
+  { id: 'a2p10', es: 'Hace falta', de: 'Es ist nötig', category: 'frases', difficulty: 'medium', level: 'A2' },
+
+  // ─── A2: Beziehungen & Soziales ───
+  { id: 'a2f01', es: 'la pareja', de: 'das Paar/der Partner', category: 'familia', difficulty: 'easy', level: 'A2' },
+  { id: 'a2f02', es: 'el matrimonio', de: 'die Ehe', category: 'familia', difficulty: 'medium', level: 'A2' },
+  { id: 'a2f03', es: 'el divorcio', de: 'die Scheidung', category: 'familia', difficulty: 'hard', level: 'A2' },
+  { id: 'a2f04', es: 'la boda', de: 'die Hochzeit', category: 'familia', difficulty: 'medium', level: 'A2' },
+  { id: 'a2f05', es: 'el compañero de piso', de: 'der Mitbewohner', category: 'familia', difficulty: 'medium', level: 'A2' },
+  { id: 'a2f06', es: 'la relación', de: 'die Beziehung', category: 'familia', difficulty: 'medium', level: 'A2' },
+  { id: 'a2f07', es: 'enamorarse', de: 'sich verlieben', category: 'verbos', difficulty: 'medium', level: 'A2' },
+  { id: 'a2f08', es: 'llevarse bien', de: 'sich gut verstehen', category: 'frases', difficulty: 'medium', level: 'A2' },
 ];

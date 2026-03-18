@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
+import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory, type Level } from '../data/vocab';
 import SpeakButton from './SpeakButton';
+import LevelFilter from './LevelFilter';
 import {
   loadSRS, saveSRS, startSession, getDueCards, getCardState,
   recordCorrect, recordWrong, getSRSStats, getStateLabel,
@@ -13,6 +14,7 @@ type GameState = 'config' | 'card-front' | 'card-back' | 'summary';
 export default function Flashcards() {
   const [state, setState] = useState<GameState>('config');
   const [selectedCategories, setSelectedCategories] = useState<Set<VocabCategory>>(new Set());
+  const [level, setLevel] = useState<Level | 'all'>('all');
   const [cards, setCards] = useState<VocabWord[]>([]);
   const [current, setCurrent] = useState(0);
   const [results, setResults] = useState<{ word: VocabWord; knew: boolean }[]>([]);
@@ -39,6 +41,9 @@ export default function Flashcards() {
 
   const startGame = () => {
     let pool = [...vocab];
+    if (level !== 'all') {
+      pool = pool.filter(w => !w.level || w.level === level);
+    }
     if (selectedCategories.size > 0) {
       pool = pool.filter(w => selectedCategories.has(w.category));
     }
@@ -106,6 +111,8 @@ export default function Flashcards() {
   if (state === 'config') {
     return (
       <ErrorBoundary><div className="quiz-config">
+        <LevelFilter value={level} onChange={setLevel} />
+
         <div className="srs-overview">
           <div className="srs-boxes">
             <div className="srs-box" data-state="new">
