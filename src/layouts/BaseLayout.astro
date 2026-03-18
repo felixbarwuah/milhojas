@@ -27,7 +27,7 @@ const path = Astro.url.pathname;
     <header class="site-header">
       <div class="container header-inner">
         <a href="/" class="logo">
-          <img src="/icons/logo-chili.png" alt="" width="24" height="24" class="logo-img" />
+          <img src="/icons/logo-chili.png" alt="" width="30" height="30" class="logo-img" />
           <span class="logo-text">MILHOJAS</span>
         </a>
         {path !== '/' && (
@@ -87,7 +87,7 @@ const path = Astro.url.pathname;
 
 <style>
   .site-header {
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--border);
     background: var(--bg-card);
     position: sticky;
@@ -99,7 +99,7 @@ const path = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     max-width: 800px;
-    min-height: 40px;
+    min-height: 44px;
   }
   .logo {
     display: flex;
@@ -117,7 +117,7 @@ const path = Astro.url.pathname;
   }
   .logo-text {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
