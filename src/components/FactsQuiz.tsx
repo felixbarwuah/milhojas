@@ -32,7 +32,7 @@ export default function FactsQuiz() {
     setCurrent(0);
     setSelected(null);
     setAnswers([]);
-    setState('reading');
+    setState('question');
   };
 
   const answer = (idx: number) => {
@@ -48,7 +48,7 @@ export default function FactsQuiz() {
     if (current + 1 >= items.length) { setState('summary'); return; }
     setCurrent(prev => prev + 1);
     setSelected(null);
-    setState('reading');
+    setState('question');
   };
 
   const fact = items[current];
@@ -107,17 +107,10 @@ export default function FactsQuiz() {
         </div>
       </div>
 
-      {state === 'reading' && (
-        <div className="question-card">
-          <p style={{ fontSize: '16px', lineHeight: '1.7', color: 'var(--text-secondary)' }}>{fact.text}</p>
-          <button className="btn btn-primary" style={{ marginTop: 'var(--space-lg)' }} onClick={() => setState('question')}>Zur Frage</button>
-        </div>
-      )}
-
-      {(state === 'question' || state === 'result') && (
+      {(state === 'reading' || state === 'question' || state === 'result') && (
         <>
           <div className="question-card">
-            <h2 className="question-word" style={{ fontSize: '20px' }}>{fact.question}</h2>
+            <h2 className="question-word" style={{ fontSize: '20px', textAlign: 'center' }}>{fact.question}</h2>
           </div>
           <div className="options-grid">
             {fact.options.map((opt, i) => {
@@ -144,7 +137,9 @@ export default function FactsQuiz() {
             </div>
           )}
           {state === 'result' && (
-            <p style={{ marginTop: 'var(--space-md)', fontSize: '14px', color: 'var(--text-muted)', maxWidth: '600px', margin: 'var(--space-md) auto 0', padding: '0 var(--space-lg)' }}>{fact.explanation}</p>
+            <div style={{ maxWidth: '600px', margin: 'var(--space-md) auto 0', padding: '0 var(--space-lg)' }}>
+              <p style={{ fontSize: '15px', lineHeight: '1.7', color: 'var(--text-secondary)' }}>{fact.text}</p>
+            </div>
           )}
         </>
       )}

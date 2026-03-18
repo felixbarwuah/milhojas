@@ -184,30 +184,13 @@ export default function ConjugationQuiz() {
           </div>
         </div>
 
-        <div className="config-section">
-          <h3 className="config-title">Schwierigkeit</h3>
-          <div className="difficulty-toggle">
-            {(['all', 'easy', 'medium', 'hard'] as const).map(d => (
-              <button
-                key={d}
-                className={`toggle-btn ${difficulty === d ? 'active' : ''}`}
-                onClick={() => setDifficulty(d)}
-              >
-                {d === 'all' ? 'Alle' : d === 'easy' ? 'Leicht' : d === 'medium' ? 'Mittel' : 'Schwer'}
-              </button>
-            ))}
-          </div>
-        </div>
 
         <div className="config-section">
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={onlyIrregular}
-              onChange={e => setOnlyIrregular(e.target.checked)}
-            />
-            <span>Nur unregelmäßige Verben</span>
-          </label>
+          <h3 className="config-title">Verben</h3>
+          <div className="direction-toggle">
+            <button className={`toggle-btn ${!onlyIrregular ? 'active' : ''}`} onClick={() => setOnlyIrregular(false)}>Alle</button>
+            <button className={`toggle-btn ${onlyIrregular ? 'active' : ''}`} onClick={() => setOnlyIrregular(true)}>Nur unregelmäßige</button>
+          </div>
         </div>
 
         <button className="btn btn-blue start-btn" onClick={startGame}>

@@ -245,10 +245,7 @@
   transition: all 0.2s ease;
 }
 
-.option-btn:hover:not(:disabled) {
-  border-color: var(--text-secondary);
-  background: rgba(0, 0, 0, 0.02);
-}
+/* no hover effect on options - cleaner UX */
 
 .option-btn:disabled {
   cursor: default;

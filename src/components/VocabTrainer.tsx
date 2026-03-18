@@ -195,20 +195,6 @@ export default function VocabTrainer() {
           </div>
         </div>
 
-        <div className="config-section">
-          <h3 className="config-title">Schwierigkeit</h3>
-          <div className="difficulty-toggle">
-            {(['all', 'easy', 'medium', 'hard'] as const).map(d => (
-              <button
-                key={d}
-                className={`toggle-btn ${difficulty === d ? 'active' : ''}`}
-                onClick={() => setDifficulty(d)}
-              >
-                {d === 'all' ? 'Alle' : d === 'easy' ? 'Leicht' : d === 'medium' ? 'Mittel' : 'Schwer'}
-              </button>
-            ))}
-          </div>
-        </div>
 
         <div className="config-section">
           <button className="category-toggle" onClick={() => setShowCategories(!showCategories)}>
