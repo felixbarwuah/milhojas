@@ -702,6 +702,40 @@
   text-align: center;
 }
 
+/* Cloze / Lückentext */
+.cloze-sentence {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--text);
+  text-align: center;
+}
+.cloze-blank {
+  display: inline-block;
+  min-width: 80px;
+  padding: 2px 8px;
+  margin: 0 4px;
+  border-bottom: 3px solid var(--accent);
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+}
+.cloze-blank.filled {
+  border-bottom-color: transparent;
+}
+.cloze-feedback {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+.cloze-translation {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* Reading text */
 .reading-text {
   font-size: 17px;

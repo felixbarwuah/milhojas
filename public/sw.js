@@ -1,19 +1,11 @@
-const CACHE_NAME = 'milhojas-v3';
+const CACHE_NAME = 'milhojas-v4';
 const PRECACHE = [
-  '/',
-  '/vocabulario',
-  '/conjugacion',
-  '/karteikarten',
-  '/schreiben',
-  '/texte',
-  '/lesen',
-  '/grammatik',
-  '/fakten',
   '/styles/global.css',
   '/styles/quiz.css',
   '/fonts/fonts.css',
   '/fonts/outfit-latin.woff2',
   '/fonts/space-mono-400-latin.woff2',
+  '/icons/logo-chili.png',
   '/manifest.json',
 ];
 
@@ -35,20 +27,35 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const fetchPromise = fetch(event.request)
-        .then((response) => {
+  // Static assets (fonts, CSS, images): cache-first (they rarely change)
+  if (url.pathname.match(/\.(woff2|png|jpg|svg|css)$/) || url.pathname === '/manifest.json') {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request).then((response) => {
           if (response.ok) {
             const clone = response.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
           }
           return response;
-        })
-        .catch(() => cached);
+        });
+      })
+    );
+    return;
+  }
 
-      return cached || fetchPromise;
-    })
+  // HTML pages: network-first (always get fresh content, cache as offline fallback)
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response.ok) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });

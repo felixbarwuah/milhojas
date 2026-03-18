@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SentenceMiner from '../../components/SentenceMiner';
+import ClozeQuiz from '../../components/ClozeQuiz';
 ---
 
-<BaseLayout title="Texte entdecken" description="Spanische Texte analysieren und neue Wörter lernen">
+<BaseLayout title="Lückentext" description="Spanische Sätze vervollständigen">
   <section class="hero" style="padding-bottom: var(--space-md);">
-    <p class="hero-eyebrow">Textanalyse</p>
-    <h2>Texte entdecken</h2>
-    <p class="hero-sub" style="font-size: 16px;">Spanischen Text einfügen, unbekannte Wörter anklicken und lernen.</p>
+    <p class="hero-eyebrow">Lückentext</p>
+    <h2>Sätze vervollständigen</h2>
+    <p class="hero-sub" style="font-size: 16px;">Finde das fehlende Wort im spanischen Satz.</p>
   </section>
 
-  <SentenceMiner client:load />
+  <ClozeQuiz client:load />
 </BaseLayout>
