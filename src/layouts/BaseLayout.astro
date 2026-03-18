@@ -35,6 +35,9 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
           <span class="logo-text">MILHOJAS</span>
         </a>
         <nav class="nav">
+          <a href="/" class={`nav-home ${Astro.url.pathname === '/' ? 'active' : ''}`} aria-label="Home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </a>
           <a href="/karteikarten" class={Astro.url.pathname.startsWith('/karteikarten') ? 'active' : ''}>Lernen</a>
           <a href="/schreiben" class={Astro.url.pathname.startsWith('/schreiben') ? 'active' : ''}>Schreiben</a>
           <a href="/vocabulario" class={Astro.url.pathname.startsWith('/vocabulario') ? 'active' : ''}>Quiz</a>
@@ -115,6 +118,15 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
   .nav a.active {
     color: var(--text);
     border-bottom: 2px solid var(--accent);
+  }
+  .nav-home {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0 !important;
+  }
+  .nav-home svg {
+    width: 16px;
+    height: 16px;
   }
   .site-footer {
     margin-top: var(--space-2xl);
