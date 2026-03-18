@@ -5,7 +5,7 @@
 
 export interface ReadingExercise {
   id: string;
-  level: 'A1' | 'A2';
+  level: 'A1' | 'A2' | 'B1';
   title: string;
   text: string;       // Spanish text to read
   question: string;   // German question about the text
@@ -189,5 +189,84 @@ export const readings: ReadingExercise[] = [
     question: 'Was ist laut Experten am wichtigsten?',
     options: ['Im Land leben', 'Teure Kurse besuchen', 'Regelmäßigkeit (jeden Tag ein bisschen)', 'Nur Grammatik lernen'],
     correctIndex: 2,
+  },
+
+  // ─── B1 Texte ───
+  {
+    id: 'r25', level: 'B1', title: 'El teletrabajo',
+    text: 'Desde la pandemia, muchas empresas en España han adoptado el teletrabajo. Según un estudio reciente, el 40% de los empleados trabaja desde casa al menos dos días por semana. Los expertos señalan que el teletrabajo mejora la productividad pero puede aumentar la sensación de aislamiento. Las empresas más innovadoras ofrecen un modelo híbrido que combina trabajo presencial y remoto.',
+    question: 'Was ist das Problem beim Homeoffice laut Experten?',
+    options: ['Geringere Produktivität', 'Höhere Kosten', 'Gefühl der Isolation', 'Schlechtere Internetverbindung'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r26', level: 'B1', title: 'La economía circular',
+    text: 'La economía circular es un modelo que busca reducir los residuos y aprovechar los recursos al máximo. En lugar de fabricar, usar y tirar, se propone reutilizar, reparar y reciclar. Chile ha sido pionero en Latinoamérica con su ley de responsabilidad extendida del productor, que obliga a las empresas a hacerse cargo de sus envases después del uso.',
+    question: 'Was bedeutet "Kreislaufwirtschaft" im Kern?',
+    options: ['Mehr produzieren', 'Wiederverwenden statt wegwerfen', 'Nur lokal kaufen', 'Weniger arbeiten'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r27', level: 'B1', title: 'La inmigración en Chile',
+    text: 'En los últimos diez años, Chile ha recibido un número récord de inmigrantes, principalmente de Venezuela, Haití, Colombia y Perú. Muchos buscan mejores oportunidades laborales y una vida más segura. La integración cultural no siempre es fácil: las diferencias en el acento, las costumbres y la gastronomía pueden crear malentendidos. Sin embargo, la mayoría de los chilenos valora la diversidad cultural que los inmigrantes aportan.',
+    question: 'Woher kommen die meisten Einwanderer in Chile?',
+    options: ['Europa', 'Asien', 'Venezuela, Haiti, Kolumbien, Peru', 'Argentinien und Brasilien'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r28', level: 'B1', title: 'Las redes sociales',
+    text: 'Un estudio de la Universidad de Salamanca reveló que los jóvenes españoles pasan una media de tres horas diarias en las redes sociales. Los investigadores advierten que el uso excesivo puede provocar ansiedad, problemas de autoestima y dificultades para concentrarse. No obstante, las redes también tienen aspectos positivos: facilitan la comunicación, permiten acceder a información y pueden ser una herramienta para el activismo social.',
+    question: 'Wie viel Zeit verbringen junge Spanier täglich in sozialen Medien?',
+    options: ['Eine Stunde', 'Zwei Stunden', 'Drei Stunden', 'Fünf Stunden'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r29', level: 'B1', title: 'El vino chileno',
+    text: 'Chile es uno de los mayores productores de vino del mundo. Los valles centrales, como el Valle de Colchagua y el Valle del Maipo, son famosos por sus vinos tintos, especialmente el Carménère, una uva que casi desapareció de Francia pero encontró condiciones ideales en Chile. El clima seco y las noches frescas crean un ambiente perfecto para la viticultura. Cada año, miles de turistas visitan las viñas chilenas para hacer degustaciones.',
+    question: 'Welche Rebsorte ist typisch für Chile?',
+    options: ['Merlot', 'Carménère', 'Tempranillo', 'Riesling'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r30', level: 'B1', title: 'La educación bilingüe',
+    text: 'En muchos colegios de España se imparten algunas asignaturas en inglés, como ciencias naturales o historia. Este modelo de educación bilingüe tiene defensores y críticos. Los defensores argumentan que mejora el nivel de inglés de los alumnos. Los críticos señalan que algunos estudiantes no comprenden bien los contenidos porque su nivel de inglés no es suficiente. El debate continúa, pero cada vez más familias eligen colegios bilingües para sus hijos.',
+    question: 'Was kritisieren die Gegner des bilingualen Unterrichts?',
+    options: ['Zu teuer', 'Schüler verstehen den Stoff nicht gut genug', 'Zu wenig Englisch', 'Die Lehrer sind nicht qualifiziert'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r31', level: 'B1', title: 'Mallorca más allá del turismo',
+    text: 'Mallorca es mucho más que sol y playa. El interior de la isla ofrece pueblos con encanto como Valldemossa y Deià, donde el compositor Chopin pasó un invierno. La Serra de Tramuntana, declarada Patrimonio de la Humanidad por la UNESCO, tiene rutas de senderismo espectaculares. La gastronomía local incluye la ensaimada, la sobrasada y el tumbet. Cada vez más visitantes descubren que la verdadera Mallorca está lejos de las zonas turísticas masificadas.',
+    question: 'Was ist die Serra de Tramuntana?',
+    options: ['Ein Strand', 'Ein UNESCO-Welterbe Gebirge', 'Eine Stadt', 'Ein Restaurant'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r32', level: 'A1', title: 'En la cafetería',
+    text: 'Entro en una cafetería y me siento cerca de la ventana. El camarero viene y me pregunta: "¿Qué desea?" Yo pido un café con leche y un croissant. El café está muy caliente y el croissant está delicioso. Pago tres euros con cincuenta.',
+    question: 'Wie viel bezahlt die Person?',
+    options: ['Zwei Euro', 'Drei Euro', 'Drei Euro fünfzig', 'Vier Euro'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r33', level: 'A1', title: 'Mi mascota',
+    text: 'Tengo un gato que se llama Michi. Es negro con ojos verdes. Le gusta dormir en el sofá todo el día. Por la noche se vuelve muy activo y juega con una pelota pequeña. Come tres veces al día y bebe mucha agua.',
+    question: 'Wann ist die Katze aktiv?',
+    options: ['Am Morgen', 'Am Mittag', 'In der Nacht', 'Den ganzen Tag'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r34', level: 'A1', title: 'Los colores',
+    text: 'Mi color favorito es el azul, como el mar. A mi hermana le gusta el rojo y siempre lleva una bufanda roja. Mi padre prefiere el verde porque le recuerda a la naturaleza. Mi madre dice que todos los colores son bonitos.',
+    question: 'Warum mag der Vater Grün?',
+    options: ['Weil es seine Lieblingsfarbe ist', 'Weil es ihn an die Natur erinnert', 'Weil seine Frau es mag', 'Weil sein Auto grün ist'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r35', level: 'A2', title: 'El cumpleaños sorpresa',
+    text: 'La semana pasada organizamos una fiesta sorpresa para mi mejor amiga. Invitamos a veinte personas y decoramos su apartamento mientras ella estaba en el trabajo. Cuando abrió la puerta y nos vio a todos, empezó a llorar de alegría. Bailamos, comimos torta y cantamos karaoke hasta las tres de la mañana.',
+    question: 'Wie reagierte die Freundin?',
+    options: ['Sie war wütend', 'Sie weinte vor Freude', 'Sie war nicht überrascht', 'Sie ging sofort schlafen'],
+    correctIndex: 1,
   },
 ];

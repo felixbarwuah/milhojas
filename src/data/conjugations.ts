@@ -313,4 +313,116 @@ export const verbs: Verb[] = [
       imperfecto: { yo: 'empezaba', tu: 'empezabas', el: 'empezaba', nosotros: 'empezábamos', vosotros: 'empezabais', ellos: 'empezaban' },
     },
   },
+  {
+    infinitive: 'oír', de: 'hören', regular: false, group: 'ir', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'oigo', tu: 'oyes', el: 'oye', nosotros: 'oímos', vosotros: 'oís', ellos: 'oyen' },
+      preterito: { yo: 'oí', tu: 'oíste', el: 'oyó', nosotros: 'oímos', vosotros: 'oísteis', ellos: 'oyeron' },
+      imperfecto: { yo: 'oía', tu: 'oías', el: 'oía', nosotros: 'oíamos', vosotros: 'oíais', ellos: 'oían' },
+    },
+  },
+  {
+    infinitive: 'seguir', de: 'folgen/weitermachen', regular: false, group: 'ir', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'sigo', tu: 'sigues', el: 'sigue', nosotros: 'seguimos', vosotros: 'seguís', ellos: 'siguen' },
+      preterito: { yo: 'seguí', tu: 'seguiste', el: 'siguió', nosotros: 'seguimos', vosotros: 'seguisteis', ellos: 'siguieron' },
+      imperfecto: { yo: 'seguía', tu: 'seguías', el: 'seguía', nosotros: 'seguíamos', vosotros: 'seguíais', ellos: 'seguían' },
+    },
+  },
+  {
+    infinitive: 'elegir', de: 'wählen', regular: false, group: 'ir', difficulty: 'hard',
+    forms: {
+      presente: { yo: 'elijo', tu: 'eliges', el: 'elige', nosotros: 'elegimos', vosotros: 'elegís', ellos: 'eligen' },
+      preterito: { yo: 'elegí', tu: 'elegiste', el: 'eligió', nosotros: 'elegimos', vosotros: 'elegisteis', ellos: 'eligieron' },
+      imperfecto: { yo: 'elegía', tu: 'elegías', el: 'elegía', nosotros: 'elegíamos', vosotros: 'elegíais', ellos: 'elegían' },
+    },
+  },
+  {
+    infinitive: 'conducir', de: 'fahren/führen', regular: false, group: 'ir', difficulty: 'hard',
+    forms: {
+      presente: { yo: 'conduzco', tu: 'conduces', el: 'conduce', nosotros: 'conducimos', vosotros: 'conducís', ellos: 'conducen' },
+      preterito: { yo: 'conduje', tu: 'condujiste', el: 'condujo', nosotros: 'condujimos', vosotros: 'condujisteis', ellos: 'condujeron' },
+      imperfecto: { yo: 'conducía', tu: 'conducías', el: 'conducía', nosotros: 'conducíamos', vosotros: 'conducíais', ellos: 'conducían' },
+    },
+  },
+  {
+    infinitive: 'morir', de: 'sterben', regular: false, group: 'ir', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'muero', tu: 'mueres', el: 'muere', nosotros: 'morimos', vosotros: 'morís', ellos: 'mueren' },
+      preterito: { yo: 'morí', tu: 'moriste', el: 'murió', nosotros: 'morimos', vosotros: 'moristeis', ellos: 'murieron' },
+      imperfecto: { yo: 'moría', tu: 'morías', el: 'moría', nosotros: 'moríamos', vosotros: 'moríais', ellos: 'morían' },
+    },
+  },
+  {
+    infinitive: 'volver', de: 'zurückkehren', regular: false, group: 'er', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'vuelvo', tu: 'vuelves', el: 'vuelve', nosotros: 'volvemos', vosotros: 'volvéis', ellos: 'vuelven' },
+      preterito: { yo: 'volví', tu: 'volviste', el: 'volvió', nosotros: 'volvimos', vosotros: 'volvisteis', ellos: 'volvieron' },
+      imperfecto: { yo: 'volvía', tu: 'volvías', el: 'volvía', nosotros: 'volvíamos', vosotros: 'volvíais', ellos: 'volvían' },
+    },
+  },
+  {
+    infinitive: 'parecer', de: 'scheinen/aussehen', regular: false, group: 'er', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'parezco', tu: 'pareces', el: 'parece', nosotros: 'parecemos', vosotros: 'parecéis', ellos: 'parecen' },
+      preterito: { yo: 'parecí', tu: 'pareciste', el: 'pareció', nosotros: 'parecimos', vosotros: 'parecisteis', ellos: 'parecieron' },
+      imperfecto: { yo: 'parecía', tu: 'parecías', el: 'parecía', nosotros: 'parecíamos', vosotros: 'parecíais', ellos: 'parecían' },
+    },
+  },
+  {
+    infinitive: 'nacer', de: 'geboren werden', regular: false, group: 'er', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'nazco', tu: 'naces', el: 'nace', nosotros: 'nacemos', vosotros: 'nacéis', ellos: 'nacen' },
+      preterito: { yo: 'nací', tu: 'naciste', el: 'nació', nosotros: 'nacimos', vosotros: 'nacisteis', ellos: 'nacieron' },
+      imperfecto: { yo: 'nacía', tu: 'nacías', el: 'nacía', nosotros: 'nacíamos', vosotros: 'nacíais', ellos: 'nacían' },
+    },
+  },
+  {
+    infinitive: 'caer', de: 'fallen', regular: false, group: 'er', difficulty: 'hard',
+    forms: {
+      presente: { yo: 'caigo', tu: 'caes', el: 'cae', nosotros: 'caemos', vosotros: 'caéis', ellos: 'caen' },
+      preterito: { yo: 'caí', tu: 'caíste', el: 'cayó', nosotros: 'caímos', vosotros: 'caísteis', ellos: 'cayeron' },
+      imperfecto: { yo: 'caía', tu: 'caías', el: 'caía', nosotros: 'caíamos', vosotros: 'caíais', ellos: 'caían' },
+    },
+  },
+  {
+    infinitive: 'pagar', de: 'bezahlen', regular: true, group: 'ar', difficulty: 'easy',
+    forms: {
+      presente: { yo: 'pago', tu: 'pagas', el: 'paga', nosotros: 'pagamos', vosotros: 'pagáis', ellos: 'pagan' },
+      preterito: { yo: 'pagué', tu: 'pagaste', el: 'pagó', nosotros: 'pagamos', vosotros: 'pagasteis', ellos: 'pagaron' },
+      imperfecto: { yo: 'pagaba', tu: 'pagabas', el: 'pagaba', nosotros: 'pagábamos', vosotros: 'pagabais', ellos: 'pagaban' },
+    },
+  },
+  {
+    infinitive: 'buscar', de: 'suchen', regular: true, group: 'ar', difficulty: 'easy',
+    forms: {
+      presente: { yo: 'busco', tu: 'buscas', el: 'busca', nosotros: 'buscamos', vosotros: 'buscáis', ellos: 'buscan' },
+      preterito: { yo: 'busqué', tu: 'buscaste', el: 'buscó', nosotros: 'buscamos', vosotros: 'buscasteis', ellos: 'buscaron' },
+      imperfecto: { yo: 'buscaba', tu: 'buscabas', el: 'buscaba', nosotros: 'buscábamos', vosotros: 'buscabais', ellos: 'buscaban' },
+    },
+  },
+  {
+    infinitive: 'esperar', de: 'warten/hoffen', regular: true, group: 'ar', difficulty: 'easy',
+    forms: {
+      presente: { yo: 'espero', tu: 'esperas', el: 'espera', nosotros: 'esperamos', vosotros: 'esperáis', ellos: 'esperan' },
+      preterito: { yo: 'esperé', tu: 'esperaste', el: 'esperó', nosotros: 'esperamos', vosotros: 'esperasteis', ellos: 'esperaron' },
+      imperfecto: { yo: 'esperaba', tu: 'esperabas', el: 'esperaba', nosotros: 'esperábamos', vosotros: 'esperabais', ellos: 'esperaban' },
+    },
+  },
+  {
+    infinitive: 'entender', de: 'verstehen', regular: false, group: 'er', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'entiendo', tu: 'entiendes', el: 'entiende', nosotros: 'entendemos', vosotros: 'entendéis', ellos: 'entienden' },
+      preterito: { yo: 'entendí', tu: 'entendiste', el: 'entendió', nosotros: 'entendimos', vosotros: 'entendisteis', ellos: 'entendieron' },
+      imperfecto: { yo: 'entendía', tu: 'entendías', el: 'entendía', nosotros: 'entendíamos', vosotros: 'entendíais', ellos: 'entendían' },
+    },
+  },
+  {
+    infinitive: 'perder', de: 'verlieren', regular: false, group: 'er', difficulty: 'medium',
+    forms: {
+      presente: { yo: 'pierdo', tu: 'pierdes', el: 'pierde', nosotros: 'perdemos', vosotros: 'perdéis', ellos: 'pierden' },
+      preterito: { yo: 'perdí', tu: 'perdiste', el: 'perdió', nosotros: 'perdimos', vosotros: 'perdisteis', ellos: 'perdieron' },
+      imperfecto: { yo: 'perdía', tu: 'perdías', el: 'perdía', nosotros: 'perdíamos', vosotros: 'perdíais', ellos: 'perdían' },
+    },
+  },
 ];

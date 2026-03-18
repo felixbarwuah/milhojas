@@ -217,4 +217,142 @@ export const facts: Fact[] = [
     correctIndex: 1,
     explanation: 'Familien bauen bunte Altäre (ofrendas) und bringen Lieblingsessen der Verstorbenen.',
   },
+
+  // ─── Weitere Chile ───
+  {
+    id: 'f23', category: 'chile',
+    text: 'Die Osterinsel (Rapa Nui) gehört zu Chile, obwohl sie 3.700 km von der Küste entfernt im Pazifik liegt. Die berühmten Moai-Statuen wurden zwischen 1250 und 1500 von den Ureinwohnern geschaffen.',
+    question: 'Wie weit ist die Osterinsel vom chilenischen Festland entfernt?',
+    options: ['500 km', '1.200 km', '3.700 km', '7.000 km'],
+    correctIndex: 2,
+    explanation: 'Rapa Nui ist einer der abgelegensten bewohnten Orte der Welt.',
+  },
+  {
+    id: 'f24', category: 'chile',
+    text: 'Chile hat die längste Küste Südamerikas mit über 6.400 km. Trotzdem essen Chilenen pro Kopf weniger Fisch als der weltweite Durchschnitt.',
+    question: 'Wie lang ist Chiles Küste?',
+    options: ['2.100 km', '4.300 km', '6.400 km', '8.200 km'],
+    correctIndex: 2,
+    explanation: 'Chile exportiert viel Lachs und Meeresfrüchte, isst aber selbst überraschend wenig davon.',
+  },
+
+  // ─── Weitere Spanien ───
+  {
+    id: 'f25', category: 'spanien',
+    text: 'Spanien hat vier offizielle Sprachen: Kastilisch (Spanisch), Katalanisch, Baskisch (Euskera) und Galicisch. Baskisch ist die einzige europäische Sprache, die mit keiner anderen verwandt ist.',
+    question: 'Was ist besonders an der baskischen Sprache?',
+    options: ['Sie ist die älteste Europas', 'Sie hat kein Alphabet', 'Sie ist mit keiner anderen verwandt', 'Sie wird nur noch von Alten gesprochen'],
+    correctIndex: 2,
+    explanation: 'Euskera ist ein Sprachrätsel - Linguisten wissen nicht, woher sie stammt.',
+  },
+  {
+    id: 'f26', category: 'spanien',
+    text: 'Der Jakobsweg (Camino de Santiago) ist ein über 1.000 Jahre alter Pilgerweg nach Santiago de Compostela. Jedes Jahr laufen über 300.000 Menschen den Weg, der traditionell von den Pyrenäen aus 800 km durch Nordspanien führt.',
+    question: 'Wie lang ist der traditionelle Jakobsweg?',
+    options: ['200 km', '500 km', '800 km', '1.200 km'],
+    correctIndex: 2,
+    explanation: 'Wer den Weg schafft, bekommt die "Compostela" - eine Urkunde auf Latein.',
+  },
+
+  // ─── Weitere Sprache ───
+  {
+    id: 'f27', category: 'sprache',
+    text: 'Das längste Wort im Spanischen ist "electroencefalografista" (24 Buchstaben) - jemand der Gehirnströme misst. Im Alltag ist das längste häufig benutzte Wort "desafortunadamente" (leider) mit 20 Buchstaben.',
+    question: 'Was bedeutet "desafortunadamente"?',
+    options: ['Glücklicherweise', 'Leider', 'Unglaublich', 'Außergewöhnlich'],
+    correctIndex: 1,
+    explanation: 'Des-a-fortuna-da-mente: des (nicht) + afortuna (Glück) + mente (Adverb-Endung).',
+  },
+  {
+    id: 'f28', category: 'sprache',
+    text: 'Spanisch und Portugiesisch sind so ähnlich, dass sich Sprecher beider Sprachen zu etwa 90% verstehen können. Italienisch liegt bei etwa 80%. Französisch teilt zwar viel Vokabular, die Aussprache ist aber so unterschiedlich, dass das Verstehen schwieriger ist.',
+    question: 'Wie gut verstehen sich Spanisch- und Portugiesisch-Sprecher?',
+    options: ['Gar nicht', 'Zu etwa 50%', 'Zu etwa 70%', 'Zu etwa 90%'],
+    correctIndex: 3,
+    explanation: 'Diese gegenseitige Verständlichkeit heißt "intercomprehensión".',
+  },
+  {
+    id: 'f29', category: 'sprache',
+    text: 'In Argentinien benutzt man "vos" statt "tú" und sagt "¿Cómo estás vos?" Die Konjugation ist anders: "vos hablás" statt "tú hablas", "vos tenés" statt "tú tienes".',
+    question: 'Wie sagt man "tú hablas" in Argentinien?',
+    options: ['usted habla', 'vos hablás', 'tú hablás', 'vos hablas'],
+    correctIndex: 1,
+    explanation: 'Dieses "voseo" gibt es auch in Uruguay, Paraguay und Teilen Zentralamerikas.',
+  },
+
+  // ─── Weitere Tipps ───
+  {
+    id: 'f30', category: 'tipps',
+    text: 'Falsche Freunde (falsos amigos) sind Wörter die in beiden Sprachen ähnlich klingen, aber verschiedene Bedeutungen haben. "Embarazada" heißt NICHT "peinlich" sondern "schwanger". "Constipado" heißt NICHT "verstopft" sondern "erkältet".',
+    question: 'Was bedeutet "embarazada" auf Spanisch?',
+    options: ['Peinlich berührt', 'Schwanger', 'Verärgert', 'Verlegen'],
+    correctIndex: 1,
+    explanation: 'Einer der berühmtesten falschen Freunde! "Avergonzado" heißt peinlich berührt.',
+  },
+  {
+    id: 'f31', category: 'tipps',
+    text: 'Um Spanisch schneller zu lernen, hilft es Musik auf Spanisch zu hören. Beliebte Künstler zum Lernen: Juanes (klare Aussprache), Shakira (langsame Balladen), Natalia Lafourcade (mexikanisches Spanisch), Mon Laferte (chilenisches Spanisch).',
+    question: 'Warum eignet sich Musik gut zum Spanischlernen?',
+    options: ['Weil die Texte kompliziert sind', 'Weil man Aussprache und Vokabeln natürlich aufnimmt', 'Weil man tanzen lernt', 'Weil es Pflicht im Unterricht ist'],
+    correctIndex: 1,
+    explanation: 'Tipp: Erst ohne Songtext hören, dann mit Lyrics auf Spanisch, dann übersetzen.',
+  },
+  {
+    id: 'f32', category: 'tipps',
+    text: 'Die 100 häufigsten Wörter im Spanischen machen etwa 50% aller gesprochenen Texte aus. Die 1.000 häufigsten Wörter decken sogar 85% ab. Das heißt: Mit relativ wenigen Wörtern versteht man schon sehr viel.',
+    question: 'Wie viel Prozent decken die 1.000 häufigsten Wörter ab?',
+    options: ['50%', '65%', '75%', '85%'],
+    correctIndex: 3,
+    explanation: 'Deshalb ist Vokabellernen am Anfang so effektiv.',
+  },
+
+  // ─── Weitere Kultur ───
+  {
+    id: 'f33', category: 'kultur',
+    text: 'Flamenco kommt aus Andalusien im Süden Spaniens. Er vereint Tanz, Gesang und Gitarrenspiel. Ursprünglich war er die Musik der Gitanos (Roma) und hat Einflüsse aus der arabischen, jüdischen und andalusischen Kultur.',
+    question: 'Aus welcher Region Spaniens kommt Flamenco?',
+    options: ['Katalonien', 'Andalusien', 'Baskenland', 'Galicien'],
+    correctIndex: 1,
+    explanation: 'Flamenco ist seit 2010 UNESCO-Kulturerbe der Menschheit.',
+  },
+  {
+    id: 'f34', category: 'kultur',
+    text: 'In vielen lateinamerikanischen Ländern feiert man die "Quinceañera" - den 15. Geburtstag eines Mädchens. Es ist ein großes Fest, ähnlich wie eine Hochzeit, mit einem besonderen Kleid, Walzer und einer Feier für die ganze Familie.',
+    question: 'Was feiert man bei einer Quinceañera?',
+    options: ['Eine Hochzeit', 'Den 15. Geburtstag eines Mädchens', 'Den Schulabschluss', 'Die erste Kommunion'],
+    correctIndex: 1,
+    explanation: 'Die Quinceañera symbolisiert den Übergang vom Mädchen zur jungen Frau.',
+  },
+  {
+    id: 'f35', category: 'kultur',
+    text: 'Gabriel García Márquez aus Kolumbien schrieb "Cien años de soledad" (Hundert Jahre Einsamkeit), eines der wichtigsten Bücher der Weltliteratur. Er erhielt dafür den Nobelpreis für Literatur 1982.',
+    question: 'Wofür erhielt García Márquez den Nobelpreis?',
+    options: ['Für Frieden', 'Für Literatur', 'Für Physik', 'Für Medizin'],
+    correctIndex: 1,
+    explanation: 'García Márquez begründete den "Magischen Realismus" in der Literatur.',
+  },
+  {
+    id: 'f36', category: 'kultur',
+    text: 'Mate ist das Nationalgetränk Argentiniens, Uruguays und Paraguays. Es wird aus den Blättern des Mate-Strauchs zubereitet und aus einem speziellen Gefäß (calabaza) mit einem Metallstrohhalm (bombilla) getrunken. Mate teilen ist ein Zeichen der Freundschaft.',
+    question: 'Wie trinkt man Mate?',
+    options: ['Aus einer Tasse', 'Aus einer calabaza mit bombilla', 'Aus einem Glas', 'Aus einer Flasche'],
+    correctIndex: 1,
+    explanation: 'In Argentinien ist es üblich, den Mate im Kreis herumzugeben.',
+  },
+  {
+    id: 'f37', category: 'chile',
+    text: 'Pablo Neruda, einer der berühmtesten Dichter der Welt, kam aus Chile. Er erhielt 1971 den Nobelpreis für Literatur. Seine Häuser in Santiago (La Chascona), Valparaíso (La Sebastiana) und Isla Negra sind heute Museen.',
+    question: 'Woher kam der Dichter Pablo Neruda?',
+    options: ['Mexiko', 'Argentinien', 'Chile', 'Spanien'],
+    correctIndex: 2,
+    explanation: 'Neruda schrieb Liebesgedichte, politische Poesie und Oden an alltägliche Dinge.',
+  },
+  {
+    id: 'f38', category: 'spanien',
+    text: 'Las Fallas ist ein Fest in Valencia, bei dem riesige Figuren aus Pappmaché gebaut und am letzten Tag verbrannt werden. Das Fest findet jedes Jahr im März statt und wurde 2016 von der UNESCO als Kulturerbe anerkannt.',
+    question: 'Was passiert bei Las Fallas mit den Figuren?',
+    options: ['Sie werden ausgestellt', 'Sie werden verkauft', 'Sie werden verbrannt', 'Sie werden ins Meer geworfen'],
+    correctIndex: 2,
+    explanation: 'Die "cremà" (Verbrennung) findet in der Nacht vom 19. auf den 20. März statt.',
+  },
 ];
