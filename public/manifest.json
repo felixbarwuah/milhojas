@@ -1,7 +1,7 @@
 {
-  "name": "Milhojas - Aprende Español",
+  "name": "Milhojas - Spanisch lernen mit Felix",
   "short_name": "Milhojas",
-  "description": "Spanisch lernen, capa por capa. Vokabeltrainer und Konjugationsquiz.",
+  "description": "Spanisch lernen mit Vokabeltrainer, Konjugationen, Grammatik und mehr.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFF8F2",
