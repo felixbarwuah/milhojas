@@ -27,6 +27,7 @@ export type GrammarTopic =
   | 'fragen'
   | 'por-para'
   | 'preterito'
+  | 'imp-pret'
   | 'reflexiv';
 
 export const topicLabels: Record<GrammarTopic, string> = {
@@ -37,6 +38,7 @@ export const topicLabels: Record<GrammarTopic, string> = {
   fragen: 'Fragen stellen',
   'por-para': 'Por vs. Para',
   preterito: 'Pretérito (Vergangenheit)',
+  'imp-pret': 'Imperfecto vs. Pretérito',
   reflexiv: 'Reflexive Verben',
 };
 
@@ -48,6 +50,7 @@ export const topicColors: Record<GrammarTopic, string> = {
   fragen: '#0039A6',
   'por-para': '#0039A6',
   preterito: '#0039A6',
+  'imp-pret': '#0039A6',
   reflexiv: '#0039A6',
 };
 
@@ -314,6 +317,41 @@ Das Reflexivpronomen steht VOR dem konjugierten Verb!`,
       { question: 'Es necesario que __ más agua. (beber, tú)', options: ['bebes', 'bebas', 'bebiste', 'beberás'], correctIndex: 1, explanation: '"Es necesario que" = Wertung → Subjuntivo. Beber → bebas.' },
       { question: 'Quiero que __ a mi boda. (venir, tú)', options: ['vienes', 'vengas', 'viniste', 'vendrás'], correctIndex: 1, explanation: '"Quiero que" = Wunsch → Subjuntivo. Venir → vengas.' },
       { question: 'Me alegra que __ bien. (estar, tú)', options: ['estás', 'estés', 'estuviste', 'estarás'], correctIndex: 1, explanation: '"Me alegra que" = Gefühl → Subjuntivo. Estar → estés.' },
+    ],
+  },
+  {
+    id: 'g12', level: 'A2', topic: 'imp-pret', title: 'Imperfecto vs. Pretérito',
+    explanation: `DER häufigste Fehler bei Spanischlernern! Beide beschreiben die Vergangenheit, aber unterschiedlich.
+
+**Pretérito Indefinido** - abgeschlossene Handlung, einmalig:
+- Ayer comí pizza. (Gestern aß ich Pizza.)
+- El año pasado viajé a Chile. (Letztes Jahr reiste ich nach Chile.)
+- De repente, sonó el teléfono. (Plötzlich klingelte das Telefon.)
+
+**Imperfecto** - Gewohnheit, Beschreibung, Hintergrund:
+- Cuando era niño, comía mucha pizza. (Als Kind aß ich viel Pizza.)
+- Hacía sol y la gente paseaba. (Die Sonne schien und die Leute spazierten.)
+- Siempre iba al colegio en autobús. (Ich fuhr immer mit dem Bus zur Schule.)
+
+**Die goldene Regel:**
+- Pretérito = WAS ist passiert? (die Handlung)
+- Imperfecto = WIE war es? (der Hintergrund, die Szene)
+
+**Signalwörter:**
+- Pretérito: ayer, la semana pasada, en 2024, de repente, una vez
+- Imperfecto: siempre, a menudo, todos los días, cuando era niño, mientras
+
+**Zusammen im gleichen Satz:**
+"Mientras dormía (Imperfecto = Hintergrund), sonó el teléfono (Pretérito = Ereignis)."
+= Während ich schlief, klingelte das Telefon.`,
+    exercises: [
+      { question: 'Ayer __ una película. (ver, yo)', options: ['veía', 'vi', 'veo', 'veré'], correctIndex: 1, explanation: '"Ayer" = einmaliges Ereignis gestern = Pretérito. Ver: yo vi.' },
+      { question: 'Cuando era niño, __ mucho. (jugar, yo)', options: ['jugué', 'jugaba', 'juego', 'jugaré'], correctIndex: 1, explanation: '"Cuando era niño" = Gewohnheit in der Kindheit = Imperfecto.' },
+      { question: 'Mientras yo __, mi madre cocinaba. (estudiar)', options: ['estudié', 'estudiaba', 'estudio', 'estudiaré'], correctIndex: 1, explanation: '"Mientras" = zwei gleichzeitige Hintergrund-Handlungen = Imperfecto.' },
+      { question: 'De repente, __ a llover. (empezar)', options: ['empezaba', 'empezó', 'empieza', 'empezará'], correctIndex: 1, explanation: '"De repente" (plötzlich) = plötzliches Ereignis = Pretérito.' },
+      { question: '__ las ocho cuando llegamos. (ser)', options: ['Fueron', 'Eran', 'Son', 'Serán'], correctIndex: 1, explanation: 'Uhrzeit als Hintergrund = Imperfecto. "Eran las ocho."' },
+      { question: 'El verano pasado __ a España. (viajar, nosotros)', options: ['viajábamos', 'viajamos', 'viajemos', 'viajaremos'], correctIndex: 1, explanation: '"El verano pasado" = einmalige, abgeschlossene Reise = Pretérito.' },
+      { question: 'Antes, mi abuela siempre __ paella los domingos. (hacer)', options: ['hizo', 'hacía', 'hace', 'hará'], correctIndex: 1, explanation: '"Siempre" + "antes" = regelmäßige Gewohnheit in der Vergangenheit = Imperfecto.' },
     ],
   },
 ];

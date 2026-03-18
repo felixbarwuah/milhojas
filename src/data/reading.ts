@@ -269,4 +269,62 @@ export const readings: ReadingExercise[] = [
     options: ['Sie war wütend', 'Sie weinte vor Freude', 'Sie war nicht überrascht', 'Sie ging sofort schlafen'],
     correctIndex: 1,
   },
+
+  // ─── B1 Nachrichten-Style ───
+  {
+    id: 'r36', level: 'B1', title: 'Terremoto en Chile',
+    text: 'Chile es uno de los países con mayor actividad sísmica del mundo. En 2010, un terremoto de magnitud 8,8 sacudió la zona central del país, causando graves daños y un tsunami que afectó a varias ciudades costeras. Desde entonces, el gobierno ha invertido millones en sistemas de alerta temprana y construcciones antisísmicas. Los expertos aseguran que Chile es hoy el país mejor preparado de Latinoamérica para enfrentar desastres naturales, aunque el riesgo sigue siendo alto.',
+    question: 'Was hat Chile seit 2010 verbessert?',
+    options: ['Die Wirtschaft', 'Frühwarnsysteme und erdbebensichere Gebäude', 'Das Bildungssystem', 'Die Tourismusbranche'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r37', level: 'B1', title: 'La gentrificación en Barcelona',
+    text: 'Barcelona enfrenta un serio problema de gentrificación. El turismo masivo y las plataformas de alquiler vacacional han provocado que los precios de la vivienda se disparen, expulsando a los residentes locales de barrios tradicionales como el Gótico y la Barceloneta. El ayuntamiento ha tomado medidas como limitar las licencias turísticas y crear más vivienda social, pero muchos vecinos consideran que estas acciones llegan demasiado tarde. El debate entre el beneficio económico del turismo y el derecho a una vivienda asequible continúa.',
+    question: 'Was ist die Hauptursache der Gentrifizierung in Barcelona?',
+    options: ['Neue Fabriken', 'Massentourismus und Ferienwohnungen', 'Immigration', 'Universitäten'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r38', level: 'B1', title: 'El boom del litio en Sudamérica',
+    text: 'Argentina, Bolivia y Chile forman el llamado "triángulo del litio", que concentra más del 50% de las reservas mundiales de este mineral. El litio es esencial para fabricar baterías de coches eléctricos y dispositivos electrónicos. Mientras que la demanda global crece exponencialmente, las comunidades indígenas de la zona denuncian que la extracción consume enormes cantidades de agua en regiones ya desérticas. Los gobiernos buscan un equilibrio entre el desarrollo económico y la protección del medio ambiente.',
+    question: 'Warum protestieren indigene Gemeinschaften?',
+    options: ['Wegen niedrigen Löhnen', 'Wegen des enormen Wasserverbrauchs', 'Wegen Lärm', 'Wegen der Tourismusbeschränkungen'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r39', level: 'B1', title: 'Salud mental en jóvenes',
+    text: 'Según la Organización Mundial de la Salud, los problemas de salud mental entre los jóvenes han aumentado un 25% desde la pandemia. En España, la ansiedad y la depresión son los diagnósticos más frecuentes entre personas de 18 a 30 años. Los psicólogos señalan el uso excesivo de redes sociales, la precariedad laboral y la incertidumbre sobre el futuro como factores principales. El gobierno español ha ampliado los servicios de atención psicológica gratuita, pero las listas de espera siguen siendo de varios meses.',
+    question: 'Um wie viel Prozent sind psychische Probleme bei Jungen gestiegen?',
+    options: ['10%', '15%', '25%', '40%'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r40', level: 'B1', title: 'El español en Estados Unidos',
+    text: 'Con más de 41 millones de hispanohablantes nativos, Estados Unidos es el segundo país con más hablantes de español del mundo, solo detrás de México. En estados como California, Texas y Florida, el español es prácticamente una segunda lengua oficial. Las empresas buscan cada vez más empleados bilingües y los colegios ofrecen programas de inmersión en español. Algunos lingüistas predicen que para 2050, Estados Unidos podría convertirse en el país con mayor número de hispanohablantes del planeta.',
+    question: 'Welches Land hat die meisten Spanischsprecher?',
+    options: ['USA', 'Spanien', 'Mexiko', 'Kolumbien'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r41', level: 'B1', title: 'La gastronomía peruana',
+    text: 'Perú se ha convertido en uno de los destinos gastronómicos más importantes del mundo. Lima tiene tres restaurantes entre los 50 mejores del mundo. La cocina peruana fusiona tradiciones indígenas, españolas, africanas, chinas y japonesas. Platos como el ceviche, el lomo saltado y la causa limeña son conocidos internacionalmente. El éxito gastronómico ha impulsado el turismo y ha creado miles de empleos en el sector de la hostelería.',
+    question: 'Welche Kulturen beeinflussten die peruanische Küche?',
+    options: ['Nur spanische', 'Indigene, spanische, afrikanische, chinesische und japanische', 'Nur indigene und spanische', 'Französische und italienische'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r42', level: 'B1', title: 'Inteligencia artificial y empleo',
+    text: 'Un informe de la consultora McKinsey estima que la inteligencia artificial podría automatizar el 30% de las tareas laborales actuales en España para 2030. Los sectores más afectados serían la banca, la administración y el comercio. Sin embargo, los expertos también destacan que la IA creará nuevos puestos de trabajo en áreas como la programación, el análisis de datos y la ciberseguridad. La clave, según los analistas, será la formación continua y la capacidad de adaptarse a los cambios tecnológicos.',
+    question: 'Wie viel Prozent der Arbeit könnte bis 2030 automatisiert werden?',
+    options: ['10%', '20%', '30%', '50%'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r43', level: 'B1', title: 'El feminismo en Latinoamérica',
+    text: 'En los últimos años, los movimientos feministas han cobrado una fuerza sin precedentes en Latinoamérica. El movimiento "Ni Una Menos", que nació en Argentina en 2015 contra la violencia de género, se extendió rápidamente por todo el continente. En Chile, las protestas feministas de 2018 en las universidades marcaron un antes y un después. Hoy, varios países de la región han aprobado leyes más estrictas contra el acoso y la violencia machista, aunque los activistas insisten en que queda mucho por hacer.',
+    question: 'Wo entstand die Bewegung "Ni Una Menos"?',
+    options: ['Chile', 'Mexiko', 'Argentinien', 'Kolumbien'],
+    correctIndex: 2,
+  },
 ];

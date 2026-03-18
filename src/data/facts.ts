@@ -355,4 +355,108 @@ export const facts: Fact[] = [
     correctIndex: 2,
     explanation: 'Die "cremà" (Verbrennung) findet in der Nacht vom 19. auf den 20. März statt.',
   },
+
+  // ─── Lateinamerika ───
+  {
+    id: 'f39', category: 'kultur',
+    text: 'Kolumbien produziert den besten Kaffee der Welt. Der Kaffeeanbau findet in der "Zona Cafetera" statt, einer Region die zum UNESCO-Welterbe gehört. Ein kolumbianischer Kaffeebauer heißt "cafetero".',
+    question: 'Wie nennt man einen Kaffeebauern in Kolumbien?',
+    options: ['Barista', 'Cafetero', 'Campesino', 'Agricultor'],
+    correctIndex: 1,
+    explanation: 'Die Zona Cafetera umfasst die Departamentos Caldas, Quindío und Risaralda.',
+  },
+  {
+    id: 'f40', category: 'kultur',
+    text: 'Mexiko-Stadt war einst Tenochtitlán, die Hauptstadt der Azteken. Sie wurde auf einer Insel in einem See gebaut. Heute sinkt die Stadt jedes Jahr um 20 cm, weil das Grundwasser unter der Stadt abgepumpt wird.',
+    question: 'Warum sinkt Mexiko-Stadt?',
+    options: ['Wegen Erdbeben', 'Wegen Grundwasser-Abpumpung', 'Wegen des Gewichts der Gebäude', 'Wegen Klimawandel'],
+    correctIndex: 1,
+    explanation: 'Tenochtitlán wurde 1521 von den Spaniern unter Hernán Cortés erobert.',
+  },
+  {
+    id: 'f41', category: 'kultur',
+    text: 'Reggaetón entstand in den 1990ern in Puerto Rico und Panama. Der Stil kombiniert Reggae, Hip-Hop und lateinamerikanische Rhythmen. "Despacito" von Luis Fonsi war der erste spanischsprachige Song der Nummer 1 in den USA seit "Macarena" (1996).',
+    question: 'Wo entstand Reggaetón?',
+    options: ['Mexiko', 'Kolumbien', 'Puerto Rico und Panama', 'Kuba'],
+    correctIndex: 2,
+    explanation: 'Daddy Yankee gilt als "King of Reggaetón" mit seinem Hit "Gasolina" (2004).',
+  },
+
+  // ─── Essen ───
+  {
+    id: 'f42', category: 'kultur',
+    text: 'Paella kommt aus Valencia, nicht aus ganz Spanien. Die originale "Paella Valenciana" enthält Huhn, Kaninchen, grüne Bohnen und Schnecken. Meeresfrüchte-Paella ist eine spätere Variation für Touristen.',
+    question: 'Was enthält die originale Paella Valenciana?',
+    options: ['Meeresfrüchte', 'Huhn, Kaninchen, Bohnen, Schnecken', 'Nur Reis und Gemüse', 'Schweinefleisch und Chorizo'],
+    correctIndex: 1,
+    explanation: 'Einen Spanier aus Valencia nach "Meeresfrüchte-Paella" zu fragen ist ein sicherer Weg, ihn zu verärgern.',
+  },
+  {
+    id: 'f43', category: 'kultur',
+    text: 'Tacos, Burritos und Nachos sind in Mexiko ganz anders als in Europa. Echte mexikanische Tacos sind klein, mit weichen Mais-Tortillas und einfachem Belag wie Carne Asada, Cilantro und Zwiebeln. Harte Taco-Shells gibt es in Mexiko nicht.',
+    question: 'Was ist anders an echten mexikanischen Tacos?',
+    options: ['Sie sind größer', 'Weiche Mais-Tortillas statt harte Shells', 'Sie haben mehr Käse', 'Sie sind teurer'],
+    correctIndex: 1,
+    explanation: 'Die harte Taco-Shell wurde in den USA von Taco Bell populär gemacht.',
+  },
+  {
+    id: 'f44', category: 'chile',
+    text: 'Pisco ist das Nationalgetränk Chiles (und Perus, was zu Streit führt). Pisco Sour wird mit Pisco, Limettensaft, Zucker und Eiweiß gemacht. In Chile trinkt man auch "Terremoto" - ein Mix aus Pipeño-Wein und Ananaseis.',
+    question: 'Was ist ein "Terremoto" in Chile?',
+    options: ['Ein Erdbeben-Warnsystem', 'Ein Cocktail aus Wein und Ananaseis', 'Eine Nachspeise', 'Ein Tanzstil'],
+    correctIndex: 1,
+    explanation: '"Terremoto" heißt wörtlich "Erdbeben" - weil man danach wackelt wie bei einem Beben.',
+  },
+
+  // ─── Sport ───
+  {
+    id: 'f45', category: 'kultur',
+    text: 'Lionel Messi wird von vielen als der beste Fußballspieler aller Zeiten angesehen. Er wurde in Rosario, Argentinien geboren und spricht Spanisch mit einem starken argentinischen Akzent (Rioplatense). 2022 gewann er endlich die Weltmeisterschaft mit Argentinien.',
+    question: 'Woher kommt Lionel Messi?',
+    options: ['Buenos Aires', 'Rosario', 'Córdoba', 'Barcelona'],
+    correctIndex: 1,
+    explanation: 'Messi zog mit 13 nach Barcelona. Sein argentinisches Spanisch behielt er trotzdem.',
+  },
+  {
+    id: 'f46', category: 'spanien',
+    text: 'El Clásico ist das Fußballderby zwischen Real Madrid und FC Barcelona - eines der meistgesehenen Sportereignisse der Welt. Die Rivalität hat auch politische Wurzeln: Barcelona steht für katalanische Identität, Madrid für die spanische Zentralmacht.',
+    question: 'Warum hat El Clásico auch politische Bedeutung?',
+    options: ['Wegen der Spielergehälter', 'Barcelona = Katalonien vs. Madrid = Zentralmacht', 'Wegen der Stadiongrößen', 'Wegen der Trainerrivalität'],
+    correctIndex: 1,
+    explanation: 'Unter Franco war der FC Barcelona ein Symbol des katalanischen Widerstands.',
+  },
+  {
+    id: 'f47', category: 'kultur',
+    text: 'Baseball, nicht Fußball, ist der beliebteste Sport in der Karibik: Kuba, Dominikanische Republik, Venezuela und Puerto Rico. Viele MLB-Stars in den USA kommen aus diesen Ländern.',
+    question: 'Welcher Sport ist in der Karibik am beliebtesten?',
+    options: ['Fußball', 'Basketball', 'Baseball', 'Tennis'],
+    correctIndex: 2,
+    explanation: 'Die Dominikanische Republik hat mehr MLB-Spieler hervorgebracht als jedes andere Land außer den USA.',
+  },
+
+  // ─── Musik ───
+  {
+    id: 'f48', category: 'kultur',
+    text: 'Shakira singt auf Spanisch und Englisch. Sie kommt aus Barranquilla, Kolumbien und hat libanesische Wurzeln. Ihr Name kommt aus dem Arabischen und bedeutet "die Dankbare". Sie begann ihre Karriere mit 13 Jahren.',
+    question: 'Was bedeutet der Name "Shakira"?',
+    options: ['Die Starke', 'Die Schöne', 'Die Dankbare', 'Die Tänzerin'],
+    correctIndex: 2,
+    explanation: 'Shakiras Vater ist libanesischer Abstammung, daher der arabische Name.',
+  },
+  {
+    id: 'f49', category: 'sprache',
+    text: 'Spanisch hat ca. 100.000 Wörter, aber ein durchschnittlicher Muttersprachler benutzt nur etwa 3.000-5.000 im Alltag. Mit 1.000 Wörtern versteht man bereits 85% aller gesprochenen Texte.',
+    question: 'Wie viele Wörter benutzt ein Spanisch-Muttersprachler im Alltag?',
+    options: ['500-1.000', '3.000-5.000', '20.000-30.000', '50.000-70.000'],
+    correctIndex: 1,
+    explanation: 'Das ist ermutigend: Milhojas hat 745 Wörter, also bist du auf gutem Weg!',
+  },
+  {
+    id: 'f50', category: 'tipps',
+    text: 'Die beste Zeit zum Vokabellernen ist laut Studien kurz vor dem Schlafen. Das Gehirn verarbeitet neue Informationen im Schlaf und festigt sie im Langzeitgedächtnis. 10-15 Minuten vor dem Einschlafen sind effektiver als 30 Minuten am Nachmittag.',
+    question: 'Wann lernt man Vokabeln am effektivsten?',
+    options: ['Am Morgen', 'Am Nachmittag', 'Kurz vor dem Schlafen', 'Beim Sport'],
+    correctIndex: 2,
+    explanation: 'Tipp: Milhojas abends im Bett als letzte App vor dem Schlafen nutzen!',
+  },
 ];
