@@ -108,6 +108,10 @@ export default function ReadingQuiz() {
 
       {(state === 'question' || state === 'result') && (
         <>
+          <div className="question-card reading-card" style={{ marginBottom: 'var(--space-md)' }}>
+            <span className="label">{item.title}</span>
+            <p className="reading-text" style={{ marginTop: 'var(--space-sm)', fontSize: '15px', color: 'var(--text-muted)' }}>{item.text}</p>
+          </div>
           <div className="question-card">
             <h2 className="question-word" style={{ fontSize: '18px' }}>{item.question}</h2>
           </div>
