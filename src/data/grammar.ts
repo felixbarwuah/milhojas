@@ -41,14 +41,14 @@ export const topicLabels: Record<GrammarTopic, string> = {
 };
 
 export const topicColors: Record<GrammarTopic, string> = {
-  artikel: '#4A4540',
-  'ser-estar': '#4A4540',
-  presente: '#4A4540',
-  verneinung: '#4A4540',
-  fragen: '#4A4540',
-  'por-para': '#4A4540',
-  preterito: '#4A4540',
-  reflexiv: '#4A4540',
+  artikel: '#0039A6',
+  'ser-estar': '#0039A6',
+  presente: '#0039A6',
+  verneinung: '#0039A6',
+  fragen: '#0039A6',
+  'por-para': '#0039A6',
+  preterito: '#0039A6',
+  reflexiv: '#0039A6',
 };
 
 export const grammar: GrammarLesson[] = [

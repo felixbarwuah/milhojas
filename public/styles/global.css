@@ -27,6 +27,14 @@
   --wrong-bg: rgba(213, 43, 30, 0.08);
   --streak: #D97706;
 
+  /* Level Colors - einheitlich in der ganzen App */
+  --level-a1: #16A34A;
+  --level-a1-bg: rgba(22, 163, 74, 0.08);
+  --level-a2: #0039A6;
+  --level-a2-bg: rgba(0, 57, 166, 0.06);
+  --level-b1: #9333EA;
+  --level-b1-bg: rgba(147, 51, 234, 0.06);
+
   /* Typography */
   --heading: 'Outfit', sans-serif;
   --sans: 'Outfit', sans-serif;
@@ -65,22 +73,16 @@ body {
   background: var(--bg);
   line-height: 1.6;
   min-height: 100vh;
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
+  text-wrap: balance;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--heading);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  text-align: left;
-  hyphens: none;
-}
-
-.btn, button, nav, header, footer, .label {
-  text-align: center;
-  hyphens: none;
+  text-wrap: balance;
 }
 
 h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
@@ -105,7 +107,7 @@ a:hover {
   color: var(--text-label);
 }
 
-/* Buttons - Ghost/Outline Style (Pangea Pattern) */
+/* Buttons - Ghost/Outline Style */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -207,11 +209,27 @@ a:hover {
   padding: 0 var(--space-lg);
 }
 
-/* Chile Stripe - decorative top border */
+/* Chile Stripe */
 .chile-stripe {
   height: 3px;
   background: linear-gradient(90deg, var(--chile-blue) 33%, var(--chile-white) 33%, var(--chile-white) 66%, var(--chile-red) 66%);
 }
+
+/* Unified Level Badge */
+.level-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius);
+  text-transform: uppercase;
+}
+.level-badge[data-level="A1"],
+.level-badge.a1 { background: var(--level-a1-bg); color: var(--level-a1); }
+.level-badge[data-level="A2"],
+.level-badge.a2 { background: var(--level-a2-bg); color: var(--level-a2); }
+.level-badge[data-level="B1"],
+.level-badge.b1 { background: var(--level-b1-bg); color: var(--level-b1); }
 
 @media (max-width: 768px) {
   .container {
