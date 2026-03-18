@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
-import { vocab, getAllVocab, type VocabWord } from '../data/vocab';
+import { getAllVocab, type VocabWord } from '../data/vocab';
 import { lookupWord, tokenize, cleanWord, type DictionaryEntry } from '../data/dictionary';
 import { saveCustomWord } from '../data/custom-vocab';
-import { loadSRS, saveSRS, type SRSData } from '../data/srs';
+import { loadSRS, saveSRS } from '../data/srs';
 import { speak, isTTSSupported } from '../data/speech';
 
 type ViewState = 'input' | 'analysis';
@@ -72,7 +72,7 @@ export default function SentenceMiner() {
       es: selectedWord,
       de: deInput.trim(),
       difficulty: 'medium',
-      example: entry?.meanings[0]?.definitions[0]?.example,
+      example: entry?.definitions[0],
     });
 
     // Register in SRS
@@ -85,11 +85,6 @@ export default function SentenceMiner() {
     setEntry(null);
     setNotFound(false);
     setDeInput('');
-  };
-
-  const playAudio = (url: string) => {
-    const audio = new Audio(url);
-    audio.play().catch(() => {});
   };
 
   if (view === 'input') {
@@ -153,14 +148,9 @@ export default function SentenceMiner() {
         <div className="word-detail">
           <div className="word-detail-header">
             <h3>{selectedWord}</h3>
-            {entry?.phonetic && <span className="word-phonetic">{entry.phonetic}</span>}
+            {entry?.partOfSpeech && <span className="word-phonetic">{entry.partOfSpeech}</span>}
             <div className="word-detail-actions">
-              {entry?.audioUrl && (
-                <button className="speak-btn" onClick={() => playAudio(entry!.audioUrl!)}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                </button>
-              )}
-              {isTTSSupported() && !entry?.audioUrl && (
+              {isTTSSupported() && (
                 <button className="speak-btn" onClick={() => speak(selectedWord)}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                 </button>
@@ -170,17 +160,17 @@ export default function SentenceMiner() {
 
           {entry && (
             <div className="word-meanings">
-              {entry.meanings.map((m, i) => (
-                <div key={i} className="word-meaning">
-                  <span className="word-pos">{m.partOfSpeech}</span>
-                  {m.definitions.map((d, j) => (
-                    <p key={j} className="word-def">
-                      {d.definition}
-                      {d.example && <span className="word-example"> - "{d.example}"</span>}
-                    </p>
-                  ))}
-                </div>
+              {entry.definitions.map((def, i) => (
+                <p key={i} className="word-def">{i + 1}. {def}</p>
               ))}
+              {entry.synonyms && entry.synonyms.length > 0 && (
+                <p className="word-synonyms">
+                  <span className="word-pos">Synonyme:</span> {entry.synonyms.join(', ')}
+                </p>
+              )}
+              {entry.etymology && (
+                <p className="word-etymology">{entry.etymology}</p>
+              )}
             </div>
           )}
 

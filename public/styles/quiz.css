@@ -666,6 +666,9 @@
 .word-def { font-size: 15px; color: var(--text-secondary); margin: 4px 0; }
 .word-example { color: var(--text-muted); font-style: italic; }
 .word-not-found { color: var(--text-muted); font-size: 14px; margin-top: var(--space-sm); }
+.word-synonyms { font-size: 14px; color: var(--text-muted); margin-top: var(--space-sm); }
+.word-synonyms .word-pos { margin-right: 4px; }
+.word-etymology { font-size: 13px; color: var(--text-label); font-style: italic; margin-top: var(--space-sm); }
 
 .add-word-form {
   display: flex;
