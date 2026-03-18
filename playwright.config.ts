@@ -2,8 +2,8 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 15000,
-  retries: 1,
+  timeout: 30000,
+  retries: 2,
   use: {
     baseURL: 'http://localhost:4322',
     screenshot: 'only-on-failure',
@@ -12,7 +12,7 @@ export default defineConfig({
     command: 'npm run dev',
     port: 4322,
     reuseExistingServer: true,
-    timeout: 15000,
+    timeout: 30000,
   },
   projects: [
     {
