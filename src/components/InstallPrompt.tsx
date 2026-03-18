@@ -50,7 +50,7 @@ export default function InstallPrompt() {
         <div className="install-text">
           <strong>Milhojas als App installieren</strong>
           {platform === 'ios' && (
-            <p>Tippe auf <span className="install-highlight">Teilen</span> (Quadrat mit Pfeil) und dann <span className="install-highlight">Zum Home-Bildschirm</span>.</p>
+            <p>Tippe auf die <span className="install-highlight">drei Punkte</span> unten rechts, dann <span className="install-highlight">Teilen</span>, runter wischen und <span className="install-highlight">Zum Home-Bildschirm</span> wählen.</p>
           )}
           {platform === 'android' && (
             <p>Tippe auf das <span className="install-highlight">Menü</span> (drei Punkte) und dann <span className="install-highlight">App installieren</span>.</p>
