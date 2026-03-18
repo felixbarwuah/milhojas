@@ -494,6 +494,73 @@ export const vocab: VocabWord[] = [
   { id: 'adj23', es: 'importante', de: 'wichtig', category: 'frases', difficulty: 'easy' },
   { id: 'adj24', es: 'posible', de: 'möglich', category: 'frases', difficulty: 'easy' },
   { id: 'adj25', es: 'necesario', de: 'notwendig/nötig', category: 'frases', difficulty: 'medium' },
+  { id: 'adj26', es: 'tranquilo', de: 'ruhig', category: 'frases', difficulty: 'medium' },
+  { id: 'adj27', es: 'peligroso', de: 'gefährlich', category: 'frases', difficulty: 'medium' },
+  { id: 'adj28', es: 'seguro', de: 'sicher', category: 'frases', difficulty: 'easy' },
+  { id: 'adj29', es: 'libre', de: 'frei', category: 'frases', difficulty: 'easy' },
+  { id: 'adj30', es: 'abierto', de: 'offen/geöffnet', category: 'frases', difficulty: 'easy' },
+  { id: 'adj31', es: 'cerrado', de: 'geschlossen', category: 'frases', difficulty: 'easy' },
+  { id: 'adj32', es: 'caliente', de: 'heiß/warm', category: 'frases', difficulty: 'easy' },
+  { id: 'adj33', es: 'frío', de: 'kalt', category: 'frases', difficulty: 'easy' },
+  { id: 'adj34', es: 'dulce', de: 'süß', category: 'frases', difficulty: 'easy' },
+  { id: 'adj35', es: 'salado', de: 'salzig', category: 'frases', difficulty: 'medium' },
+
+  // ─── Weitere Viaje/Transport ───
+  { id: 'v21', es: 'el taxi', de: 'das Taxi', category: 'viaje', difficulty: 'easy' },
+  { id: 'v22', es: 'la bicicleta', de: 'das Fahrrad', category: 'viaje', difficulty: 'medium' },
+  { id: 'v23', es: 'el metro', de: 'die U-Bahn', category: 'viaje', difficulty: 'easy' },
+  { id: 'v24', es: 'el hotel', de: 'das Hotel', category: 'viaje', difficulty: 'easy' },
+  { id: 'v25', es: 'la habitación', de: 'das Zimmer', category: 'viaje', difficulty: 'medium' },
+  { id: 'v26', es: 'la playa', de: 'der Strand', category: 'viaje', difficulty: 'easy' },
+  { id: 'v27', es: 'el turista', de: 'der Tourist', category: 'viaje', difficulty: 'easy' },
+  { id: 'v28', es: 'la guía', de: 'der Reiseführer', category: 'viaje', difficulty: 'medium' },
+
+  // ─── Weitere Casa ───
+  { id: 'h19', es: 'el sofá', de: 'das Sofa', category: 'casa', difficulty: 'easy' },
+  { id: 'h20', es: 'la alfombra', de: 'der Teppich', category: 'casa', difficulty: 'hard' },
+  { id: 'h21', es: 'la cortina', de: 'der Vorhang', category: 'casa', difficulty: 'medium' },
+  { id: 'h22', es: 'el cuchillo', de: 'das Messer', category: 'casa', difficulty: 'medium' },
+  { id: 'h23', es: 'el tenedor', de: 'die Gabel', category: 'casa', difficulty: 'medium' },
+  { id: 'h24', es: 'la cuchara', de: 'der Löffel', category: 'casa', difficulty: 'medium' },
+  { id: 'h25', es: 'el plato', de: 'der Teller', category: 'casa', difficulty: 'easy' },
+  { id: 'h26', es: 'el vaso', de: 'das Glas', category: 'casa', difficulty: 'easy' },
+  { id: 'h27', es: 'la taza', de: 'die Tasse', category: 'casa', difficulty: 'easy' },
+  { id: 'h28', es: 'la botella', de: 'die Flasche', category: 'casa', difficulty: 'easy' },
+
+  // ─── Weitere Trabajo ───
+  { id: 't16', es: 'el médico', de: 'der Arzt', category: 'trabajo', difficulty: 'easy' },
+  { id: 't17', es: 'el abogado', de: 'der Anwalt', category: 'trabajo', difficulty: 'medium' },
+  { id: 't18', es: 'el ingeniero', de: 'der Ingenieur', category: 'trabajo', difficulty: 'medium' },
+  { id: 't19', es: 'el periodista', de: 'der Journalist', category: 'trabajo', difficulty: 'medium' },
+  { id: 't20', es: 'el músico', de: 'der Musiker', category: 'trabajo', difficulty: 'easy' },
+  { id: 't21', es: 'el bombero', de: 'der Feuerwehrmann', category: 'trabajo', difficulty: 'medium' },
+  { id: 't22', es: 'el policía', de: 'der Polizist', category: 'trabajo', difficulty: 'easy' },
+  { id: 't23', es: 'el enfermero', de: 'der Krankenpfleger', category: 'trabajo', difficulty: 'medium' },
+  { id: 't24', es: 'el arquitecto', de: 'der Architekt', category: 'trabajo', difficulty: 'medium' },
+  { id: 't25', es: 'el cocinero', de: 'der Koch', category: 'trabajo', difficulty: 'easy' },
+
+  // ─── Weitere Cuerpo ───
+  { id: 'b19', es: 'el pelo', de: 'das Haar', category: 'cuerpo', difficulty: 'easy' },
+  { id: 'b20', es: 'la cara', de: 'das Gesicht', category: 'cuerpo', difficulty: 'easy' },
+  { id: 'b21', es: 'el diente', de: 'der Zahn', category: 'cuerpo', difficulty: 'medium' },
+  { id: 'b22', es: 'la lengua', de: 'die Zunge', category: 'cuerpo', difficulty: 'medium' },
+  { id: 'b23', es: 'el cuello', de: 'der Hals', category: 'cuerpo', difficulty: 'medium' },
+  { id: 'b24', es: 'el pecho', de: 'die Brust', category: 'cuerpo', difficulty: 'medium' },
+  { id: 'b25', es: 'la sangre', de: 'das Blut', category: 'cuerpo', difficulty: 'hard' },
+  { id: 'b26', es: 'el hueso', de: 'der Knochen', category: 'cuerpo', difficulty: 'hard' },
+  { id: 'b27', es: 'la piel', de: 'die Haut', category: 'cuerpo', difficulty: 'medium' },
+
+  // ─── Weitere Comida ───
+  { id: 'c31', es: 'el tomate', de: 'die Tomate', category: 'comida', difficulty: 'easy' },
+  { id: 'c32', es: 'la patata', de: 'die Kartoffel', category: 'comida', difficulty: 'easy' },
+  { id: 'c33', es: 'la zanahoria', de: 'die Karotte', category: 'comida', difficulty: 'medium' },
+  { id: 'c34', es: 'la lechuga', de: 'der Salat (Kopfsalat)', category: 'comida', difficulty: 'medium' },
+  { id: 'c35', es: 'el plátano', de: 'die Banane', category: 'comida', difficulty: 'easy' },
+  { id: 'c36', es: 'la uva', de: 'die Traube', category: 'comida', difficulty: 'medium' },
+  { id: 'c37', es: 'el limón', de: 'die Zitrone', category: 'comida', difficulty: 'easy' },
+  { id: 'c38', es: 'la mantequilla', de: 'die Butter', category: 'comida', difficulty: 'hard' },
+  { id: 'c39', es: 'el azúcar', de: 'der Zucker', category: 'comida', difficulty: 'medium' },
+  { id: 'c40', es: 'la pimienta', de: 'der Pfeffer', category: 'comida', difficulty: 'medium' },
 
   // ─── Weitere Alltagssätze ───
   { id: 'p26', es: 'Estoy aprendiendo español', de: 'Ich lerne Spanisch', category: 'frases', difficulty: 'easy' },
@@ -506,4 +573,63 @@ export const vocab: VocabWord[] = [
   { id: 'p33', es: 'Soy de Austria', de: 'Ich komme aus Österreich', category: 'frases', difficulty: 'easy' },
   { id: 'p34', es: '¿Qué significa...?', de: 'Was bedeutet...?', category: 'frases', difficulty: 'medium' },
   { id: 'p35', es: 'Tengo una pregunta', de: 'Ich habe eine Frage', category: 'frases', difficulty: 'easy' },
+  { id: 'p36', es: '¿Cómo se escribe?', de: 'Wie schreibt man das?', category: 'frases', difficulty: 'medium' },
+  { id: 'p37', es: 'No importa', de: 'Macht nichts', category: 'frases', difficulty: 'easy' },
+  { id: 'p38', es: 'Claro que sí', de: 'Natürlich/Klar', category: 'frases', difficulty: 'easy' },
+  { id: 'p39', es: 'Vamos', de: 'Los geht\'s/Gehen wir', category: 'frases', difficulty: 'easy' },
+  { id: 'p40', es: 'Un momento', de: 'Einen Moment', category: 'frases', difficulty: 'easy' },
+
+  // ─── Weitere Natur ───
+  { id: 'n19', es: 'la tierra', de: 'die Erde', category: 'naturaleza', difficulty: 'easy' },
+  { id: 'n20', es: 'el fuego', de: 'das Feuer', category: 'naturaleza', difficulty: 'easy' },
+  { id: 'n21', es: 'el aire', de: 'die Luft', category: 'naturaleza', difficulty: 'easy' },
+  { id: 'n22', es: 'la hierba', de: 'das Gras', category: 'naturaleza', difficulty: 'medium' },
+  { id: 'n23', es: 'la arena', de: 'der Sand', category: 'naturaleza', difficulty: 'medium' },
+  { id: 'n24', es: 'la ola', de: 'die Welle', category: 'naturaleza', difficulty: 'medium' },
+  { id: 'n25', es: 'el campo', de: 'das Feld/Land', category: 'naturaleza', difficulty: 'easy' },
+
+  // ─── Weitere Stadt ───
+  { id: 'u16', es: 'el restaurante', de: 'das Restaurant', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u17', es: 'el cine', de: 'das Kino', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u18', es: 'el teatro', de: 'das Theater', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u19', es: 'la estación de policía', de: 'die Polizeistation', category: 'ciudad', difficulty: 'hard' },
+  { id: 'u20', es: 'el gimnasio', de: 'das Fitnessstudio', category: 'ciudad', difficulty: 'medium' },
+  { id: 'u21', es: 'la panadería', de: 'die Bäckerei', category: 'ciudad', difficulty: 'medium' },
+  { id: 'u22', es: 'la carnicería', de: 'die Metzgerei', category: 'ciudad', difficulty: 'hard' },
+
+  // ─── Weitere Ropa ───
+  { id: 'r15', es: 'el traje', de: 'der Anzug', category: 'ropa', difficulty: 'medium' },
+  { id: 'r16', es: 'la corbata', de: 'die Krawatte', category: 'ropa', difficulty: 'medium' },
+  { id: 'r17', es: 'el pijama', de: 'der Pyjama', category: 'ropa', difficulty: 'easy' },
+  { id: 'r18', es: 'el paraguas', de: 'der Regenschirm', category: 'ropa', difficulty: 'hard' },
+  { id: 'r19', es: 'el bolso', de: 'die Handtasche', category: 'ropa', difficulty: 'medium' },
+  { id: 'r20', es: 'el anillo', de: 'der Ring', category: 'ropa', difficulty: 'medium' },
+
+  // ─── Weitere Zahlen ───
+  { id: 'nu41', es: 'once', de: 'elf', category: 'numeros', difficulty: 'easy' },
+  { id: 'nu42', es: 'doce', de: 'zwölf', category: 'numeros', difficulty: 'easy' },
+  { id: 'nu43', es: 'quince', de: 'fünfzehn', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu44', es: 'cuarenta', de: 'vierzig', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu45', es: 'cincuenta', de: 'fünfzig', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu46', es: 'sesenta', de: 'sechzig', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu47', es: 'setenta', de: 'siebzig', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu48', es: 'ochenta', de: 'achtzig', category: 'numeros', difficulty: 'medium' },
+  { id: 'nu49', es: 'noventa', de: 'neunzig', category: 'numeros', difficulty: 'medium' },
+
+  // ─── Technik ───
+  { id: 'sc21', es: 'el teléfono', de: 'das Telefon', category: 'schule', difficulty: 'easy' },
+  { id: 'sc22', es: 'el mensaje', de: 'die Nachricht', category: 'schule', difficulty: 'easy' },
+  { id: 'sc23', es: 'la pantalla', de: 'der Bildschirm', category: 'schule', difficulty: 'medium' },
+  { id: 'sc24', es: 'la página', de: 'die Seite', category: 'schule', difficulty: 'easy' },
+  { id: 'sc25', es: 'la foto', de: 'das Foto', category: 'schule', difficulty: 'easy' },
+
+  // ─── Geld & Einkaufen ───
+  { id: 'u23', es: 'el dinero', de: 'das Geld', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u24', es: 'la moneda', de: 'die Münze', category: 'ciudad', difficulty: 'medium' },
+  { id: 'u25', es: 'el billete', de: 'der Geldschein', category: 'ciudad', difficulty: 'medium' },
+  { id: 'u26', es: 'el precio', de: 'der Preis', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u27', es: 'la tarjeta', de: 'die Karte (Bank/Kredit)', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u28', es: 'el cambio', de: 'das Wechselgeld', category: 'ciudad', difficulty: 'medium' },
+  { id: 'u29', es: 'el regalo', de: 'das Geschenk', category: 'ciudad', difficulty: 'easy' },
+  { id: 'u30', es: 'la oferta', de: 'das Angebot', category: 'ciudad', difficulty: 'medium' },
 ];

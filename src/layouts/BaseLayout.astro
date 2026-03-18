@@ -47,7 +47,16 @@ const path = Astro.url.pathname;
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="label">Milhojas - Spanisch lernen, Schicht für Schicht</p>
+        <div class="footer-brand">
+          <svg class="footer-flag" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="16" rx="2" fill="#D52B1E"/>
+            <rect width="8" height="8" fill="#0039A6"/>
+            <rect x="8" width="14" height="8" fill="#FFFFFF"/>
+            <path d="M4 2.5L4.59 4.31H6.49L4.95 5.44L5.54 7.25L4 6.12L2.46 7.25L3.05 5.44L1.51 4.31H3.41L4 2.5Z" fill="white"/>
+          </svg>
+          <span class="footer-logo">MILHOJAS</span>
+        </div>
+        <p class="footer-tagline">Spanisch lernen mit Felix</p>
       </div>
     </footer>
     <script>
@@ -118,6 +127,28 @@ const path = Astro.url.pathname;
   }
   .footer-inner {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer-tagline {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-label);
   }
   @media (max-width: 480px) {
     .logo-text { font-size: 11px; }

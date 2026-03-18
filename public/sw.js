@@ -1,4 +1,4 @@
-const CACHE_NAME = 'milhojas-v2';
+const CACHE_NAME = 'milhojas-v3';
 const PRECACHE = [
   '/',
   '/vocabulario',
@@ -6,6 +6,9 @@ const PRECACHE = [
   '/karteikarten',
   '/schreiben',
   '/texte',
+  '/lesen',
+  '/grammatik',
+  '/fakten',
   '/styles/global.css',
   '/styles/quiz.css',
   '/fonts/fonts.css',

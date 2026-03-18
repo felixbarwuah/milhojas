@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FactsQuiz from '../../components/FactsQuiz';
+---
+
+<BaseLayout title="Fakten" description="Spannende Fakten über Chile, Spanien und die spanische Sprache">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <p class="hero-eyebrow">Wissen</p>
+    <h2>Fakten-Quiz</h2>
+    <p class="hero-sub" style="font-size: 16px;">Spannende Fakten über Chile, Spanien und die spanische Sprache.</p>
+  </section>
+
+  <FactsQuiz client:load />
+</BaseLayout>

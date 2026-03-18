@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GrammarQuiz from '../../components/GrammarQuiz';
+---
+
+<BaseLayout title="Grammatik" description="Spanische Grammatik A1/A2 lernen und üben">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <p class="hero-eyebrow">Grammatik</p>
+    <h2>Regeln und Übungen</h2>
+    <p class="hero-sub" style="font-size: 16px;">A1/A2 Grammatik verstehen und mit Übungen festigen.</p>
+  </section>
+
+  <GrammarQuiz client:load />
+</BaseLayout>

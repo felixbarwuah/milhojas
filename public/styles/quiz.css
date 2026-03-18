@@ -702,6 +702,61 @@
   text-align: center;
 }
 
+/* Reading text */
+.reading-text {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text);
+  text-align: left;
+}
+.reading-card {
+  text-align: left;
+}
+
+/* Grammar */
+.grammar-topics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.grammar-topic-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-md);
+}
+.grammar-topic-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.grammar-level {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius);
+}
+.grammar-level[data-level="A1"] { background: rgba(22, 163, 74, 0.08); color: var(--correct); }
+.grammar-level[data-level="A2"] { background: rgba(0, 57, 166, 0.06); color: var(--accent-blue); }
+.grammar-explanation {
+  text-align: left;
+}
+.grammar-explanation p {
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+.grammar-lesson {
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .grammar-topics { grid-template-columns: 1fr; }
+}
+
 /* 4-column mode grid */
 .mode-cards.four-cols {
   grid-template-columns: repeat(4, 1fr);
