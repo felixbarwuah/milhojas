@@ -52,6 +52,11 @@ const path = Astro.url.pathname;
           <span class="footer-logo">MILHOJAS</span>
         </div>
         <p class="footer-tagline">Spanisch lernen mit Felix</p>
+        <div class="footer-legal">
+          <a href="/impressum/">Impressum</a>
+          <span>·</span>
+          <a href="/datenschutz/">Datenschutz</a>
+        </div>
       </div>
     </footer>
     <script>
@@ -169,6 +174,19 @@ const path = Astro.url.pathname;
     font-size: 13px;
     color: var(--text-label);
   }
+  .footer-legal {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .footer-legal a {
+    font-size: 11px;
+    color: var(--text-label);
+    text-decoration: none;
+  }
+  .footer-legal a:hover { color: var(--text-muted); }
+  .footer-legal span { color: var(--text-label); font-size: 11px; }
   @media (max-width: 480px) {
     .logo-text { font-size: 11px; }
   }

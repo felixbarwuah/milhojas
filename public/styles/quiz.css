@@ -886,6 +886,7 @@
 /* 4-column mode grid */
 .mode-cards.four-cols {
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   max-width: 800px;
 }
 .four-cols .mode-card {

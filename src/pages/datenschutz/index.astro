@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Datenschutz">
+  <div class="container legal">
+    <h1>Datenschutzerklärung</h1>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>Felix Kleiner<br>Neutorgasse 5, 1010 Wien, Österreich<br>felix@pangea-intelligence.eu</p>
+
+    <h2>2. Datenverarbeitung</h2>
+    <p>Diese App verarbeitet keine personenbezogenen Daten auf einem Server. Alle Lerndaten (Fortschritt, Punkte, Streak) werden ausschließlich lokal in deinem Browser gespeichert (localStorage) und verlassen dein Gerät nicht.</p>
+
+    <h2>3. Hosting</h2>
+    <p>Die App wird über Cloudflare Pages bereitgestellt. Cloudflare kann beim Seitenaufruf technische Daten wie IP-Adresse, Browser-Typ und Zugriffszeit verarbeiten. Details findest du in der <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.</p>
+
+    <h2>4. Externe APIs</h2>
+    <p>Beim Nutzen der Textanalyse-Funktion werden Wortanfragen an die Wiktionary API (es.wiktionary.org) gesendet. Dabei wird das angefragte Wort übertragen. Es werden keine personenbezogenen Daten gesendet.</p>
+
+    <h2>5. Cookies</h2>
+    <p>Diese App verwendet keine Cookies. Lernfortschritt wird über die localStorage-API des Browsers gespeichert.</p>
+
+    <h2>6. Deine Rechte</h2>
+    <p>Da keine personenbezogenen Daten auf unseren Servern gespeichert werden, entfallen die üblichen Betroffenenrechte. Du kannst deine lokal gespeicherten Daten jederzeit löschen, indem du die Website-Daten in deinen Browser-Einstellungen entfernst.</p>
+
+    <h2>7. Kontakt</h2>
+    <p>Bei Fragen zum Datenschutz: felix@pangea-intelligence.eu</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal { max-width: 600px; padding-top: var(--space-xl); padding-bottom: var(--space-2xl); }
+  .legal h1 { font-size: 28px; margin-bottom: var(--space-lg); }
+  .legal h2 { font-size: 18px; margin-top: var(--space-lg); margin-bottom: var(--space-sm); }
+  .legal p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+  .legal a { color: var(--accent-blue); }
+</style>
