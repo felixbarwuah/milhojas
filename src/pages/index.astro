@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Dashboard from '../components/Dashboard';
+import InstallPrompt from '../components/InstallPrompt';
 ---
 
 <BaseLayout title="Spanisch lernen">
@@ -107,28 +108,7 @@ import Dashboard from '../components/Dashboard';
     </div>
   </div>
 
-  <div class="stats-bar">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item">
-          <span class="stat-num">615</span>
-          <span class="stat-desc">Wörter</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">35</span>
-          <span class="stat-desc">Verben</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">8</span>
-          <span class="stat-desc">Lernmodi</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">16</span>
-          <span class="stat-desc">Kategorien</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <InstallPrompt client:load />
 </BaseLayout>
 
 <style>

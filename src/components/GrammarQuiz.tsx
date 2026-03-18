@@ -39,22 +39,31 @@ export default function GrammarQuiz() {
     setState('exercise');
   };
 
-  // Topic selection
+  // Topic selection - grouped by level
   if (state === 'topics') {
-    return (
-      <ErrorBoundary><div className="quiz-config">
+    const a1 = grammar.filter(g => g.level === 'A1');
+    const a2 = grammar.filter(g => g.level === 'A2');
+    const renderGroup = (label: string, lessons: typeof grammar, color: string) => (
+      <div className="grammar-level-group">
+        <h3 className="grammar-group-title">
+          <span className="grammar-level" data-level={label}>{label}</span>
+          <span>{label === 'A1' ? 'Grundlagen' : 'Aufbau'}</span>
+        </h3>
         <div className="grammar-topics">
-          {grammar.map(l => (
+          {lessons.map(l => (
             <button key={l.id} className="card grammar-topic-card" onClick={() => selectLesson(l)}>
-              <div className="grammar-topic-header">
-                <span className="grammar-level" data-level={l.level}>{l.level}</span>
-                <span className="label" style={{ color: topicColors[l.topic] }}>{topicLabels[l.topic]}</span>
-              </div>
-              <h3 style={{ fontSize: '16px', fontWeight: 700 }}>{l.title}</h3>
+              <span className="label" style={{ color: topicColors[l.topic] }}>{topicLabels[l.topic]}</span>
+              <h3 style={{ fontSize: '15px', fontWeight: 700, marginTop: 4 }}>{l.title}</h3>
               <span className="mode-cta">{l.exercises.length} Übungen</span>
             </button>
           ))}
         </div>
+      </div>
+    );
+    return (
+      <ErrorBoundary><div className="quiz-config">
+        {a1.length > 0 && renderGroup('A1', a1, 'var(--correct)')}
+        {a2.length > 0 && renderGroup('A2', a2, 'var(--accent-blue)')}
       </div></ErrorBoundary>
     );
   }

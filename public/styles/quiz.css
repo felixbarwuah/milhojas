@@ -59,15 +59,10 @@
   background: rgba(0, 0, 0, 0.03);
 }
 
-/* Category Chips */
-.category-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+/* Category Chips - grid defined below in .category-chip section */
 
 .category-chip {
-  padding: 6px 14px;
+  padding: 8px 0;
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 500;
@@ -77,6 +72,19 @@
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Flag buttons */
@@ -99,9 +107,19 @@
   color: var(--text);
 }
 .category-arrow {
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   color: var(--text-muted);
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.category-toggle:hover .category-arrow {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text);
 }
 .category-arrow.open {
   transform: rotate(180deg);
@@ -703,6 +721,67 @@
   text-align: center;
 }
 
+/* ── Install Banner ── */
+.install-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  animation: slideUp 0.3s ease-out;
+}
+.install-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+.install-icon {
+  flex-shrink: 0;
+  border-radius: 8px;
+  margin-top: 2px;
+}
+.install-text {
+  flex: 1;
+}
+.install-text strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.install-text p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+.install-highlight {
+  font-weight: 600;
+  color: var(--text);
+}
+.install-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+.install-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 /* Cloze / Lückentext */
 .cloze-sentence {
   font-size: 20px;
@@ -779,6 +858,18 @@
 }
 .grammar-level[data-level="A1"] { background: rgba(22, 163, 74, 0.08); color: var(--correct); }
 .grammar-level[data-level="A2"] { background: rgba(0, 57, 166, 0.06); color: var(--accent-blue); }
+.grammar-level-group {
+  margin-bottom: var(--space-xl);
+}
+.grammar-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
 .grammar-explanation {
   text-align: left;
 }
