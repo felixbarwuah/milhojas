@@ -233,4 +233,87 @@ Das Reflexivpronomen steht VOR dem konjugierten Verb!`,
       { question: 'Ella __ temprano. (acostarse)', options: ['me acuesto', 'te acuestas', 'se acuesta', 'nos acostamos'], correctIndex: 2, explanation: 'Ella + acostarse = "se acuesta".' },
     ],
   },
+  // ─── B1 ───
+  {
+    id: 'g09', level: 'B1', topic: 'ser-estar', title: 'Futuro Simple',
+    explanation: `Das Futuro Simple beschreibt zukünftige Handlungen. Es wird gebildet aus dem ganzen Infinitiv + Endung.
+
+**Regelmäßige Bildung:**
+- hablar: hablaré, hablarás, hablará, hablaremos, hablaréis, hablarán
+- comer: comeré, comerás, comerá, comeremos, comeréis, comerán
+- vivir: viviré, vivirás, vivirá, viviremos, viviréis, vivirán
+
+**Die Endungen sind für ALLE Gruppen gleich:** -é, -ás, -á, -emos, -éis, -án
+
+**Wichtige unregelmäßige Stämme:**
+- tener → tendr-: tendré, tendrás...
+- poder → podr-: podré, podrás...
+- hacer → har-: haré, harás...
+- decir → dir-: diré, dirás...
+- salir → saldr-: saldré, saldrás...
+- venir → vendr-: vendré, vendrás...
+- saber → sabr-: sabré, sabrás...
+- haber → habr-: habrá (es wird geben)
+
+**Signalwörter:** mañana, el año que viene, la semana próxima, en el futuro`,
+    exercises: [
+      { question: 'Mañana __ a las ocho. (llegar, yo)', options: ['llego', 'llegué', 'llegaré', 'llegaba'], correctIndex: 2, explanation: 'Futuro: llegar + é = llegaré.' },
+      { question: 'El año que viene nosotros __ a Chile. (viajar)', options: ['viajamos', 'viajábamos', 'viajaremos', 'viajemos'], correctIndex: 2, explanation: 'Futuro: viajar + emos = viajaremos.' },
+      { question: '¿__ tiempo mañana? (tener, tú)', options: ['Tienes', 'Tuviste', 'Tendrás', 'Tenías'], correctIndex: 2, explanation: 'Tener im Futuro: tendr- + ás = tendrás (unregelmäßig!).' },
+      { question: '¿Qué __ para cenar? (hacer, nosotros)', options: ['hacemos', 'hicimos', 'haremos', 'hacíamos'], correctIndex: 2, explanation: 'Hacer im Futuro: har- + emos = haremos (unregelmäßig!).' },
+      { question: 'Creo que __ mucho calor. (hacer)', options: ['hace', 'hizo', 'hará', 'hacía'], correctIndex: 2, explanation: 'Hacer für Wetter im Futuro: hará.' },
+    ],
+  },
+  {
+    id: 'g10', level: 'B1', topic: 'por-para', title: 'Condicional Simple',
+    explanation: `Der Konditional drückt aus, was man tun würde. Er wird wie das Futuro gebildet, aber mit anderen Endungen.
+
+**Bildung:** Infinitiv + Endung
+- hablar: hablaría, hablarías, hablaría, hablaríamos, hablaríais, hablarían
+- comer: comería, comerías, comería...
+- vivir: viviría, vivirías, viviría...
+
+**Endungen (gleich für alle Gruppen):** -ía, -ías, -ía, -íamos, -íais, -ían
+
+**Unregelmäßige Stämme: GLEICH wie im Futuro!**
+- tener → tendría, poder → podría, hacer → haría, decir → diría, salir → saldría
+
+**Verwendung:**
+- Wünsche: Me gustaría vivir en España. (Ich würde gerne...)
+- Höfliche Bitten: ¿Podrías ayudarme? (Könntest du...?)
+- Hypothetisch: Si tuviera dinero, viajaría. (Wenn ich Geld hätte, würde ich reisen.)
+- Ratschläge: Yo en tu lugar, estudiaría más. (An deiner Stelle würde ich mehr lernen.)`,
+    exercises: [
+      { question: 'Me __ vivir en Barcelona. (gustar)', options: ['gusta', 'gustó', 'gustaría', 'gustará'], correctIndex: 2, explanation: '"Me gustaría" = ich würde gerne. Konditional von gustar.' },
+      { question: '¿__ cerrar la ventana? (poder, tú)', options: ['Puedes', 'Pudiste', 'Podrías', 'Podrás'], correctIndex: 2, explanation: 'Höfliche Bitte: poder im Konditional = podrías.' },
+      { question: 'Si tuviera tiempo, __ más. (leer, yo)', options: ['leo', 'leí', 'leería', 'leeré'], correctIndex: 2, explanation: 'Hypothetischer Satz: Si + Subjuntivo + Konditional. Leer + ía = leería.' },
+      { question: 'Yo en tu lugar, __ al médico. (ir)', options: ['voy', 'fui', 'iría', 'iré'], correctIndex: 2, explanation: 'Ratschlag: "Yo en tu lugar" + Konditional. Ir → iría.' },
+    ],
+  },
+  {
+    id: 'g11', level: 'B1', topic: 'presente', title: 'Subjuntivo Presente (Basics)',
+    explanation: `Der Subjuntivo ist ein Modus (keine Zeitform!) der Wünsche, Zweifel, Gefühle und Meinungen ausdrückt. Er kommt fast immer nach "que".
+
+**Bildung: Schuhe tauschen!**
+- -ar Verben bekommen -er Endungen: hable, hables, hable, hablemos, habléis, hablen
+- -er/-ir Verben bekommen -ar Endungen: coma/viva, comas/vivas, coma/viva...
+
+**Wann benutzt man ihn?**
+- Wünsche: Quiero que vengas. (Ich will, dass du kommst.)
+- Gefühle: Me alegra que estés aquí. (Es freut mich, dass du hier bist.)
+- Zweifel: No creo que sea verdad. (Ich glaube nicht, dass es wahr ist.)
+- Bitten: Es importante que estudies. (Es ist wichtig, dass du lernst.)
+- Meinung (verneint): No pienso que tenga razón. (Ich denke nicht, dass er Recht hat.)
+
+**Faustregel:** Nach "que" kommt Subjuntivo wenn der Hauptsatz einen Wunsch, ein Gefühl, einen Zweifel oder eine Wertung ausdrückt.
+
+**Wichtige Auslöser:** querer que, esperar que, es importante que, es necesario que, no creo que, ojalá que`,
+    exercises: [
+      { question: 'Espero que __ buen tiempo. (hacer)', options: ['hace', 'haga', 'hizo', 'hará'], correctIndex: 1, explanation: '"Espero que" = Wunsch → Subjuntivo. Hacer → haga.' },
+      { question: 'No creo que __ la verdad. (decir, él)', options: ['dice', 'diga', 'dijo', 'dirá'], correctIndex: 1, explanation: '"No creo que" = Zweifel → Subjuntivo. Decir → diga.' },
+      { question: 'Es necesario que __ más agua. (beber, tú)', options: ['bebes', 'bebas', 'bebiste', 'beberás'], correctIndex: 1, explanation: '"Es necesario que" = Wertung → Subjuntivo. Beber → bebas.' },
+      { question: 'Quiero que __ a mi boda. (venir, tú)', options: ['vienes', 'vengas', 'viniste', 'vendrás'], correctIndex: 1, explanation: '"Quiero que" = Wunsch → Subjuntivo. Venir → vengas.' },
+      { question: 'Me alegra que __ bien. (estar, tú)', options: ['estás', 'estés', 'estuviste', 'estarás'], correctIndex: 1, explanation: '"Me alegra que" = Gefühl → Subjuntivo. Estar → estés.' },
+    ],
+  },
 ];

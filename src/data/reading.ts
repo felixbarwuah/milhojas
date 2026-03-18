@@ -102,4 +102,92 @@ export const readings: ReadingExercise[] = [
     options: ['Die Aussprache', 'Der Unterschied zwischen ser und estar', 'Das Vokabellernen', 'Das Lesen'],
     correctIndex: 1,
   },
+
+  // ─── A2 (mehr) ───
+  {
+    id: 'r13', level: 'A2', title: 'El mercado',
+    text: 'Todos los sábados voy al mercado central con mi madre. Compramos frutas frescas, verduras y pescado. Mi madre siempre habla con los vendedores porque los conoce desde hace años. A veces tomamos un café en un pequeño bar al lado del mercado.',
+    question: 'Wie oft gehen sie zum Markt?',
+    options: ['Jeden Tag', 'Jeden Samstag', 'Jeden Sonntag', 'Einmal im Monat'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r14', level: 'A2', title: 'Mi barrio',
+    text: 'Vivo en un barrio tranquilo en las afueras de la ciudad. Hay un parque grande donde paseo con mi perro todas las tardes. Los vecinos son muy amables. La única desventaja es que el supermercado más cercano está a veinte minutos caminando.',
+    question: 'Was ist der Nachteil des Viertels?',
+    options: ['Es ist laut', 'Die Nachbarn sind unfreundlich', 'Der Supermarkt ist weit weg', 'Es gibt keinen Park'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r15', level: 'A2', title: 'Las vacaciones',
+    text: 'El año pasado fuimos de vacaciones a Barcelona. Visitamos la Sagrada Familia, el Parque Güell y la playa de la Barceloneta. Lo que más nos gustó fue pasear por Las Ramblas por la noche. La comida era deliciosa, especialmente las tapas y la paella.',
+    question: 'Was hat ihnen am besten gefallen?',
+    options: ['Die Sagrada Familia', 'Der Strand', 'Abends über Las Ramblas spazieren', 'Das Hotel'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r16', level: 'A2', title: 'El teléfono nuevo',
+    text: 'Ayer compré un teléfono nuevo porque el viejo ya no funcionaba bien. La pantalla estaba rota y la batería duraba solo dos horas. El nuevo es más rápido y tiene una cámara mejor. Pagué trescientos euros, que es bastante caro, pero estoy muy contento.',
+    question: 'Warum hat die Person ein neues Handy gekauft?',
+    options: ['Weil es ein Angebot gab', 'Weil das alte kaputt war', 'Weil ein Freund es empfohlen hat', 'Weil sie es geschenkt bekam'],
+    correctIndex: 1,
+  },
+
+  // ─── B1 ───
+  {
+    id: 'r17', level: 'A2', title: 'La mudanza',
+    text: 'El mes que viene me mudo a un piso nuevo. Es más grande que el actual y tiene un balcón con vistas a la montaña. El alquiler es un poco más caro, pero merece la pena porque está más cerca de mi trabajo. Ya he empezado a hacer cajas con mis cosas.',
+    question: 'Warum lohnt sich die neue Wohnung trotz höherer Miete?',
+    options: ['Sie hat einen Garten', 'Sie ist näher an der Arbeit', 'Sie ist billiger', 'Sie hat mehr Zimmer'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r18', level: 'A2', title: 'La entrevista de trabajo',
+    text: 'Esta mañana tuve una entrevista de trabajo en una empresa internacional. Me preguntaron sobre mi experiencia, mis idiomas y por qué quiero trabajar allí. Creo que fue bien porque el director sonrió mucho y dijo que me llamará la semana que viene.',
+    question: 'Warum glaubt die Person, dass es gut lief?',
+    options: ['Sie bekam sofort den Job', 'Der Chef hat viel gelächelt', 'Sie spricht viele Sprachen', 'Die Firma ist sehr groß'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r19', level: 'A2', title: 'El concierto',
+    text: 'Anoche fui a un concierto de música latina con mis amigos. El cantante era colombiano y cantó salsa, cumbia y reggaetón. El ambiente era increíble y bailamos durante tres horas seguidas. Al final estábamos cansados pero muy felices.',
+    question: 'Wie fühlten sie sich am Ende des Konzerts?',
+    options: ['Gelangweilt', 'Wütend', 'Müde aber glücklich', 'Enttäuscht'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r20', level: 'A2', title: 'Cocinar para amigos',
+    text: 'El viernes invité a cuatro amigos a cenar en mi casa. Preparé una paella de mariscos, que es mi especialidad. Tardé dos horas en cocinarla pero al final todos dijeron que estaba riquísima. Después de cenar jugamos a juegos de mesa hasta medianoche.',
+    question: 'Was machten sie nach dem Essen?',
+    options: ['Sie gingen ins Kino', 'Sie spielten Brettspiele', 'Sie gingen schlafen', 'Sie gingen spazieren'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r21', level: 'A2', title: 'El gimnasio',
+    text: 'Hace tres meses empecé a ir al gimnasio tres veces por semana. Al principio me costaba mucho y después de cada sesión me dolía todo el cuerpo. Ahora ya me he acostumbrado y me siento con más energía. Mi objetivo es correr una carrera de diez kilómetros este verano.',
+    question: 'Was ist das Ziel der Person?',
+    options: ['Abnehmen', 'Einen 10km-Lauf machen', 'Muskeln aufbauen', 'Jeden Tag trainieren'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r22', level: 'A2', title: 'El perro perdido',
+    text: 'Ayer encontré un perro pequeño en el parque. No tenía collar y parecía asustado. Lo llevé a mi casa, le di agua y comida. Puse un anuncio en las redes sociales y esta mañana vino una señora muy contenta a buscarlo. Se llamaba Luna y llevaba dos días perdida.',
+    question: 'Wie fand die Besitzerin ihren Hund wieder?',
+    options: ['Durch die Polizei', 'Durch eine Anzeige in den sozialen Medien', 'Sie sah ihn auf der Straße', 'Ein Nachbar brachte ihn'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r23', level: 'A2', title: 'El clima en Chile',
+    text: 'Chile tiene climas muy diferentes porque es un país muy largo. En el norte está el desierto de Atacama, uno de los lugares más secos del mundo. En el centro, donde está Santiago, el clima es mediterráneo con veranos calientes e inviernos suaves. En el sur llueve mucho y hace frío, y en la Patagonia hay glaciares enormes.',
+    question: 'Wie ist das Klima in der Mitte Chiles?',
+    options: ['Wüstenklima', 'Mediterranes Klima', 'Sehr kalt mit Gletschern', 'Tropisch und feucht'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r24', level: 'A2', title: 'Aprender un idioma',
+    text: 'Los expertos dicen que la mejor forma de aprender un idioma es usarlo todos los días. No hace falta vivir en el país, puedes escuchar podcasts, ver series con subtítulos, leer noticias o hablar con nativos por internet. Lo importante es la constancia: es mejor estudiar quince minutos cada día que tres horas una vez por semana.',
+    question: 'Was ist laut Experten am wichtigsten?',
+    options: ['Im Land leben', 'Teure Kurse besuchen', 'Regelmäßigkeit (jeden Tag ein bisschen)', 'Nur Grammatik lernen'],
+    correctIndex: 2,
+  },
 ];
