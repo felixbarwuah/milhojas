@@ -471,7 +471,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--text-label);
+  color: var(--text-muted);
   margin-bottom: var(--space-md);
 }
 
