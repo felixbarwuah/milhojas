@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { verbs, persons, personLabels, tenseLabels, type Verb, type Person } from '../data/conjugations';
 import { loadSRS, saveSRS, recordCorrect, recordWrong, addXP } from '../data/srs';
 import SpeakButton from './SpeakButton';
+import ErrorBoundary from './ErrorBoundary';
 
 type GameState = 'config' | 'playing' | 'result' | 'summary';
 
@@ -160,7 +161,7 @@ export default function ConjugationQuiz() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         {highScore > 0 && (
           <div className="config-highscore">
             <span className="label">Highscore</span>
@@ -212,7 +213,7 @@ export default function ConjugationQuiz() {
         <button className="btn btn-blue start-btn" onClick={startGame}>
           Quiz starten
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -220,7 +221,7 @@ export default function ConjugationQuiz() {
     const correctCount = answers.filter(a => a.correct).length;
     const pct = Math.round((correctCount / questions.length) * 100);
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{pct}%</span>
           <span className="summary-label">richtig</span>
@@ -257,7 +258,7 @@ export default function ConjugationQuiz() {
         <button className="btn btn-blue" onClick={() => setState('config')}>
           Nochmal spielen
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -265,7 +266,7 @@ export default function ConjugationQuiz() {
   const lastAnswer = answers[answers.length - 1];
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar">
           <div className="progress-bar-fill" style={{
@@ -325,6 +326,6 @@ export default function ConjugationQuiz() {
           </div>
         )}
       </div>
-    </div>
+    </div></ErrorBoundary>
   );
 }

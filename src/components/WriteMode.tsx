@@ -5,6 +5,7 @@ import {
   loadSRS, saveSRS, startSession, getDueCards,
   recordCorrect, recordWrong, loadXP, addXP,
 } from '../data/srs';
+import ErrorBoundary from './ErrorBoundary';
 
 type GameState = 'config' | 'playing' | 'result' | 'summary';
 type Direction = 'es-de' | 'de-es';
@@ -138,7 +139,7 @@ export default function WriteMode() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         <div className="config-section">
           <h3 className="config-title">Richtung</h3>
           <div className="direction-toggle">
@@ -190,7 +191,7 @@ export default function WriteMode() {
         <button className="btn btn-primary start-btn" onClick={startGame}>
           Schreib-Modus starten
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -198,7 +199,7 @@ export default function WriteMode() {
     const correctCount = results.filter(r => r.correct).length;
     const pct = Math.round((correctCount / results.length) * 100);
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{pct}%</span>
           <span className="summary-label">richtig</span>
@@ -229,7 +230,7 @@ export default function WriteMode() {
         <button className="btn btn-primary" onClick={() => setState('config')}>
           Nochmal
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -240,7 +241,7 @@ export default function WriteMode() {
   const lastResult = results[results.length - 1];
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar">
           <div className="progress-bar-fill" style={{ width: `${((current + (showResult ? 1 : 0)) / cards.length) * 100}%` }} />
@@ -294,6 +295,6 @@ export default function WriteMode() {
           </div>
         )}
       </div>
-    </div>
+    </div></ErrorBoundary>
   );
 }

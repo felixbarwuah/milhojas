@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { grammar, topicLabels, topicColors, type GrammarLesson, type GrammarTopic } from '../data/grammar';
 import { addXP } from '../data/srs';
+import ErrorBoundary from './ErrorBoundary';
 
 type State = 'topics' | 'lesson' | 'exercise' | 'result' | 'summary';
 
@@ -41,7 +42,7 @@ export default function GrammarQuiz() {
   // Topic selection
   if (state === 'topics') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         <div className="grammar-topics">
           {grammar.map(l => (
             <button key={l.id} className="card grammar-topic-card" onClick={() => selectLesson(l)}>
@@ -54,7 +55,7 @@ export default function GrammarQuiz() {
             </button>
           ))}
         </div>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -63,7 +64,7 @@ export default function GrammarQuiz() {
   // Lesson explanation
   if (state === 'lesson') {
     return (
-      <div className="quiz-play">
+      <ErrorBoundary><div className="quiz-play">
         <div className="question-card grammar-lesson">
           <span className="label" style={{ color: topicColors[lesson.topic] }}>{topicLabels[lesson.topic]}</span>
           <h2 style={{ fontSize: '22px', margin: 'var(--space-sm) 0 var(--space-lg)' }}>{lesson.title}</h2>
@@ -83,7 +84,7 @@ export default function GrammarQuiz() {
             Übungen starten ({lesson.exercises.length})
           </button>
         </div>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -91,7 +92,7 @@ export default function GrammarQuiz() {
   if (state === 'summary') {
     const correct = answers.filter(Boolean).length;
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{Math.round((correct / lesson.exercises.length) * 100)}%</span>
           <span className="summary-label">richtig</span>
@@ -104,7 +105,7 @@ export default function GrammarQuiz() {
           <button className="btn" onClick={() => { selectLesson(lesson); }}>Nochmal</button>
           <button className="btn btn-primary" onClick={() => setState('topics')}>Andere Lektion</button>
         </div>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -112,7 +113,7 @@ export default function GrammarQuiz() {
   const ex = lesson.exercises[exIdx];
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar"><div className="progress-bar-fill" style={{ width: `${((exIdx + 1) / lesson.exercises.length) * 100}%`, background: topicColors[lesson.topic] }} /></div>
         <div className="quiz-meta">
@@ -153,6 +154,6 @@ export default function GrammarQuiz() {
           <p style={{ marginTop: 'var(--space-md)', fontSize: '14px', color: 'var(--text-muted)', maxWidth: '600px', margin: 'var(--space-md) auto 0', padding: '0 var(--space-lg)' }}>{ex.explanation}</p>
         </>
       )}
-    </div>
+    </div></ErrorBoundary>
   );
 }

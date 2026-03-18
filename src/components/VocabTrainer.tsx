@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { vocab, categoryLabels, categoryColors, type VocabWord, type VocabCategory } from '../data/vocab';
 import { loadSRS, saveSRS, startSession, recordCorrect, recordWrong, addXP } from '../data/srs';
 import SpeakButton from './SpeakButton';
+import ErrorBoundary from './ErrorBoundary';
 
 type Direction = 'es-de' | 'de-es';
 type GameState = 'config' | 'playing' | 'result' | 'summary';
@@ -161,7 +162,7 @@ export default function VocabTrainer() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         {highScore > 0 && (
           <div className="config-highscore">
             <span className="label">Highscore</span>
@@ -235,7 +236,7 @@ export default function VocabTrainer() {
         <button className="btn btn-primary start-btn" onClick={startGame}>
           Quiz starten
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -243,7 +244,7 @@ export default function VocabTrainer() {
     const correctCount = answers.filter(Boolean).length;
     const pct = Math.round((correctCount / questions.length) * 100);
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{pct}%</span>
           <span className="summary-label">richtig</span>
@@ -274,7 +275,7 @@ export default function VocabTrainer() {
         <button className="btn btn-primary" onClick={() => setState('config')}>
           Nochmal spielen
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -283,7 +284,7 @@ export default function VocabTrainer() {
   const prompt = isEsToDe ? q.word.es : q.word.de;
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar">
           <div className="progress-bar-fill" style={{ width: `${((current + 1) / questions.length) * 100}%` }} />
@@ -338,6 +339,6 @@ export default function VocabTrainer() {
           </button>
         </div>
       )}
-    </div>
+    </div></ErrorBoundary>
   );
 }

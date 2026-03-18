@@ -9,6 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
@@ -19,5 +22,8 @@
     "react-dom": "^19.2.4",
     "ts-fsrs": "^5.2.3",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }

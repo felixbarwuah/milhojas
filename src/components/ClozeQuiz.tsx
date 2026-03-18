@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { cloze, type ClozeExercise } from '../data/cloze';
 import { addXP } from '../data/srs';
 import SpeakButton from './SpeakButton';
+import ErrorBoundary from './ErrorBoundary';
 
 type State = 'config' | 'playing' | 'result' | 'summary';
 
@@ -50,7 +51,7 @@ export default function ClozeQuiz() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         <div className="config-section">
           <h3 className="config-title">Niveau</h3>
           <div className="direction-toggle">
@@ -62,14 +63,14 @@ export default function ClozeQuiz() {
           </div>
         </div>
         <button className="btn btn-primary start-btn" onClick={start}>Lückentext starten</button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
   if (state === 'summary') {
     const correct = answers.filter(Boolean).length;
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{Math.round((correct / items.length) * 100)}%</span>
           <span className="summary-label">richtig</span>
@@ -87,7 +88,7 @@ export default function ClozeQuiz() {
           ))}
         </div>
         <button className="btn btn-primary" onClick={() => setState('config')}>Nochmal</button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -96,7 +97,7 @@ export default function ClozeQuiz() {
   const fullSentence = item.sentence.replace('___', item.answer);
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar"><div className="progress-bar-fill" style={{ width: `${((current + 1) / items.length) * 100}%` }} /></div>
         <div className="quiz-meta">
@@ -144,6 +145,6 @@ export default function ClozeQuiz() {
           <button className="btn" onClick={next}>Weiter →</button>
         </div>
       )}
-    </div>
+    </div></ErrorBoundary>
   );
 }

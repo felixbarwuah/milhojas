@@ -6,6 +6,7 @@ import {
   recordCorrect, recordWrong, getSRSStats, getStateLabel,
   loadXP, addXP, State,
 } from '../data/srs';
+import ErrorBoundary from './ErrorBoundary';
 
 type GameState = 'config' | 'card-front' | 'card-back' | 'summary';
 
@@ -104,7 +105,7 @@ export default function Flashcards() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         <div className="srs-overview">
           <div className="srs-boxes">
             <div className="srs-box" data-state="new">
@@ -167,7 +168,7 @@ export default function Flashcards() {
         <button className="btn btn-primary start-btn" onClick={startGame}>
           Karteikarten starten
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -175,7 +176,7 @@ export default function Flashcards() {
     const knewCount = results.filter(r => r.knew).length;
     const pct = Math.round((knewCount / results.length) * 100);
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{pct}%</span>
           <span className="summary-label">gewusst</span>
@@ -202,7 +203,7 @@ export default function Flashcards() {
         <button className="btn btn-primary" onClick={() => setState('config')}>
           Nochmal
         </button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
@@ -211,7 +212,7 @@ export default function Flashcards() {
   const stateLabel = getStateLabel(cardState.card.state);
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar">
           <div className="progress-bar-fill" style={{ width: `${((current + 1) / cards.length) * 100}%` }} />
@@ -259,6 +260,6 @@ export default function Flashcards() {
           </button>
         </div>
       )}
-    </div>
+    </div></ErrorBoundary>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { facts, factCategoryLabels, factCategoryColors, type Fact, type FactCategory } from '../data/facts';
 import { addXP } from '../data/srs';
+import ErrorBoundary from './ErrorBoundary';
 
 type State = 'config' | 'reading' | 'question' | 'result' | 'summary';
 
@@ -54,7 +55,7 @@ export default function FactsQuiz() {
 
   if (state === 'config') {
     return (
-      <div className="quiz-config">
+      <ErrorBoundary><div className="quiz-config">
         <div className="config-section">
           <button className="category-toggle" onClick={() => setShowCats(!showCats)}>
             <h3 className="config-title" style={{ margin: 0 }}>
@@ -75,14 +76,14 @@ export default function FactsQuiz() {
           )}
         </div>
         <button className="btn btn-primary start-btn" onClick={start}>Fakten-Quiz starten</button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
   if (state === 'summary') {
     const correct = answers.filter(Boolean).length;
     return (
-      <div className="quiz-summary">
+      <ErrorBoundary><div className="quiz-summary">
         <div className="summary-score-ring">
           <span className="summary-pct">{Math.round((correct / items.length) * 100)}%</span>
           <span className="summary-label">richtig</span>
@@ -92,12 +93,12 @@ export default function FactsQuiz() {
           <div className="stat"><span className="stat-value">+{correct * 8}</span><span className="stat-label">XP</span></div>
         </div>
         <button className="btn btn-primary" onClick={() => setState('config')}>Nochmal</button>
-      </div>
+      </div></ErrorBoundary>
     );
   }
 
   return (
-    <div className="quiz-play">
+    <ErrorBoundary><div className="quiz-play">
       <div className="quiz-header">
         <div className="progress-bar"><div className="progress-bar-fill" style={{ width: `${((current + 1) / items.length) * 100}%` }} /></div>
         <div className="quiz-meta">
@@ -147,6 +148,6 @@ export default function FactsQuiz() {
           )}
         </>
       )}
-    </div>
+    </div></ErrorBoundary>
   );
 }

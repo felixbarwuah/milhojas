@@ -496,7 +496,8 @@
   color: var(--text);
 }
 
-.mode-card h3 {
+.mode-card h3,
+.mode-card-title {
   font-size: 18px;
   font-weight: 700;
 }
@@ -1062,17 +1063,39 @@
   .mode-cards.four-cols {
     grid-template-columns: repeat(2, 1fr);
   }
+  .grammar-topics {
+    grid-template-columns: 1fr;
+  }
+  .flashcard-actions {
+    flex-direction: row;
+  }
+  .cloze-sentence {
+    font-size: 18px;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .options-grid {
     grid-template-columns: 1fr;
   }
-  .mode-cards {
-    grid-template-columns: 1fr;
-  }
+  .mode-cards,
   .mode-cards.four-cols {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  .mode-card {
+    padding: var(--space-md) var(--space-sm);
+  }
+  .mode-card p {
+    font-size: 12px;
+  }
+  .mode-icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .mode-icon-wrap svg {
+    width: 22px;
+    height: 22px;
   }
   .input-wrapper {
     flex-direction: column;
@@ -1081,6 +1104,55 @@
     gap: var(--space-lg);
   }
   .summary-es {
-    min-width: 80px;
+    min-width: 60px;
+    font-size: 13px;
+  }
+  .summary-de {
+    font-size: 13px;
+  }
+  .question-word {
+    font-size: clamp(22px, 5vw, 36px);
+  }
+  .quiz-play,
+  .quiz-config,
+  .quiz-summary {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+  .flashcard-front,
+  .flashcard-back {
+    padding: var(--space-lg) var(--space-md);
+  }
+  .flashcard-word {
+    font-size: clamp(20px, 5vw, 32px);
+  }
+  .cloze-sentence {
+    font-size: 16px;
+  }
+  .reading-text {
+    font-size: 15px;
+  }
+  .srs-boxes {
+    gap: 4px;
+  }
+  .srs-box-count {
+    font-size: 15px;
+  }
+  .srs-box-label {
+    font-size: 8px;
+  }
+  .flag-btn {
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+  .toggle-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  .config-title {
+    font-size: 13px;
+  }
+  .grammar-explanation p {
+    font-size: 14px;
   }
 }

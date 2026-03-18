@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { loadXP, getXPProgress, type XPData } from '../data/srs';
+import ErrorBoundary from './ErrorBoundary';
 
 export default function Dashboard() {
   const [xp, setXp] = useState<XPData | null>(null);
@@ -17,7 +18,7 @@ export default function Dashboard() {
   if (xp.totalXP === 0) return null;
 
   return (
-    <div className="dashboard">
+    <ErrorBoundary><div className="dashboard">
       <div className="dashboard-streak">
         <div className="streak-flame">{xp.streak > 0 ? '🔥' : '💤'}</div>
         <div className="streak-info">
@@ -45,6 +46,6 @@ export default function Dashboard() {
           <span className="label">Längster Streak: {xp.longestStreak} Tage</span>
         )}
       </div>
-    </div>
+    </div></ErrorBoundary>
   );
 }
