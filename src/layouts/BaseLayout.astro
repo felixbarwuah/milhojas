@@ -1,0 +1,129 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#D52B1E" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <title>{title} | Milhojas</title>
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/quiz.css" />
+  </head>
+  <body>
+    <div class="chile-stripe"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          <svg class="logo-chile" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="16" rx="2" fill="#D52B1E"/>
+            <rect width="8" height="8" fill="#0039A6"/>
+            <rect x="8" width="14" height="8" fill="#FFFFFF"/>
+            <path d="M4 2.5L4.59 4.31H6.49L4.95 5.44L5.54 7.25L4 6.12L2.46 7.25L3.05 5.44L1.51 4.31H3.41L4 2.5Z" fill="white"/>
+          </svg>
+          <span class="logo-text">MILHOJAS</span>
+        </a>
+        <nav class="nav">
+          <a href="/vocabulario" class={Astro.url.pathname.startsWith('/vocabulario') ? 'active' : ''}>Vocabulario</a>
+          <a href="/conjugacion" class={Astro.url.pathname.startsWith('/conjugacion') ? 'active' : ''}>Conjugacion</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="label">Milhojas - Aprende español, capa por capa</p>
+      </div>
+    </footer>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 800px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .logo:hover {
+    color: var(--text);
+  }
+  .logo-chile {
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .nav {
+    display: flex;
+    gap: var(--space-lg);
+  }
+  .nav a {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding-bottom: 2px;
+  }
+  .nav a:hover {
+    color: var(--text);
+  }
+  .nav a.active {
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
+  }
+  .site-footer {
+    margin-top: var(--space-2xl);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .nav { gap: var(--space-md); }
+    .nav a { font-size: 10px; letter-spacing: 0.1em; }
+    .logo-text { font-size: 11px; }
+  }
+</style>

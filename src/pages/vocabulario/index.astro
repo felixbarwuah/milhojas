@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VocabTrainer from '../../components/VocabTrainer';
+---
+
+<BaseLayout title="Vocabulario" description="Spanische Vokabeln lernen - Multiple Choice Quiz">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <p class="hero-eyebrow">Vocabulario</p>
+    <h2>Vokabeltrainer</h2>
+    <p class="hero-sub" style="font-size: 16px;">Wähle Kategorien und Schwierigkeit, dann teste dein Wissen.</p>
+  </section>
+
+  <VocabTrainer client:load />
+</BaseLayout>

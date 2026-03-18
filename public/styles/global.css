@@ -1,0 +1,210 @@
+/* Milhojas - Chilean Editorial Design */
+:root {
+  /* Chile Flag Colors */
+  --chile-red: #D52B1E;
+  --chile-blue: #0039A6;
+  --chile-white: #FFFFFF;
+
+  /* App Colors (Light Editorial + Chile) */
+  --bg: #FFF8F2;
+  --bg-warm: #FFF1E5;
+  --bg-card: #FFFFFF;
+  --text: #1A1A1A;
+  --text-secondary: #4A4540;
+  --text-muted: #8A8480;
+  --text-label: #B0A8A0;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --accent: var(--chile-red);
+  --accent-hover: #B82318;
+  --accent-blue: var(--chile-blue);
+  --accent-blue-hover: #002D85;
+
+  /* Score Colors */
+  --correct: #16A34A;
+  --correct-bg: rgba(22, 163, 74, 0.08);
+  --wrong: var(--chile-red);
+  --wrong-bg: rgba(213, 43, 30, 0.08);
+  --streak: #D97706;
+
+  /* Typography */
+  --heading: 'Outfit', sans-serif;
+  --sans: 'Outfit', sans-serif;
+  --mono: 'Space Mono', monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  /* Radius */
+  --radius: 3px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
+h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; }
+h3 { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Eyebrow / Label Text */
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-label);
+}
+
+/* Buttons - Ghost/Outline Style (Pangea Pattern) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text);
+}
+
+.btn-primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--wrong-bg);
+  border-color: var(--accent-hover);
+  color: var(--accent-hover);
+}
+
+.btn-blue {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+.btn-blue:hover {
+  background: rgba(0, 57, 166, 0.06);
+  border-color: var(--accent-blue-hover);
+  color: var(--accent-blue-hover);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Streak Badge */
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--streak);
+  background: rgba(217, 119, 6, 0.08);
+  border-radius: var(--radius);
+}
+
+/* Score Display */
+.score {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Chile Stripe - decorative top border */
+.chile-stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--chile-blue) 33%, var(--chile-white) 33%, var(--chile-white) 66%, var(--chile-red) 66%);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
