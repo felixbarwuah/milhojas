@@ -892,8 +892,13 @@
 .four-cols .mode-card {
   padding: var(--space-lg) var(--space-md);
 }
+.four-cols .mode-card-title {
+  font-size: 15px;
+  text-wrap: nowrap;
+}
 .four-cols .mode-card p {
-  font-size: 13px;
+  font-size: 12px;
+  text-wrap: initial;
 }
 
 /* ── Dashboard ── */
