@@ -27,12 +27,7 @@ const path = Astro.url.pathname;
     <header class="site-header">
       <div class="container header-inner">
         <a href="/" class="logo">
-          <svg class="logo-chile" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="22" height="16" rx="2" fill="#D52B1E"/>
-            <rect width="8" height="8" fill="#0039A6"/>
-            <rect x="8" width="14" height="8" fill="#FFFFFF"/>
-            <path d="M4 2.5L4.59 4.31H6.49L4.95 5.44L5.54 7.25L4 6.12L2.46 7.25L3.05 5.44L1.51 4.31H3.41L4 2.5Z" fill="white"/>
-          </svg>
+          <img src="/icons/logo-chili.png" alt="" width="24" height="24" class="logo-img" />
           <span class="logo-text">MILHOJAS</span>
         </a>
         {path !== '/' && (
@@ -48,12 +43,7 @@ const path = Astro.url.pathname;
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <svg class="footer-flag" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="22" height="16" rx="2" fill="#D52B1E"/>
-            <rect width="8" height="8" fill="#0039A6"/>
-            <rect x="8" width="14" height="8" fill="#FFFFFF"/>
-            <path d="M4 2.5L4.59 4.31H6.49L4.95 5.44L5.54 7.25L4 6.12L2.46 7.25L3.05 5.44L1.51 4.31H3.41L4 2.5Z" fill="white"/>
-          </svg>
+          <img src="/icons/logo-chili.png" alt="" width="20" height="20" />
           <span class="footer-logo">MILHOJAS</span>
         </div>
         <p class="footer-tagline">Spanisch lernen mit Felix</p>
@@ -92,8 +82,9 @@ const path = Astro.url.pathname;
   .logo:hover {
     color: var(--text);
   }
-  .logo-chile {
+  .logo-img {
     flex-shrink: 0;
+    border-radius: 4px;
   }
   .logo-text {
     font-family: var(--mono);
