@@ -115,7 +115,12 @@ export default function ClozeQuiz() {
         {state === 'result' && (
           <div className="cloze-feedback">
             <SpeakButton text={fullSentence} />
-            <p className="cloze-translation">{item.translation}</p>
+            <div>
+              <p className="cloze-translation">{item.translation}</p>
+              {item.explanation && (
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>{item.explanation}</p>
+              )}
+            </div>
           </div>
         )}
       </div>
