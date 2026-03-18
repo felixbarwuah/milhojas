@@ -4,10 +4,11 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } = Astro.props;
+const { title, description = 'Spanisch lernen - Vokabeln und Konjugationen' } = Astro.props;
+const path = Astro.url.pathname;
 ---
 
-<html lang="es">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -34,16 +35,11 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
           </svg>
           <span class="logo-text">MILHOJAS</span>
         </a>
-        <nav class="nav">
-          <a href="/" class={`nav-home ${Astro.url.pathname === '/' ? 'active' : ''}`} aria-label="Home">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        {path !== '/' && (
+          <a href="/" class="home-btn" aria-label="Zurück zur Startseite">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </a>
-          <a href="/karteikarten" class={Astro.url.pathname.startsWith('/karteikarten') ? 'active' : ''}>Lernen</a>
-          <a href="/schreiben" class={Astro.url.pathname.startsWith('/schreiben') ? 'active' : ''}>Schreiben</a>
-          <a href="/vocabulario" class={Astro.url.pathname.startsWith('/vocabulario') ? 'active' : ''}>Quiz</a>
-          <a href="/conjugacion" class={Astro.url.pathname.startsWith('/conjugacion') ? 'active' : ''}>Verben</a>
-          <a href="/texte" class={Astro.url.pathname.startsWith('/texte') ? 'active' : ''}>Texte</a>
-        </nav>
+        )}
       </div>
     </header>
     <main>
@@ -51,7 +47,7 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="label">Milhojas - Aprende español, capa por capa</p>
+        <p class="label">Milhojas - Spanisch lernen, Schicht für Schicht</p>
       </div>
     </footer>
     <script>
@@ -98,35 +94,22 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
     text-transform: uppercase;
     color: var(--text);
   }
-  .nav {
-    display: flex;
-    gap: var(--space-lg);
-  }
-  .nav a {
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    padding-bottom: 2px;
-  }
-  .nav a:hover {
-    color: var(--text);
-  }
-  .nav a.active {
-    color: var(--text);
-    border-bottom: 2px solid var(--accent);
-  }
-  .nav-home {
+  .home-btn {
     display: flex;
     align-items: center;
-    padding-bottom: 0 !important;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
   }
-  .nav-home svg {
-    width: 16px;
-    height: 16px;
+  .home-btn:hover {
+    color: var(--text);
+    border-color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.03);
   }
   .site-footer {
     margin-top: var(--space-2xl);
@@ -137,8 +120,6 @@ const { title, description = 'Aprende español - Vocabulario y Conjugaciones' } 
     text-align: center;
   }
   @media (max-width: 480px) {
-    .nav { gap: var(--space-md); }
-    .nav a { font-size: 10px; letter-spacing: 0.1em; }
     .logo-text { font-size: 11px; }
   }
 </style>

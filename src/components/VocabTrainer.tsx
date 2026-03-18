@@ -150,6 +150,15 @@ export default function VocabTrainer() {
     return () => window.removeEventListener('keydown', handleKey);
   }, [state, handleAnswer]);
 
+  const [showCategories, setShowCategories] = useState(false);
+
+  const categoryDE: Record<string, string> = {
+    comida: 'Essen & Trinken', viaje: 'Reise & Transport', casa: 'Haus & Wohnung',
+    trabajo: 'Arbeit & Büro', naturaleza: 'Natur', cuerpo: 'Körper & Gesundheit',
+    ropa: 'Kleidung', ciudad: 'Stadt & Orte', familia: 'Familie & Personen',
+    tiempo: 'Wetter & Klima', frases: 'Alltagssätze', verbos: 'Wichtige Verben', custom: 'Meine Wörter',
+  };
+
   if (state === 'config') {
     return (
       <div className="quiz-config">
@@ -164,16 +173,16 @@ export default function VocabTrainer() {
           <h3 className="config-title">Richtung</h3>
           <div className="direction-toggle">
             <button
-              className={`toggle-btn ${direction === 'es-de' ? 'active' : ''}`}
+              className={`toggle-btn flag-btn ${direction === 'es-de' ? 'active' : ''}`}
               onClick={() => setDirection('es-de')}
             >
-              ES → DE
+              🇪🇸 → 🇩🇪
             </button>
             <button
-              className={`toggle-btn ${direction === 'de-es' ? 'active' : ''}`}
+              className={`toggle-btn flag-btn ${direction === 'de-es' ? 'active' : ''}`}
               onClick={() => setDirection('de-es')}
             >
-              DE → ES
+              🇩🇪 → 🇪🇸
             </button>
           </div>
         </div>
@@ -194,23 +203,33 @@ export default function VocabTrainer() {
         </div>
 
         <div className="config-section">
-          <h3 className="config-title">Kategorien <span className="config-hint">(leer = alle)</span></h3>
-          <div className="category-grid">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                className={`category-chip ${selectedCategories.has(cat) ? 'selected' : ''}`}
-                style={{
-                  '--cat-color': categoryColors[cat],
-                  borderColor: selectedCategories.has(cat) ? categoryColors[cat] : undefined,
-                  background: selectedCategories.has(cat) ? `${categoryColors[cat]}10` : undefined,
-                } as React.CSSProperties}
-                onClick={() => toggleCategory(cat)}
-              >
-                {categoryLabels[cat]}
-              </button>
-            ))}
-          </div>
+          <button className="category-toggle" onClick={() => setShowCategories(!showCategories)}>
+            <h3 className="config-title" style={{ margin: 0 }}>
+              Kategorien
+              <span className="config-hint">
+                {selectedCategories.size > 0 ? `(${selectedCategories.size} gewählt)` : '(alle)'}
+              </span>
+            </h3>
+            <span className={`category-arrow ${showCategories ? 'open' : ''}`}>▾</span>
+          </button>
+          {showCategories && (
+            <div className="category-grid" style={{ marginTop: '12px' }}>
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  className={`category-chip ${selectedCategories.has(cat) ? 'selected' : ''}`}
+                  style={{
+                    '--cat-color': categoryColors[cat],
+                    borderColor: selectedCategories.has(cat) ? categoryColors[cat] : undefined,
+                    background: selectedCategories.has(cat) ? `${categoryColors[cat]}10` : undefined,
+                  } as React.CSSProperties}
+                  onClick={() => toggleCategory(cat)}
+                >
+                  {categoryDE[cat] || categoryLabels[cat]}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <button className="btn btn-primary start-btn" onClick={startGame}>

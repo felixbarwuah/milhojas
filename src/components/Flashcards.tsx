@@ -19,7 +19,14 @@ export default function Flashcards() {
   const [xp, setXp] = useState(loadXP());
   const [sessionXP, setSessionXP] = useState(0);
 
+  const [showCats, setShowCats] = useState(false);
   const categories = Object.keys(categoryLabels) as VocabCategory[];
+  const catDE: Record<string, string> = {
+    comida: 'Essen & Trinken', viaje: 'Reise & Transport', casa: 'Haus & Wohnung',
+    trabajo: 'Arbeit & Büro', naturaleza: 'Natur', cuerpo: 'Körper & Gesundheit',
+    ropa: 'Kleidung', ciudad: 'Stadt & Orte', familia: 'Familie & Personen',
+    tiempo: 'Wetter & Klima', frases: 'Alltagssätze', verbos: 'Wichtige Verben', custom: 'Meine Wörter',
+  };
 
   const toggleCategory = (cat: VocabCategory) => {
     setSelectedCategories(prev => {
@@ -128,23 +135,33 @@ export default function Flashcards() {
         </div>
 
         <div className="config-section">
-          <h3 className="config-title">Kategorien <span className="config-hint">(leer = alle)</span></h3>
-          <div className="category-grid">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                className={`category-chip ${selectedCategories.has(cat) ? 'selected' : ''}`}
-                style={{
-                  '--cat-color': categoryColors[cat],
-                  borderColor: selectedCategories.has(cat) ? categoryColors[cat] : undefined,
-                  background: selectedCategories.has(cat) ? `${categoryColors[cat]}10` : undefined,
-                } as React.CSSProperties}
-                onClick={() => toggleCategory(cat)}
-              >
-                {categoryLabels[cat]}
-              </button>
-            ))}
-          </div>
+          <button className="category-toggle" onClick={() => setShowCats(!showCats)}>
+            <h3 className="config-title" style={{ margin: 0 }}>
+              Kategorien
+              <span className="config-hint">
+                {selectedCategories.size > 0 ? `(${selectedCategories.size} gewählt)` : '(alle)'}
+              </span>
+            </h3>
+            <span className={`category-arrow ${showCats ? 'open' : ''}`}>▾</span>
+          </button>
+          {showCats && (
+            <div className="category-grid" style={{ marginTop: '12px' }}>
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  className={`category-chip ${selectedCategories.has(cat) ? 'selected' : ''}`}
+                  style={{
+                    '--cat-color': categoryColors[cat],
+                    borderColor: selectedCategories.has(cat) ? categoryColors[cat] : undefined,
+                    background: selectedCategories.has(cat) ? `${categoryColors[cat]}10` : undefined,
+                  } as React.CSSProperties}
+                  onClick={() => toggleCategory(cat)}
+                >
+                  {catDE[cat] || categoryLabels[cat]}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <button className="btn btn-primary start-btn" onClick={startGame}>

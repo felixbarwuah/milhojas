@@ -79,6 +79,34 @@
   transition: all 0.2s ease;
 }
 
+/* Flag buttons */
+.flag-btn {
+  font-size: 18px;
+  padding: 8px 20px;
+  letter-spacing: 0.05em;
+}
+
+/* Collapsible categories */
+.category-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text);
+}
+.category-arrow {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+.category-arrow.open {
+  transform: rotate(180deg);
+}
+
 .category-chip:hover {
   border-color: var(--cat-color, var(--text-secondary));
   color: var(--cat-color, var(--text));
