@@ -25,15 +25,15 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
 
   const textStyle: React.CSSProperties = {
     position: 'absolute',
-    top: '22%',
+    top: '10%',
     left: 0,
     right: 0,
     textAlign: 'center',
     fontFamily: 'Impact, "Arial Black", sans-serif',
-    fontSize: 'clamp(56px, 18vw, 160px)',
+    fontSize: 'clamp(72px, 25vw, 220px)',
     fontWeight: 900,
     color: 'white',
-    letterSpacing: '0.04em',
+    letterSpacing: '0.06em',
     textTransform: 'uppercase',
     lineHeight: 1,
     userSelect: 'none',
