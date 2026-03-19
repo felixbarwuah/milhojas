@@ -1024,6 +1024,173 @@
   background: var(--wrong-bg);
 }
 
+/* ── Settings ── */
+.settings-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.settings-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.settings-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+.settings-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.settings-input {
+  flex: 1;
+  padding: 10px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+.settings-input:focus { border-color: var(--accent-blue); }
+.settings-value {
+  flex: 1;
+  font-size: 15px;
+  color: var(--text);
+}
+.settings-save-btn,
+.settings-edit-btn {
+  padding: 8px 16px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.settings-save-btn:hover,
+.settings-edit-btn:hover { background: var(--wrong-bg); }
+.settings-saved {
+  font-size: 13px;
+  color: var(--correct);
+  margin-top: var(--space-sm);
+}
+.settings-error {
+  font-size: 13px;
+  color: var(--wrong);
+  margin-top: var(--space-sm);
+}
+
+/* Goal buttons */
+.settings-goal-btns {
+  display: flex;
+  gap: 8px;
+}
+.settings-goal-btn {
+  flex: 1;
+  padding: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.settings-goal-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--wrong-bg);
+}
+
+/* Toggle */
+.settings-toggle {
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+.settings-toggle.on { background: var(--correct); }
+.settings-toggle.off { background: var(--border-strong); }
+.settings-toggle-knob {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  transition: left 0.2s ease;
+}
+.settings-toggle.on .settings-toggle-knob { left: 25px; }
+.settings-toggle.off .settings-toggle-knob { left: 3px; }
+
+/* Danger zone */
+.settings-danger {
+  border-color: rgba(213, 43, 30, 0.2);
+}
+.settings-danger-btn {
+  width: 100%;
+  padding: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.settings-danger-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.settings-confirm {
+  padding: var(--space-md) 0;
+}
+.settings-confirm p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+.settings-confirm-btns {
+  display: flex;
+  gap: var(--space-sm);
+}
+.settings-danger-btn-confirm {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
 /* ── Install Banner ── */
 .install-banner {
   position: fixed;
