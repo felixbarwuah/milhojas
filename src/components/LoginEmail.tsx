@@ -3,65 +3,93 @@ import { supabase } from '../lib/supabase';
 
 export default function LoginEmail() {
   const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [resetSent, setResetSent] = useState(false);
 
-  const handleMagicLink = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !password) return;
     setLoading(true);
     setError('');
 
-    const { error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signInWithPassword({
       email: email.trim(),
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
+      password,
     });
 
     setLoading(false);
     if (error) {
-      setError(error.message);
+      setError(error.message === 'Invalid login credentials'
+        ? 'E-Mail oder Passwort falsch.'
+        : error.message);
     } else {
-      setSent(true);
+      window.location.href = '/';
     }
   };
 
-  if (sent) {
+  const handleResetPassword = async () => {
+    if (!email.trim()) {
+      setError('Bitte gib deine E-Mail-Adresse ein.');
+      return;
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/auth/callback`,
+    });
+    if (error) {
+      setError(error.message);
+    } else {
+      setResetSent(true);
+    }
+  };
+
+  if (resetSent) {
     return (
       <div className="login-sent">
         <div className="login-sent-icon">✉️</div>
         <h3>Check deine E-Mails</h3>
-        <p>Wir haben dir einen Login-Link an <strong>{email}</strong> geschickt.</p>
-        <p>Klick auf den Link um dich einzuloggen.</p>
-        <button className="btn" onClick={() => setSent(false)} style={{ marginTop: '20px' }}>Andere E-Mail</button>
+        <p>Wir haben dir einen Link zum Zurücksetzen an <strong>{email}</strong> geschickt.</p>
+        <button className="btn" onClick={() => setResetSent(false)} style={{ marginTop: '20px' }}>Zurück</button>
       </div>
     );
   }
 
   return (
     <div className="login-card">
-      <form onSubmit={handleMagicLink} className="login-fields">
-        <div className="login-field login-field-single">
+      <form onSubmit={handleLogin} className="login-fields">
+        <div className="login-field">
           <input
             type="email"
-            className="login-input login-input-single"
+            className="login-input"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="E-Mail-Adresse"
+            placeholder="E-Mail"
             required
             autoComplete="email"
           />
         </div>
+        <div className="login-field">
+          <input
+            type="password"
+            className="login-input"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Passwort"
+            required
+            autoComplete="current-password"
+          />
+        </div>
         <button type="submit" className="login-btn" disabled={loading}>
-          {loading ? 'Sende...' : 'Einloggen'}
+          {loading ? 'Lade...' : 'Einloggen'}
         </button>
       </form>
 
-      {error && <p className="login-error">{error}</p>}
+      <button className="login-forgot" onClick={handleResetPassword} type="button">
+        Passwort vergessen?
+      </button>
 
-      <p className="login-hint">Du bekommst einen Link per E-Mail. Kein Passwort nötig.</p>
+      {error && <p className="login-error">{error}</p>}
     </div>
   );
 }

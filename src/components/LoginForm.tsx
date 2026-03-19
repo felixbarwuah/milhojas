@@ -4,18 +4,23 @@ import { supabase } from '../lib/supabase';
 export default function LoginForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleMagicLink = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !name.trim()) return;
+    if (!email.trim() || !name.trim() || !password) return;
+    if (password.length < 6) {
+      setError('Passwort muss mindestens 6 Zeichen haben.');
+      return;
+    }
     setLoading(true);
     setError('');
 
-    const { error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signUp({
       email: email.trim(),
+      password,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
         data: { first_name: name.trim() },
@@ -26,25 +31,23 @@ export default function LoginForm() {
     if (error) {
       setError(error.message);
     } else {
-      setSent(true);
+      // Auto-login after signup
+      const { error: loginError } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      });
+      if (!loginError) {
+        window.location.href = '/';
+      } else {
+        // If auto-login fails, show confirmation message
+        setError('Account erstellt! Bitte bestätige deine E-Mail und logge dich dann ein.');
+      }
     }
   };
 
-  if (sent) {
-    return (
-      <div className="login-sent">
-        <div className="login-sent-icon">✉️</div>
-        <h3>Check deine E-Mails</h3>
-        <p>Wir haben dir einen Login-Link an <strong>{email}</strong> geschickt.</p>
-        <p>Klick auf den Link um dich einzuloggen.</p>
-        <button className="btn" onClick={() => setSent(false)} style={{ marginTop: '20px' }}>Andere E-Mail</button>
-      </div>
-    );
-  }
-
   return (
     <div className="login-card">
-      <form onSubmit={handleMagicLink} className="login-fields">
+      <form onSubmit={handleRegister} className="login-fields">
         <div className="login-field">
           <input
             type="text"
@@ -62,19 +65,31 @@ export default function LoginForm() {
             className="login-input"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="E-Mail-Adresse"
+            placeholder="E-Mail"
             required
             autoComplete="email"
           />
         </div>
+        <div className="login-field">
+          <input
+            type="password"
+            className="login-input"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Passwort"
+            required
+            minLength={6}
+            autoComplete="new-password"
+          />
+        </div>
         <button type="submit" className="login-btn" disabled={loading || !name.trim()}>
-          {loading ? 'Sende...' : 'Konto erstellen'}
+          {loading ? 'Lade...' : 'Konto erstellen'}
         </button>
       </form>
 
       {error && <p className="login-error">{error}</p>}
 
-      <p className="login-hint">Du bekommst einen Link per E-Mail. Kein Passwort nötig.</p>
+      <p className="login-hint">Mindestens 6 Zeichen für das Passwort.</p>
     </div>
   );
 }
