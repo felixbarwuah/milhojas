@@ -19,9 +19,25 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
       sessionStorage.setItem(SPLASH_KEY, '1');
     } catch {}
     setShow(true);
-    const timer = setTimeout(() => setShow(false), 2200);
+    const timer = setTimeout(() => setShow(false), 2800);
     return () => clearTimeout(timer);
   }, []);
+
+  const textStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '22%',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontFamily: 'Impact, "Arial Black", sans-serif',
+    fontSize: 'clamp(56px, 18vw, 160px)',
+    fontWeight: 900,
+    color: 'white',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+    lineHeight: 1,
+    userSelect: 'none',
+  };
 
   return (
     <>
@@ -37,46 +53,31 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
               inset: 0,
               zIndex: 9999,
               overflow: 'hidden',
-              background: '#000',
+              background: '#0a0a0a',
             }}
           >
-            {/* MILHOJAS text BEHIND the image (behind subject effect) */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1,
-            }}>
-              <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 0.15, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-                style={{
-                  fontFamily: 'Impact, "Arial Black", sans-serif',
-                  fontSize: 'clamp(60px, 20vw, 180px)',
-                  fontWeight: 900,
-                  color: 'white',
-                  margin: 0,
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  userSelect: 'none',
-                }}
-              >
-                MILHOJAS
-              </motion.h1>
-            </div>
+            {/* Layer 1: MILHOJAS text (behind everything) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.8, ease: 'easeOut' }}
+              style={{ ...textStyle, zIndex: 1 }}
+            >
+              MILHOJAS
+            </motion.div>
 
-            {/* Chili photo ON TOP - fullscreen from the start, slow zoom out */}
+            {/* Layer 2: Chili photo with mix-blend-mode lighten
+                Dark areas → transparent (text shows through)
+                Bright red chilies → opaque (cover the text) */}
             <motion.div
               initial={{ scale: 1.15 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 2.5, ease: 'easeOut' }}
+              transition={{ duration: 3, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
                 inset: 0,
                 zIndex: 2,
+                mixBlendMode: 'lighten',
               }}
             >
               <img
@@ -86,45 +87,18 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  mixBlendMode: 'normal',
                 }}
               />
-              {/* Cut out center area to reveal text behind - simulated with gradient overlay */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'radial-gradient(ellipse 80% 40% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)',
-              }} />
             </motion.div>
 
-            {/* Foreground MILHOJAS text (visible part) */}
+            {/* Layer 3: Subtle vignette for polish */}
             <div style={{
               position: 'absolute',
               inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               zIndex: 3,
+              background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)',
               pointerEvents: 'none',
-            }}>
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.7, ease: 'easeOut' }}
-                style={{
-                  fontFamily: 'Impact, "Arial Black", sans-serif',
-                  fontSize: 'clamp(50px, 16vw, 140px)',
-                  fontWeight: 900,
-                  color: 'white',
-                  margin: 0,
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  textShadow: '0 4px 30px rgba(0,0,0,0.6)',
-                }}
-              >
-                MILHOJAS
-              </motion.h1>
-            </div>
+            }} />
           </motion.div>
         )}
       </AnimatePresence>
