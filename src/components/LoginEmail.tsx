@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
+type View = 'login' | 'forgot' | 'forgot-sent';
+
 export default function LoginEmail() {
+  const [view, setView] = useState<View>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [resetEmail, setResetEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [resetSent, setResetSent] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,28 +32,59 @@ export default function LoginEmail() {
     }
   };
 
-  const handleResetPassword = async () => {
-    if (!email.trim()) {
-      setError('Bitte gib deine E-Mail-Adresse ein.');
-      return;
-    }
-    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: `${window.location.origin}/auth/callback`,
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!resetEmail.trim()) return;
+    setLoading(true);
+    setError('');
+
+    const { error } = await supabase.auth.resetPasswordForEmail(resetEmail.trim(), {
+      redirectTo: `${window.location.origin}/auth/reset`,
     });
+
+    setLoading(false);
     if (error) {
       setError(error.message);
     } else {
-      setResetSent(true);
+      setView('forgot-sent');
     }
   };
 
-  if (resetSent) {
+  if (view === 'forgot-sent') {
     return (
       <div className="login-sent">
         <div className="login-sent-icon">✉️</div>
         <h3>Check deine E-Mails</h3>
-        <p>Wir haben dir einen Link zum Zurücksetzen an <strong>{email}</strong> geschickt.</p>
-        <button className="btn" onClick={() => setResetSent(false)} style={{ marginTop: '20px' }}>Zurück</button>
+        <p>Wir haben dir einen Link zum Zurücksetzen an <strong>{resetEmail}</strong> geschickt.</p>
+        <button className="btn" onClick={() => { setView('login'); setError(''); }} style={{ marginTop: '20px' }}>Zurück zum Login</button>
+      </div>
+    );
+  }
+
+  if (view === 'forgot') {
+    return (
+      <div className="login-card">
+        <form onSubmit={handleResetPassword} className="login-fields">
+          <div className="login-field">
+            <input
+              type="email"
+              className="login-input"
+              value={resetEmail}
+              onChange={e => setResetEmail(e.target.value)}
+              placeholder="Deine E-Mail-Adresse"
+              required
+              autoComplete="email"
+              autoFocus
+            />
+          </div>
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? 'Sende...' : 'Reset-Link senden'}
+          </button>
+        </form>
+        <button className="login-forgot" onClick={() => { setView('login'); setError(''); }}>
+          Zurück zum Login
+        </button>
+        {error && <p className="login-error">{error}</p>}
       </div>
     );
   }
@@ -85,7 +119,7 @@ export default function LoginEmail() {
         </button>
       </form>
 
-      <button className="login-forgot" onClick={handleResetPassword} type="button">
+      <button className="login-forgot" onClick={() => { setView('forgot'); setError(''); }} type="button">
         Passwort vergessen?
       </button>
 

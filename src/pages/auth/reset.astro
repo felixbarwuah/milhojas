@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResetPassword from '../../components/ResetPassword';
+---
+
+<BaseLayout title="Neues Passwort">
+  <div class="auth-page">
+    <div class="auth-header">
+      <p class="auth-label">Neues Passwort festlegen</p>
+    </div>
+
+    <ResetPassword client:load />
+  </div>
+</BaseLayout>
+
+<style>
+  .auth-page {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+  }
+  .auth-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .auth-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+</style>
