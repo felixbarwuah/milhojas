@@ -19,25 +19,9 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
       sessionStorage.setItem(SPLASH_KEY, '1');
     } catch {}
     setShow(true);
-    const timer = setTimeout(() => setShow(false), 2800);
+    const timer = setTimeout(() => setShow(false), 3000);
     return () => clearTimeout(timer);
   }, []);
-
-  const textStyle: React.CSSProperties = {
-    position: 'absolute',
-    top: '10%',
-    left: 0,
-    right: 0,
-    textAlign: 'center',
-    fontFamily: 'Impact, "Arial Black", sans-serif',
-    fontSize: 'clamp(72px, 25vw, 220px)',
-    fontWeight: 900,
-    color: 'white',
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    lineHeight: 1,
-    userSelect: 'none',
-  };
 
   return (
     <>
@@ -56,47 +40,79 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
               background: '#0a0a0a',
             }}
           >
-            {/* Layer 1: MILHOJAS text (behind everything) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.8, ease: 'easeOut' }}
-              style={{ ...textStyle, zIndex: 1 }}
-            >
-              MILHOJAS
-            </motion.div>
-
-            {/* Layer 2: Chili photo with mix-blend-mode lighten
-                Dark areas → transparent (text shows through)
-                Bright red chilies → opaque (cover the text) */}
-            <motion.div
+            {/* Layer 1: Original photo as dark background */}
+            <motion.img
+              src="/images/splash-pwa.jpg"
+              alt=""
               initial={{ scale: 1.15 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 3, ease: 'easeOut' }}
+              transition={{ duration: 3.5, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
                 inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.4,
+                zIndex: 1,
+              }}
+            />
+
+            {/* Layer 2: MILHOJAS text - BEHIND the chilies */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.7, ease: 'easeOut' }}
+              style={{
+                position: 'absolute',
+                top: '15%',
+                left: 0,
+                right: 0,
+                textAlign: 'center',
                 zIndex: 2,
-                mixBlendMode: 'lighten',
               }}
             >
-              <img
-                src="/images/splash-pwa.jpg"
-                alt=""
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
-              />
+              <h1 style={{
+                fontFamily: 'Impact, "Arial Black", sans-serif',
+                fontSize: 'clamp(64px, 22vw, 200px)',
+                fontWeight: 900,
+                color: 'white',
+                margin: 0,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                lineHeight: 1,
+                textShadow: '0 4px 30px rgba(0,0,0,0.3)',
+              }}>
+                MILHOJAS
+              </h1>
             </motion.div>
 
-            {/* Layer 3: Subtle vignette for polish */}
+            {/* Layer 3: Freigestellte Chillis ÜBER dem Text */}
+            <motion.img
+              src="/images/chili-cutout.png"
+              alt=""
+              initial={{ scale: 1.1, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 1, ease: 'easeOut' }}
+              style={{
+                position: 'absolute',
+                top: '10%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '80vmin',
+                maxWidth: 500,
+                height: 'auto',
+                zIndex: 3,
+                filter: 'drop-shadow(0 8px 30px rgba(0,0,0,0.4))',
+              }}
+            />
+
+            {/* Layer 4: Subtle vignette */}
             <div style={{
               position: 'absolute',
               inset: 0,
-              zIndex: 3,
-              background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%)',
+              zIndex: 4,
+              background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)',
               pointerEvents: 'none',
             }} />
           </motion.div>
