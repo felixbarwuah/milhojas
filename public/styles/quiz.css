@@ -1236,10 +1236,9 @@
 }
 .splash-mini {
   position: absolute;
-  font-size: 28px;
-  bottom: -40px;
+  bottom: -50px;
   opacity: 0;
-  animation: splashFloat 1.2s ease-out forwards;
+  animation: splashFloat 1.8s ease-out forwards;
 }
 
 @keyframes splashEntry {
@@ -1269,9 +1268,10 @@
 }
 
 @keyframes splashFloat {
-  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
-  20% { opacity: 0.8; }
-  100% { opacity: 0; transform: translateY(-80vh) rotate(360deg); }
+  0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.5); }
+  15% { opacity: 1; transform: translateY(-10vh) rotate(30deg) scale(1); }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-85vh) rotate(300deg) scale(0.6); }
 }
 
 /* ── Install Banner ── */

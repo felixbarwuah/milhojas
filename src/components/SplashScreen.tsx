@@ -34,11 +34,14 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
           <h1 className="splash-title">Milhojas</h1>
         </div>
         <div className="splash-peppers">
-          <span className="splash-mini" style={{ left: '10%', animationDelay: '0.3s' }}>🌶</span>
-          <span className="splash-mini" style={{ left: '25%', animationDelay: '0.5s' }}>🌶</span>
-          <span className="splash-mini" style={{ right: '20%', animationDelay: '0.4s' }}>🌶</span>
-          <span className="splash-mini" style={{ right: '8%', animationDelay: '0.6s' }}>🌶</span>
-          <span className="splash-mini" style={{ left: '45%', animationDelay: '0.2s' }}>🌶</span>
+          <span className="splash-mini" style={{ left: '5%', animationDelay: '0.1s', fontSize: '40px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '20%', animationDelay: '0.4s', fontSize: '32px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '38%', animationDelay: '0.2s', fontSize: '48px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '55%', animationDelay: '0.6s', fontSize: '36px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '72%', animationDelay: '0.3s', fontSize: '44px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '88%', animationDelay: '0.5s', fontSize: '38px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '15%', animationDelay: '0.7s', fontSize: '28px' }}>🌶️</span>
+          <span className="splash-mini" style={{ left: '65%', animationDelay: '0.15s', fontSize: '42px' }}>🌶️</span>
         </div>
       </div>
       <div style={{ display: 'none' }}>{children}</div>
