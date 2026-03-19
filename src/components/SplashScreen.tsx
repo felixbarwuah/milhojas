@@ -3,16 +3,25 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const SPLASH_KEY = 'milhojas-splash-seen';
 
+function isPWA(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(display-mode: standalone)').matches
+    || (window.navigator as any).standalone === true;
+}
+
 export default function SplashScreen({ children }: { children: React.ReactNode }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    // Only show in PWA mode
+    if (!isPWA()) return;
+    // Only once per session
     try {
       if (sessionStorage.getItem(SPLASH_KEY)) return;
       sessionStorage.setItem(SPLASH_KEY, '1');
     } catch {}
     setShow(true);
-    const timer = setTimeout(() => setShow(false), 2200);
+    const timer = setTimeout(() => setShow(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,71 +33,61 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
             key="splash"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
             style={{
               position: 'fixed',
               inset: 0,
               zIndex: 9999,
-              background: '#FFF8F2',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 20,
+              overflow: 'hidden',
             }}
           >
-            {/* Chili Image */}
+            {/* Fullscreen chili photo with slow zoom */}
             <motion.img
-              src="/images/splash-chili.jpg"
+              src="/images/splash-pwa.jpg"
               alt=""
-              initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
-              animate={{
-                opacity: 1,
-                scale: [0.5, 1.1, 1],
-                rotate: [-15, 5, 0],
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 2.5, ease: 'easeOut' }}
               style={{
-                width: '50vmin',
-                maxWidth: 280,
-                height: 'auto',
-                filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.12))',
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
               }}
             />
 
-            {/* Wiggle after landing */}
+            {/* Dark overlay for text readability */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
+            }} />
+
+            {/* Title */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5, ease: 'easeOut' }}
-              style={{ textAlign: 'center' }}
+              transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
-              <motion.h1
-                animate={{ scale: [1, 1.03, 1] }}
-                transition={{ delay: 1.2, duration: 0.4 }}
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: 'clamp(32px, 7vw, 48px)',
-                  fontWeight: 800,
-                  color: '#1A1A1A',
-                  margin: 0,
-                }}
-              >
+              <h1 style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: 'clamp(40px, 10vw, 64px)',
+                fontWeight: 800,
+                color: 'white',
+                margin: 0,
+                textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+              }}>
                 Milhojas
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.4 }}
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: 15,
-                  color: '#6B6560',
-                  marginTop: 6,
-                }}
-              >
-                Deine neue Spanischlernapp
-              </motion.p>
+              </h1>
             </motion.div>
           </motion.div>
         )}
