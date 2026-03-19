@@ -1191,6 +1191,89 @@
   cursor: pointer;
 }
 
+/* ── Splash Screen ── */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #FFD000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.4s ease;
+}
+.splash-out {
+  opacity: 0;
+}
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: splashEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.splash-chili {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  animation: splashBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+             splashWiggle 0.4s ease-in-out 0.7s forwards;
+}
+.splash-title {
+  font-family: var(--heading);
+  font-size: 36px;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin-top: 16px;
+  opacity: 0;
+  animation: splashFadeUp 0.5s ease 0.4s forwards;
+}
+.splash-peppers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.splash-mini {
+  position: absolute;
+  font-size: 28px;
+  bottom: -40px;
+  opacity: 0;
+  animation: splashFloat 1.2s ease-out forwards;
+}
+
+@keyframes splashEntry {
+  0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes splashBounce {
+  0% { transform: scale(0.3) rotate(-20deg); }
+  60% { transform: scale(1.15) rotate(5deg); }
+  80% { transform: scale(0.95) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes splashWiggle {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(8deg); }
+  60% { transform: rotate(-5deg); }
+  80% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes splashFadeUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splashFloat {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+  20% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-80vh) rotate(360deg); }
+}
+
 /* ── Install Banner ── */
 .install-banner {
   position: fixed;

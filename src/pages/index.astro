@@ -3,9 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Dashboard from '../components/Dashboard';
 import InstallPrompt from '../components/InstallPrompt';
 import Greeting from '../components/Greeting';
+import SplashScreen from '../components/SplashScreen';
 ---
 
 <BaseLayout title="Spanisch lernen">
+  <SplashScreen client:load>
+    <span />
+  </SplashScreen>
   <div class="container" style="padding-top: var(--space-lg);">
     <Greeting client:load />
     <Dashboard client:load />
