@@ -64,6 +64,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #F0EBE5;
 }
 
 body {
@@ -74,6 +75,28 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-wrap: break-word;
+}
+
+/* Desktop: center the app in a card-like container */
+.app-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-body main {
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .app-body {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--bg);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.04);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
 }
 
 h1, h2, h3, h4 {
