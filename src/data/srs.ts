@@ -371,26 +371,28 @@ export function loadXP(): XPData {
   const data = loadJSON(XP_KEY, defaultXP());
   const d = today();
 
+  // Day rollover
   if (data.todayDate !== d) {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().slice(0, 10);
-
+    // Save yesterday's XP to history
     if (data.todayXP > 0) {
       data.history = [...data.history, { date: data.todayDate, xp: data.todayXP }].slice(-30);
     }
 
-    if (data.todayDate === yesterdayStr && data.todayXP >= data.dailyGoal) {
-      data.streak += 1;
-    } else {
-      const dayDiff = Math.floor((new Date(d).getTime() - new Date(data.todayDate).getTime()) / 86400000);
-      if (dayDiff > 1) {
-        data.streak = 0;
-      } else if (data.todayXP >= data.dailyGoal) {
-        data.streak += 1;
-      } else {
-        data.streak = 0;
-      }
+    // Calculate days since last activity
+    const dayDiff = Math.floor(
+      (new Date(d).getTime() - new Date(data.todayDate).getTime()) / 86400000
+    );
+
+    // Streak logic: only continues if yesterday's goal was met
+    if (dayDiff === 1 && data.todayXP >= data.dailyGoal) {
+      // Yesterday was active and goal was met - streak continues
+      // (streak was already incremented when goal was reached via addXP)
+    } else if (dayDiff > 1) {
+      // Missed a day - streak broken
+      data.streak = 0;
+    } else if (data.todayXP < data.dailyGoal) {
+      // Yesterday didn't meet goal - streak broken
+      data.streak = 0;
     }
 
     data.longestStreak = Math.max(data.longestStreak, data.streak);
