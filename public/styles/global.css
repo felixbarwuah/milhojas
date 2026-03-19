@@ -78,7 +78,13 @@ body {
 
 /* Desktop: center the app in a card-like container */
 .app-body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+
+.app-body main {
+  flex: 1;
 }
 
 h1, h2, h3, h4 {
