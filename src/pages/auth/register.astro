@@ -4,43 +4,70 @@ import LoginForm from '../../components/LoginForm';
 ---
 
 <BaseLayout title="Registrieren">
-  <div class="login-page">
-    <h1 class="login-title">Jetzt kostenlos registrieren</h1>
-    <p class="login-sub">Speichere deinen Lernfortschritt und lerne auf allen Geräten.</p>
+  <div class="auth-page">
+    <div class="auth-header">
+      <p class="auth-label">Mit E-Mail Adresse registrieren</p>
+    </div>
 
     <LoginForm client:load />
 
-    <p class="login-switch">Du hast schon einen Account? <a href="/auth/login">Zum Login</a></p>
+    <div class="auth-divider"><span>oder</span></div>
+
+    <a href="/auth/login" class="auth-alt-btn">Zum Login</a>
   </div>
 </BaseLayout>
 
 <style>
-  .login-page {
+  .auth-page {
     max-width: 440px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-lg) var(--space-2xl);
   }
-  .login-title {
-    font-size: 28px;
-    font-weight: 800;
+  .auth-header {
     text-align: center;
-    margin-bottom: var(--space-sm);
-    font-style: italic;
-  }
-  .login-sub {
-    text-align: center;
-    font-size: 15px;
-    color: var(--text-secondary);
     margin-bottom: var(--space-xl);
   }
-  .login-switch {
-    text-align: center;
-    font-size: 14px;
+  .auth-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--text-muted);
-    margin-top: var(--space-xl);
   }
-  .login-switch a {
-    color: var(--accent);
-    font-weight: 600;
+  .auth-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .auth-divider::before,
+  .auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .auth-alt-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 2px solid var(--text);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .auth-alt-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--text);
   }
 </style>

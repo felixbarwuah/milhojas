@@ -68,7 +68,7 @@ export default function LoginForm() {
           />
         </div>
         <button type="submit" className="login-btn" disabled={loading || !name.trim()}>
-          {loading ? 'Sende...' : 'Registrieren'}
+          {loading ? 'Sende...' : 'Konto erstellen'}
         </button>
       </form>
 

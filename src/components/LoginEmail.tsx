@@ -55,7 +55,7 @@ export default function LoginEmail() {
           />
         </div>
         <button type="submit" className="login-btn" disabled={loading}>
-          {loading ? 'Sende...' : 'Anmelden'}
+          {loading ? 'Sende...' : 'Einloggen'}
         </button>
       </form>
 

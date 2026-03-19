@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Anmelden">
+  <div class="auth-choose">
+    <img src="/icons/logo-chili.png" alt="" width="64" height="64" class="auth-logo" />
+    <h1 class="auth-title">Milhojas</h1>
+    <p class="auth-sub">Spanisch lernen, Schicht für Schicht.</p>
+
+    <div class="auth-buttons">
+      <a href="/auth/login" class="auth-btn-outline">Login</a>
+      <a href="/auth/register" class="auth-btn-filled">Jetzt registrieren</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .auth-choose {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg);
+    text-align: center;
+  }
+  .auth-logo {
+    border-radius: 16px;
+    margin-bottom: var(--space-lg);
+  }
+  .auth-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+  }
+  .auth-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+  }
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .auth-btn-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 2px solid var(--text);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .auth-btn-outline:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--text);
+  }
+  .auth-btn-filled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .auth-btn-filled:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+  }
+</style>

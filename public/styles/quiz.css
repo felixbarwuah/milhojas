@@ -739,35 +739,27 @@
 .login-input {
   display: block;
   width: 100%;
-  padding: 18px 20px;
+  padding: 16px 0;
   font-family: var(--sans);
   font-size: 16px;
-  border: 1px solid var(--border-strong);
+  border: none;
+  border-bottom: 1px solid var(--border-strong);
   border-radius: 0;
-  background: var(--bg-card);
+  background: transparent;
   color: var(--text);
   outline: none;
   transition: border-color 0.2s ease;
   -webkit-appearance: none;
   appearance: none;
 }
-.login-field:first-child .login-input {
-  border-radius: 8px 8px 0 0;
-}
-.login-field:last-of-type .login-input {
-  border-radius: 0 0 8px 8px;
-  border-top: none;
-}
 .login-input:focus {
-  border-color: var(--accent-blue);
-  position: relative;
-  z-index: 1;
+  border-bottom-color: var(--accent);
 }
 .login-input::placeholder {
   color: #999;
-}
-.login-input-single {
-  border-radius: 8px !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.04em;
 }
 .login-btn {
   display: flex;
