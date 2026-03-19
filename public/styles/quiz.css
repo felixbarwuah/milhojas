@@ -1192,86 +1192,80 @@
 }
 
 /* ── Splash Screen ── */
-.splash {
+.splash2 {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #FFD000;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+}
+.splash2-out {
+  opacity: 0;
+}
+.splash2-bg {
+  position: absolute;
+  inset: 0;
+  background: #FFF8F2;
+}
+.splash2-img-wrap {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
-  transition: opacity 0.4s ease;
+  animation: splash2Zoom 2.5s ease-out forwards;
 }
-.splash-out {
-  opacity: 0;
+.splash2-img {
+  width: 60vmin;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+  animation: splash2Rotate 2.5s ease-out forwards;
 }
-.splash-content {
+.splash2-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: splashEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  justify-content: flex-end;
+  padding-bottom: 20vh;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-.splash-chili {
-  width: 120px;
-  height: 120px;
-  border-radius: 24px;
-  animation: splashBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-             splashWiggle 0.4s ease-in-out 0.7s forwards;
+.splash2-overlay-show {
+  opacity: 1;
 }
-.splash-title {
+.splash2-title {
   font-family: var(--heading);
-  font-size: 36px;
+  font-size: clamp(36px, 8vw, 56px);
   font-weight: 800;
-  color: #1A1A1A;
-  margin-top: 16px;
-  opacity: 0;
-  animation: splashFadeUp 0.5s ease 0.4s forwards;
+  color: var(--text);
+  text-align: center;
+  animation: splash2FadeUp 0.6s ease forwards;
 }
-.splash-peppers {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.splash-mini {
-  position: absolute;
-  bottom: -50px;
-  opacity: 0;
-  animation: splashFloat 1.8s ease-out forwards;
+.splash2-sub {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  animation: splash2FadeUp 0.6s ease 0.2s both;
 }
 
-@keyframes splashEntry {
-  0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+@keyframes splash2Zoom {
+  0% { transform: scale(1.5); }
+  100% { transform: scale(1); }
 }
 
-@keyframes splashBounce {
-  0% { transform: scale(0.3) rotate(-20deg); }
-  60% { transform: scale(1.15) rotate(5deg); }
-  80% { transform: scale(0.95) rotate(-3deg); }
-  100% { transform: scale(1) rotate(0deg); }
+@keyframes splash2Rotate {
+  0% { transform: rotate(-8deg) scale(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); }
 }
 
-@keyframes splashWiggle {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(-8deg); }
-  40% { transform: rotate(8deg); }
-  60% { transform: rotate(-5deg); }
-  80% { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes splashFadeUp {
-  0% { opacity: 0; transform: translateY(10px); }
+@keyframes splash2FadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes splashFloat {
-  0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.5); }
-  15% { opacity: 1; transform: translateY(-10vh) rotate(30deg) scale(1); }
-  50% { opacity: 0.8; }
-  100% { opacity: 0; transform: translateY(-85vh) rotate(300deg) scale(0.6); }
 }
 
 /* ── Install Banner ── */
