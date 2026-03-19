@@ -1,4 +1,4 @@
-const CACHE_NAME = 'milhojas-v5';
+const CACHE_NAME = 'milhojas-v6';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

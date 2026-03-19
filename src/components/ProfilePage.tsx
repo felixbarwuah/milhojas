@@ -1,29 +1,29 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { uploadProgress } from '../lib/sync';
-import { loadXP, type XPData } from '../data/srs';
+import { loadXP } from '../data/srs';
 
 export default function ProfilePage() {
   const [user, setUser] = useState<any>(null);
-  const [xp, setXp] = useState<XPData | null>(null);
+  const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [syncMsg, setSyncMsg] = useState('');
-  const [loading, setLoading] = useState(true);
+  const xp = loadXP();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
       setLoading(false);
     });
-    setXp(loadXP());
   }, []);
 
   const handleSync = async () => {
     setSyncing(true);
     setSyncMsg('');
     const ok = await uploadProgress();
-    setSyncMsg(ok ? 'Fortschritt gespeichert!' : 'Fehler beim Speichern');
+    setSyncMsg(ok ? 'Gespeichert!' : 'Fehler');
     setSyncing(false);
+    setTimeout(() => setSyncMsg(''), 2000);
   };
 
   const handleLogout = async () => {
@@ -31,16 +31,21 @@ export default function ProfilePage() {
     window.location.href = '/';
   };
 
-  if (loading) return <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>Laden...</p>;
+  if (loading) return null;
 
   if (!user) {
     return (
-      <div className="profile-card">
-        <div className="profile-guest">
-          <h3>Nicht angemeldet</h3>
-          <p>Melde dich an um deinen Fortschritt zu speichern und auf allen Geräten zu lernen.</p>
-          <a href="/auth/login" className="login-btn" style={{ display: 'inline-flex', textDecoration: 'none', maxWidth: '300px', margin: '16px auto 0' }}>
-            Jetzt registrieren
+      <div className="prof-container">
+        <div className="prof-header-card">
+          <div className="prof-avatar-big">?</div>
+          <h2 className="prof-name">Nicht angemeldet</h2>
+          <p className="prof-email">Melde dich an um deinen Fortschritt zu speichern.</p>
+        </div>
+        <div className="prof-menu">
+          <a href="/auth" className="prof-menu-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <span>Anmelden / Registrieren</span>
+            <svg className="prof-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
         </div>
       </div>
@@ -52,58 +57,50 @@ export default function ProfilePage() {
   const initial = firstName[0]?.toUpperCase() || '?';
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <div className="profile-header">
-          <div className="profile-avatar">{initial}</div>
-          <div>
-            <h3 className="profile-name">Hola, {firstName}!</h3>
-            <p className="profile-email">{email}</p>
-          </div>
+    <div className="prof-container">
+      <div className="prof-header-card">
+        <div className="prof-avatar-big">{initial}</div>
+        <h2 className="prof-name">{firstName}</h2>
+        <p className="prof-email">{email}</p>
+      </div>
+
+      <div className="prof-menu">
+        <div className="prof-menu-item" onClick={handleSync}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <span>Cloud-Sync {syncMsg && <small style={{color: syncMsg === 'Gespeichert!' ? '#16A34A' : '#D52B1E'}}>{syncMsg}</small>}</span>
+          <svg className="prof-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-      </div>
 
-      {xp && (
-        <div className="profile-card">
-          <h3 className="profile-section-title">Dein Fortschritt</h3>
-          <div className="profile-stats">
-            <div className="profile-stat">
-              <span className="profile-stat-value">{xp.totalXP}</span>
-              <span className="profile-stat-label">Gesamt XP</span>
-            </div>
-            <div className="profile-stat">
-              <span className="profile-stat-value">{xp.streak}</span>
-              <span className="profile-stat-label">Tage Streak</span>
-            </div>
-            <div className="profile-stat">
-              <span className="profile-stat-value">{xp.longestStreak}</span>
-              <span className="profile-stat-label">Bester Streak</span>
-            </div>
-            <div className="profile-stat">
-              <span className="profile-stat-value">{xp.todayXP}/{xp.dailyGoal}</span>
-              <span className="profile-stat-label">Heute</span>
-            </div>
-          </div>
+        <div className="prof-menu-section">Fortschritt</div>
+
+        <div className="prof-menu-item prof-stats-row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>{xp.totalXP} XP gesamt</span>
+          <span className="prof-meta">{xp.todayXP}/{xp.dailyGoal} heute</span>
         </div>
-      )}
 
-      <div className="profile-card">
-        <h3 className="profile-section-title">Cloud-Sync</h3>
-        <p style={{ fontSize: '14px', color: '#6B6560', marginBottom: '12px' }}>
-          Speichere deinen Fortschritt in der Cloud um auf allen Geräten weiterzulernen.
-        </p>
-        <button className="btn btn-primary" onClick={handleSync} disabled={syncing} style={{ width: '100%', justifyContent: 'center' }}>
-          {syncing ? 'Speichern...' : 'Jetzt synchronisieren'}
-        </button>
-        {syncMsg && <p style={{ marginTop: '8px', fontSize: '13px', color: syncMsg.includes('Fehler') ? '#D52B1E' : '#16A34A', textAlign: 'center' }}>{syncMsg}</p>}
+        <div className="prof-menu-item prof-stats-row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <span>{xp.streak} Tage Streak</span>
+          <span className="prof-meta">Bester: {xp.longestStreak}</span>
+        </div>
+
+        <div className="prof-menu-section">Rechtliches</div>
+
+        <a href="/impressum/" className="prof-menu-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Impressum</span>
+          <svg className="prof-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
+        <a href="/datenschutz/" className="prof-menu-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Datenschutz</span>
+          <svg className="prof-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
       </div>
 
-      <div className="profile-card">
-        <h3 className="profile-section-title">Account</h3>
-        <button className="btn" onClick={handleLogout} style={{ width: '100%', justifyContent: 'center', color: '#D52B1E', borderColor: '#D52B1E' }}>
-          Abmelden
-        </button>
-      </div>
+      <button className="prof-logout" onClick={handleLogout}>Abmelden</button>
     </div>
   );
 }
