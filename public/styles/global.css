@@ -85,7 +85,11 @@ body {
 }
 
 .app-body main {
-  flex: 1;
+  flex: 1 0 auto;
+}
+
+.app-body .site-footer {
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {

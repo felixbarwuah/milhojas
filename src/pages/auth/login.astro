@@ -4,16 +4,36 @@ import LoginForm from '../../components/LoginForm';
 ---
 
 <BaseLayout title="Anmelden">
-  <section class="hero" style="padding-bottom: var(--space-md);">
-    <h2>Anmelden</h2>
-    <p class="hero-sub" style="font-size: 16px;">Optional. Dein Fortschritt wird auch ohne Login gespeichert.</p>
-  </section>
-
-  <div class="container" style="max-width: 400px;">
+  <div class="login-page">
+    <div class="login-header">
+      <img src="/icons/logo-chili.png" alt="" width="48" height="48" style="border-radius: 12px;" />
+      <h2>Willkommen bei Milhojas</h2>
+      <p>Melde dich an um deinen Fortschritt zu speichern.</p>
+    </div>
     <LoginForm client:load />
   </div>
 </BaseLayout>
 
 <style>
-  .hero { text-align: center; padding-top: var(--space-xl); }
+  .login-page {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+  }
+  .login-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .login-header img {
+    margin-bottom: var(--space-md);
+  }
+  .login-header h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+  .login-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+  }
 </style>

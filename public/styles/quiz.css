@@ -720,12 +720,10 @@
 
 /* ── Login ── */
 .login-card {
-  max-width: 380px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-lg);
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 .login-fields {
   display: flex;
@@ -735,18 +733,17 @@
 .login-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 .login-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 .login-input {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   font-family: var(--sans);
   font-size: 16px;
   border: 1px solid var(--border-strong);
@@ -754,13 +751,18 @@
   background: var(--bg);
   color: var(--text);
   outline: none;
+  transition: border-color 0.2s ease;
 }
-.login-input:focus { border-color: var(--accent-blue); }
+.login-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(0, 57, 166, 0.08);
+}
 .login-btn {
   width: 100%;
   justify-content: center;
-  padding: 13px;
+  padding: 14px;
   margin-top: var(--space-sm);
+  font-size: 14px;
 }
 .login-error {
   margin-top: var(--space-md);
@@ -769,18 +771,21 @@
   text-align: center;
 }
 .login-hint {
-  margin-top: var(--space-md);
+  margin-top: var(--space-lg);
   font-size: 13px;
   color: var(--text-muted);
   text-align: center;
 }
 .login-sent {
   text-align: center;
-  padding: var(--space-lg) 0;
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
 }
-.login-sent-icon { font-size: 36px; margin-bottom: var(--space-md); }
-.login-sent h3 { margin-bottom: var(--space-sm); }
-.login-sent p { color: var(--text-secondary); font-size: 15px; margin-bottom: 4px; }
+.login-sent-icon { font-size: 40px; margin-bottom: var(--space-md); }
+.login-sent h3 { margin-bottom: var(--space-sm); font-size: 20px; }
+.login-sent p { color: var(--text-secondary); font-size: 15px; margin-bottom: 4px; line-height: 1.6; }
 
 /* User Menu */
 .user-login-link {
