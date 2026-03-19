@@ -13,15 +13,13 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Only show in PWA mode
     if (!isPWA()) return;
-    // Only once per session
     try {
       if (sessionStorage.getItem(SPLASH_KEY)) return;
       sessionStorage.setItem(SPLASH_KEY, '1');
     } catch {}
     setShow(true);
-    const timer = setTimeout(() => setShow(false), 2000);
+    const timer = setTimeout(() => setShow(false), 2200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -33,62 +31,100 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
             key="splash"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
             style={{
               position: 'fixed',
               inset: 0,
               zIndex: 9999,
               overflow: 'hidden',
+              background: '#000',
             }}
           >
-            {/* Fullscreen chili photo with slow zoom */}
-            <motion.img
-              src="/images/splash-pwa.jpg"
-              alt=""
-              initial={{ scale: 1.1 }}
+            {/* MILHOJAS text BEHIND the image (behind subject effect) */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1,
+            }}>
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 0.15, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  fontSize: 'clamp(60px, 20vw, 180px)',
+                  fontWeight: 900,
+                  color: 'white',
+                  margin: 0,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  userSelect: 'none',
+                }}
+              >
+                MILHOJAS
+              </motion.h1>
+            </div>
+
+            {/* Chili photo ON TOP - fullscreen from the start, slow zoom out */}
+            <motion.div
+              initial={{ scale: 1.15 }}
               animate={{ scale: 1 }}
               transition={{ duration: 2.5, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
                 inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
+                zIndex: 2,
               }}
-            />
+            >
+              <img
+                src="/images/splash-pwa.jpg"
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  mixBlendMode: 'normal',
+                }}
+              />
+              {/* Cut out center area to reveal text behind - simulated with gradient overlay */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'radial-gradient(ellipse 80% 40% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)',
+              }} />
+            </motion.div>
 
-            {/* Dark overlay for text readability */}
+            {/* Foreground MILHOJAS text (visible part) */}
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
-            }} />
-
-            {/* Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <h1 style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: 'clamp(40px, 10vw, 64px)',
-                fontWeight: 800,
-                color: 'white',
-                margin: 0,
-                textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-              }}>
-                Milhojas
-              </h1>
-            </motion.div>
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 3,
+              pointerEvents: 'none',
+            }}>
+              <motion.h1
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.7, ease: 'easeOut' }}
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  fontSize: 'clamp(50px, 16vw, 140px)',
+                  fontWeight: 900,
+                  color: 'white',
+                  margin: 0,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  textShadow: '0 4px 30px rgba(0,0,0,0.6)',
+                }}
+              >
+                MILHOJAS
+              </motion.h1>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
