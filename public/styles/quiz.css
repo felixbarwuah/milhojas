@@ -721,6 +721,8 @@
 /* ── Login ── */
 .login-card {
   padding: 0;
+  max-width: 440px;
+  margin: 0 auto;
 }
 .login-fields {
   display: flex;
@@ -735,6 +737,7 @@
   display: none;
 }
 .login-input {
+  display: block;
   width: 100%;
   padding: 18px 20px;
   font-family: var(--sans);
@@ -745,13 +748,14 @@
   color: var(--text);
   outline: none;
   transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.login-input:first-of-type,
 .login-field:first-child .login-input {
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-radius: 8px 8px 0 0;
 }
 .login-field:last-of-type .login-input {
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border-radius: 0 0 8px 8px;
   border-top: none;
 }
 .login-input:focus {
@@ -760,24 +764,29 @@
   z-index: 1;
 }
 .login-input::placeholder {
-  color: var(--text-muted);
+  color: #999;
 }
 .login-btn {
+  display: flex;
   width: 100%;
   justify-content: center;
+  align-items: center;
   padding: 16px;
   margin-top: var(--space-lg);
-  font-size: 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   background: var(--accent);
   color: white;
-  border-color: var(--accent);
-  border-radius: var(--radius-md);
-  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 .login-btn:hover {
   background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: white;
 }
 .login-btn:disabled {
   opacity: 0.5;
