@@ -5,7 +5,7 @@
 
 export interface ReadingExercise {
   id: string;
-  level: 'A1' | 'A2' | 'B1';
+  level: 'A1.1' | 'A1.2' | 'A2' | 'B1';
   title: string;
   text: string;       // Spanish text to read
   question: string;   // German question about the text
@@ -15,51 +15,123 @@ export interface ReadingExercise {
 }
 
 export const readings: ReadingExercise[] = [
-  // ─── A1 ───
+  // ─── A1.1 - Absolute Einsteiger (2-3 kurze Sätze) ───
   {
-    id: 'r01', level: 'A1', title: 'En el restaurante',
+    id: 'r44', level: 'A1.1', title: 'Hola',
+    text: 'Hola. Me llamo Ana. Soy de España.',
+    question: 'Woher kommt Ana?',
+    options: ['Chile', 'Spanien', 'Mexiko', 'Argentinien'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r45', level: 'A1.1', title: 'La casa',
+    text: 'Mi casa es grande. Tiene tres dormitorios y un jardín. Me gusta mi casa.',
+    question: 'Was hat das Haus?',
+    options: ['Zwei Zimmer', 'Drei Schlafzimmer und einen Garten', 'Ein Schwimmbad', 'Vier Badezimmer'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r46', level: 'A1.1', title: 'El perro',
+    text: 'Tengo un perro. Se llama Max. Max es grande y marrón. Le gusta correr.',
+    question: 'Wie sieht Max aus?',
+    options: ['Klein und weiß', 'Groß und braun', 'Klein und schwarz', 'Groß und grau'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r47', level: 'A1.1', title: 'El desayuno',
+    text: 'Por la mañana como pan con queso. Bebo un café con leche. Mi hermano come fruta.',
+    question: 'Was isst der Bruder?',
+    options: ['Brot mit Käse', 'Kaffee mit Milch', 'Obst', 'Nichts'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r48', level: 'A1.1', title: 'Los números',
+    text: 'Tengo dos hermanos. Mi hermano tiene diez años. Mi hermana tiene seis años. Yo tengo quince.',
+    question: 'Wie alt ist die Schwester?',
+    options: ['Zwei Jahre', 'Sechs Jahre', 'Zehn Jahre', 'Fünfzehn Jahre'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r49', level: 'A1.1', title: 'El tiempo',
+    text: 'Hoy hace sol. Hace calor. Voy a la playa con mi amigo Pedro.',
+    question: 'Wie ist das Wetter?',
+    options: ['Es regnet', 'Es ist kalt', 'Es ist sonnig und heiß', 'Es schneit'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r50', level: 'A1.1', title: 'La tienda',
+    text: 'Voy a la tienda. Compro agua, pan y manzanas. Pago con una tarjeta.',
+    question: 'Wie bezahlt die Person?',
+    options: ['Mit Bargeld', 'Mit Karte', 'Mit dem Handy', 'Sie bezahlt nicht'],
+    correctIndex: 1,
+  },
+  {
+    id: 'r51', level: 'A1.1', title: 'Mi habitación',
+    text: 'Mi habitación es pequeña. Tengo una cama, una mesa y una silla. En la pared hay un mapa de España.',
+    question: 'Was hängt an der Wand?',
+    options: ['Ein Bild', 'Ein Spiegel', 'Eine Karte von Spanien', 'Eine Uhr'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r52', level: 'A1.1', title: 'La familia',
+    text: 'Mi madre se llama Carmen. Mi padre se llama José. Tengo una hermana. Se llama Lucía.',
+    question: 'Wie heißt die Schwester?',
+    options: ['Carmen', 'José', 'Lucía', 'María'],
+    correctIndex: 2,
+  },
+  {
+    id: 'r53', level: 'A1.1', title: 'El fin de semana',
+    text: 'El sábado no trabajo. Duermo hasta las diez. Después como con mi familia. El domingo voy al parque.',
+    question: 'Was macht die Person am Sonntag?',
+    options: ['Arbeiten', 'Schlafen', 'In den Park gehen', 'Einkaufen'],
+    correctIndex: 2,
+  },
+
+  // ─── A1.2 ───
+  {
+    id: 'r01', level: 'A1.2', title: 'En el restaurante',
     text: 'María entra en el restaurante. El camarero dice: "Buenas tardes, ¿mesa para una persona?" María responde: "No, somos dos. Mi amigo llega en cinco minutos." El camarero le da una mesa cerca de la ventana.',
     question: 'Für wie viele Personen braucht María einen Tisch?',
     options: ['Für eine Person', 'Für zwei Personen', 'Für drei Personen', 'Für fünf Personen'],
     correctIndex: 1,
   },
   {
-    id: 'r02', level: 'A1', title: 'Mi familia',
+    id: 'r02', level: 'A1.2', title: 'Mi familia',
     text: 'Me llamo Pablo. Tengo treinta años. Vivo en Santiago con mi esposa Ana y nuestros dos hijos. Mi hijo mayor se llama Diego y tiene cinco años. Mi hija pequeña se llama Sofía y tiene dos años.',
     question: 'Wie alt ist Pablos Tochter?',
     options: ['Fünf Jahre', 'Drei Jahre', 'Zwei Jahre', 'Dreißig Jahre'],
     correctIndex: 2,
   },
   {
-    id: 'r03', level: 'A1', title: 'El supermercado',
+    id: 'r03', level: 'A1.2', title: 'El supermercado',
     text: 'Hoy voy al supermercado. Necesito comprar leche, pan, huevos y fruta. Las manzanas cuestan dos euros el kilo. Compro un kilo de manzanas y medio kilo de plátanos. En total pago seis euros.',
     question: 'Was kostet ein Kilo Äpfel?',
     options: ['Ein Euro', 'Zwei Euro', 'Drei Euro', 'Sechs Euro'],
     correctIndex: 1,
   },
   {
-    id: 'r04', level: 'A1', title: 'El tiempo',
+    id: 'r04', level: 'A1.2', title: 'El tiempo',
     text: 'Hoy hace mucho calor en Mallorca. La temperatura es de treinta y cinco grados. Vamos a la playa porque el mar está muy azul y tranquilo. Mi hermana prefiere quedarse en casa con el aire acondicionado.',
     question: 'Warum bleibt die Schwester zu Hause?',
     options: ['Sie ist krank', 'Sie muss arbeiten', 'Wegen der Klimaanlage (es ist zu heiß)', 'Sie mag den Strand nicht'],
     correctIndex: 2,
   },
   {
-    id: 'r05', level: 'A1', title: 'Mi día',
+    id: 'r05', level: 'A1.2', title: 'Mi día',
     text: 'Me despierto a las siete de la mañana. Desayuno café con leche y tostadas. A las ocho y media voy al trabajo en autobús. Trabajo de nueve a cinco. Después del trabajo, voy al gimnasio.',
     question: 'Wie kommt die Person zur Arbeit?',
     options: ['Mit dem Auto', 'Mit dem Zug', 'Mit dem Bus', 'Zu Fuß'],
     correctIndex: 2,
   },
   {
-    id: 'r06', level: 'A1', title: 'La fiesta',
+    id: 'r06', level: 'A1.2', title: 'La fiesta',
     text: 'El sábado es el cumpleaños de Carmen. Ella cumple veinticinco años. La fiesta es en su casa a las ocho de la noche. Yo llevo una torta de chocolate. Mi amigo Luis lleva la música.',
     question: 'Wann findet die Party statt?',
     options: ['Freitag um 20 Uhr', 'Samstag um 20 Uhr', 'Samstag um 18 Uhr', 'Sonntag um 20 Uhr'],
     correctIndex: 1,
   },
   {
-    id: 'r07', level: 'A1', title: 'En la estación',
+    id: 'r07', level: 'A1.2', title: 'En la estación',
     text: 'Quiero ir de Madrid a Barcelona. El tren sale a las diez de la mañana y llega a las doce y media. El billete cuesta cuarenta y cinco euros. Prefiero el tren porque es más rápido que el autobús.',
     question: 'Wie lange dauert die Zugfahrt?',
     options: ['Eine Stunde', 'Zwei Stunden', 'Zweieinhalb Stunden', 'Drei Stunden'],
@@ -242,21 +314,21 @@ export const readings: ReadingExercise[] = [
     correctIndex: 1,
   },
   {
-    id: 'r32', level: 'A1', title: 'En la cafetería',
+    id: 'r32', level: 'A1.1', title: 'En la cafetería',
     text: 'Entro en una cafetería y me siento cerca de la ventana. El camarero viene y me pregunta: "¿Qué desea?" Yo pido un café con leche y un croissant. El café está muy caliente y el croissant está delicioso. Pago tres euros con cincuenta.',
     question: 'Wie viel bezahlt die Person?',
     options: ['Zwei Euro', 'Drei Euro', 'Drei Euro fünfzig', 'Vier Euro'],
     correctIndex: 2,
   },
   {
-    id: 'r33', level: 'A1', title: 'Mi mascota',
+    id: 'r33', level: 'A1.1', title: 'Mi mascota',
     text: 'Tengo un gato que se llama Michi. Es negro con ojos verdes. Le gusta dormir en el sofá todo el día. Por la noche se vuelve muy activo y juega con una pelota pequeña. Come tres veces al día y bebe mucha agua.',
     question: 'Wann ist die Katze aktiv?',
     options: ['Am Morgen', 'Am Mittag', 'In der Nacht', 'Den ganzen Tag'],
     correctIndex: 2,
   },
   {
-    id: 'r34', level: 'A1', title: 'Los colores',
+    id: 'r34', level: 'A1.1', title: 'Los colores',
     text: 'Mi color favorito es el azul, como el mar. A mi hermana le gusta el rojo y siempre lleva una bufanda roja. Mi padre prefiere el verde porque le recuerda a la naturaleza. Mi madre dice que todos los colores son bonitos.',
     question: 'Warum mag der Vater Grün?',
     options: ['Weil es seine Lieblingsfarbe ist', 'Weil es ihn an die Natur erinnert', 'Weil seine Frau es mag', 'Weil sein Auto grün ist'],

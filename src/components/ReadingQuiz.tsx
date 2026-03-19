@@ -17,7 +17,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function ReadingQuiz() {
   const [state, setState] = useState<State>('config');
-  const [level, setLevel] = useState<'all' | 'A1' | 'A2'>('all');
+  const [level, setLevel] = useState<string>('all');
   const [items, setItems] = useState<ReadingExercise[]>([]);
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -25,7 +25,10 @@ export default function ReadingQuiz() {
 
   const start = () => {
     let pool = [...readings];
-    if (level !== 'all') pool = pool.filter(r => r.level === level);
+    if (level !== 'all') {
+      if (level === 'A1') pool = pool.filter(r => r.level.startsWith('A1'));
+      else pool = pool.filter(r => r.level === level);
+    }
     setItems(shuffle(pool).slice(0, 8));
     setCurrent(0);
     setSelected(null);
@@ -57,7 +60,7 @@ export default function ReadingQuiz() {
         <div className="config-section">
           <h3 className="config-title">Niveau</h3>
           <div className="direction-toggle">
-            {(['all', 'A1', 'A2'] as const).map(l => (
+            {(['all', 'A1.1', 'A1.2', 'A1', 'A2', 'B1'] as const).map(l => (
               <button key={l} className={`toggle-btn ${level === l ? 'active' : ''}`} onClick={() => setLevel(l)}>
                 {l === 'all' ? 'Alle' : l}
               </button>
@@ -92,7 +95,7 @@ export default function ReadingQuiz() {
         <div className="progress-bar"><div className="progress-bar-fill" style={{ width: `${((current + 1) / items.length) * 100}%` }} /></div>
         <div className="quiz-meta">
           <span className="label">{current + 1} / {items.length}</span>
-          <span className="label" style={{ color: item.level === 'A1' ? 'var(--correct)' : 'var(--accent-blue)' }}>{item.level}</span>
+          <span className="label" style={{ color: item.level.startsWith('A1') ? 'var(--level-a1)' : item.level === 'A2' ? 'var(--level-a2)' : 'var(--level-b1)' }}>{item.level}</span>
         </div>
       </div>
 

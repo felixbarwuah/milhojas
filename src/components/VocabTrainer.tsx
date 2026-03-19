@@ -290,9 +290,6 @@ export default function VocabTrainer() {
       </div>
 
       <div className="question-card">
-        <span className="label" style={{ color: categoryColors[q.word.category] }}>
-          {categoryLabels[q.word.category]}
-        </span>
         <h2 className="question-word">{prompt}</h2>
         {isEsToDe && <SpeakButton text={q.word.es} />}
         {state === 'result' && q.word.example && (

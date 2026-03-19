@@ -236,9 +236,6 @@ export default function Flashcards() {
       >
         <div className="flashcard-inner">
           <div className="flashcard-front">
-            <span className="label" style={{ color: categoryColors[word.category] }}>
-              {categoryLabels[word.category]}
-            </span>
             <h2 className="flashcard-word">{word.es}</h2>
             <SpeakButton text={word.es} />
             <p className="flashcard-hint">Antippen zum Aufdecken</p>
