@@ -72,7 +72,7 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
               transition={{ delay: 0.3, duration: 0.7, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
-                top: '12%',
+                top: '6%',
                 left: 0,
                 right: 0,
                 textAlign: 'center',
@@ -81,11 +81,11 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
             >
               <h1 style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
-                fontSize: 'clamp(48px, 14vw, 120px)',
+                fontSize: '18vw',
                 fontWeight: 900,
                 color: 'white',
-                margin: 0,
-                letterSpacing: '0.08em',
+                margin: '0 auto',
+                letterSpacing: '0.06em',
                 textTransform: 'uppercase',
                 lineHeight: 1,
                 whiteSpace: 'nowrap',
