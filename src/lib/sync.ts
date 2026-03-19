@@ -11,17 +11,6 @@ const SRS_KEY = 'milhojas-srs';
 const XP_KEY = 'milhojas-xp';
 const CUSTOM_VOCAB_KEY = 'milhojas-custom-vocab';
 
-interface UserProgress {
-  total_xp: number;
-  today_xp: number;
-  today_date: string;
-  streak: number;
-  longest_streak: number;
-  daily_goal: number;
-  xp_history: { date: string; xp: number }[];
-  srs_data: Record<string, unknown>;
-  custom_vocab: unknown[];
-}
 
 /** Upload current localStorage state to Supabase */
 export async function uploadProgress(): Promise<boolean> {
