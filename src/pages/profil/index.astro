@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProfilePage from '../../components/ProfilePage';
+---
+
+<BaseLayout title="Profil">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <h2>Profil</h2>
+  </section>
+
+  <ProfilePage client:load />
+</BaseLayout>

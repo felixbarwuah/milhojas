@@ -2,10 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Dashboard from '../components/Dashboard';
 import InstallPrompt from '../components/InstallPrompt';
+import Greeting from '../components/Greeting';
 ---
 
 <BaseLayout title="Spanisch lernen">
   <section class="hero">
+    <Greeting client:load />
     <h1>Milhojas</h1>
     <p class="hero-sub" style="text-wrap: balance;">Nutze diese Spanisch Lernapp um dein Spanisch auf die nächste Ebene zu bringen und dich bald fließend mit Locals zu unterhalten.</p>
   </section>
