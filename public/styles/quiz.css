@@ -720,49 +720,68 @@
 
 /* ── Login ── */
 .login-card {
-  padding: var(--space-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  padding: 0;
 }
 .login-fields {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 0;
 }
 .login-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 .login-label {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
+  display: none;
 }
 .login-input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 18px 20px;
   font-family: var(--sans);
   font-size: 16px;
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
-  background: var(--bg);
+  border-radius: 0;
+  background: var(--bg-card);
   color: var(--text);
   outline: none;
   transition: border-color 0.2s ease;
 }
+.login-input:first-of-type,
+.login-field:first-child .login-input {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.login-field:last-of-type .login-input {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border-top: none;
+}
 .login-input:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(0, 57, 166, 0.08);
+  position: relative;
+  z-index: 1;
+}
+.login-input::placeholder {
+  color: var(--text-muted);
 }
 .login-btn {
   width: 100%;
   justify-content: center;
-  padding: 14px;
-  margin-top: var(--space-sm);
+  padding: 16px;
+  margin-top: var(--space-lg);
   font-size: 14px;
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+}
+.login-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+}
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .login-error {
   margin-top: var(--space-md);
@@ -778,13 +797,10 @@
 }
 .login-sent {
   text-align: center;
-  padding: var(--space-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
 }
 .login-sent-icon { font-size: 40px; margin-bottom: var(--space-md); }
-.login-sent h3 { margin-bottom: var(--space-sm); font-size: 20px; }
+.login-sent h3 { margin-bottom: var(--space-sm); font-size: 22px; text-align: center; }
 .login-sent p { color: var(--text-secondary); font-size: 15px; margin-bottom: 4px; line-height: 1.6; }
 
 /* User Menu */

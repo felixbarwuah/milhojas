@@ -32,14 +32,12 @@ export default function LoginForm() {
 
   if (sent) {
     return (
-      <div className="login-card">
-        <div className="login-sent">
-          <div className="login-sent-icon">✉️</div>
-          <h3>Check deine E-Mails</h3>
-          <p>Wir haben dir einen Login-Link an <strong>{email}</strong> geschickt.</p>
-          <p>Klick auf den Link um dich einzuloggen.</p>
-          <button className="btn" onClick={() => setSent(false)} style={{ marginTop: '16px' }}>Andere E-Mail</button>
-        </div>
+      <div className="login-sent">
+        <div className="login-sent-icon">✉️</div>
+        <h3>Check deine E-Mails</h3>
+        <p>Wir haben dir einen Login-Link an <strong>{email}</strong> geschickt.</p>
+        <p>Klick auf den Link um dich einzuloggen.</p>
+        <button className="btn" onClick={() => setSent(false)} style={{ marginTop: '20px' }}>Andere E-Mail</button>
       </div>
     );
   }
@@ -48,31 +46,29 @@ export default function LoginForm() {
     <div className="login-card">
       <form onSubmit={handleMagicLink} className="login-fields">
         <div className="login-field">
-          <label className="login-label">Vorname</label>
           <input
             type="text"
             className="login-input"
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder="Wie heißt du?"
+            placeholder="Vorname"
             required
             autoComplete="given-name"
           />
         </div>
         <div className="login-field">
-          <label className="login-label">E-Mail</label>
           <input
             type="email"
             className="login-input"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="deine@email.com"
+            placeholder="E-Mail-Adresse"
             required
             autoComplete="email"
           />
         </div>
-        <button type="submit" className="btn btn-primary login-btn" disabled={loading || !name.trim()}>
-          {loading ? 'Sende...' : 'Magic Link senden'}
+        <button type="submit" className="login-btn" disabled={loading || !name.trim()}>
+          {loading ? 'Sende...' : 'Registrieren'}
         </button>
       </form>
 

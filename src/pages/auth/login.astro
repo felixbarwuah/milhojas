@@ -5,35 +5,42 @@ import LoginForm from '../../components/LoginForm';
 
 <BaseLayout title="Anmelden">
   <div class="login-page">
-    <div class="login-header">
-      <img src="/icons/logo-chili.png" alt="" width="48" height="48" style="border-radius: 12px;" />
-      <h2>Willkommen bei Milhojas</h2>
-      <p>Melde dich an um deinen Fortschritt zu speichern.</p>
-    </div>
+    <p class="login-already">Du hast schon einen Account? <a href="/auth/login">Zum Login</a></p>
+
+    <h1 class="login-title">Jetzt kostenlos registrieren</h1>
+    <p class="login-sub">Speichere deinen Lernfortschritt und lerne auf allen Geräten.</p>
+
     <LoginForm client:load />
   </div>
 </BaseLayout>
 
 <style>
   .login-page {
-    max-width: 400px;
+    max-width: 440px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-lg) var(--space-2xl);
   }
-  .login-header {
+  .login-already {
     text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
     margin-bottom: var(--space-xl);
   }
-  .login-header img {
-    margin-bottom: var(--space-md);
+  .login-already a {
+    color: var(--accent);
+    font-weight: 600;
   }
-  .login-header h2 {
-    font-size: 24px;
+  .login-title {
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
     margin-bottom: var(--space-sm);
+    font-style: italic;
   }
-  .login-header p {
+  .login-sub {
+    text-align: center;
     font-size: 15px;
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
   }
 </style>
