@@ -718,6 +718,104 @@
   text-align: center;
 }
 
+/* ── Login ── */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+.login-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--sans);
+  font-size: 16px;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+  margin-bottom: var(--space-md);
+}
+.login-input:focus { border-color: var(--accent-blue); }
+.login-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+}
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.login-google {
+  gap: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 14px;
+}
+.login-error {
+  margin-top: var(--space-md);
+  color: var(--wrong);
+  font-size: 14px;
+  text-align: center;
+}
+.login-sent {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+.login-sent h3 { margin-bottom: var(--space-md); }
+.login-sent p { color: var(--text-secondary); margin-bottom: var(--space-lg); font-size: 15px; }
+
+/* User Menu */
+.user-login-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.user-login-link:hover { color: var(--text); }
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+}
+.user-logout {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.user-logout:hover { color: var(--text); }
+
 /* ── Install Banner ── */
 .install-banner {
   position: fixed;

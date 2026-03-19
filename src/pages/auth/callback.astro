@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Anmeldung...">
+  <div class="container" style="text-align: center; padding: var(--space-2xl) 0;">
+    <p>Anmeldung wird verarbeitet...</p>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  // Handle the auth callback from Supabase
+  // The hash fragment contains the session tokens
+  (async () => {
+    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    const supabase = createClient(
+      'https://naemnerrstssaijilqdf.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5hZW1uZXJyc3Rzc2FpamlscWRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MTAyNDQsImV4cCI6MjA4OTQ4NjI0NH0.QZ0ijACoZesnDFaFSQhMgFS6703g6-nPcHqoTWwtqc8'
+    );
+
+    const { data, error } = await supabase.auth.getSession();
+    if (data?.session || !error) {
+      window.location.href = '/';
+    } else {
+      document.querySelector('p').textContent = 'Anmeldung fehlgeschlagen. Bitte versuche es erneut.';
+    }
+  })();
+</script>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LoginForm from '../../components/LoginForm';
+---
+
+<BaseLayout title="Anmelden">
+  <section class="hero" style="padding-bottom: var(--space-md);">
+    <h2>Anmelden</h2>
+    <p class="hero-sub" style="font-size: 16px;">Optional. Dein Fortschritt wird auch ohne Login gespeichert.</p>
+  </section>
+
+  <div class="container" style="max-width: 400px;">
+    <LoginForm client:load />
+  </div>
+</BaseLayout>
+
+<style>
+  .hero { text-align: center; padding-top: var(--space-xl); }
+</style>
