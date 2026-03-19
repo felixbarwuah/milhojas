@@ -40,7 +40,7 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
               background: '#0a0a0a',
             }}
           >
-            {/* Layer 1: Original photo as dark background */}
+            {/* Fullscreen chili photo with slow zoom */}
             <motion.img
               src="/images/splash-pwa.jpg"
               alt=""
@@ -53,68 +53,47 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.4,
                 zIndex: 1,
               }}
             />
 
-            {/* Layer 2: MILHOJAS text - BEHIND the chilies */}
+            {/* Dark overlay */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.5) 100%)',
+              zIndex: 2,
+            }} />
+
+            {/* MILHOJAS text - single line, big, top area */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
-                top: '15%',
+                top: '12%',
                 left: 0,
                 right: 0,
                 textAlign: 'center',
-                zIndex: 2,
+                zIndex: 3,
               }}
             >
               <h1 style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
-                fontSize: 'clamp(64px, 22vw, 200px)',
+                fontSize: 'clamp(48px, 14vw, 120px)',
                 fontWeight: 900,
                 color: 'white',
                 margin: 0,
-                letterSpacing: '0.06em',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 lineHeight: 1,
-                textShadow: '0 4px 30px rgba(0,0,0,0.3)',
+                whiteSpace: 'nowrap',
+                textShadow: '0 2px 20px rgba(0,0,0,0.4)',
               }}>
                 MILHOJAS
               </h1>
             </motion.div>
-
-            {/* Layer 3: Freigestellte Chillis ÜBER dem Text */}
-            <motion.img
-              src="/images/chili-cutout.png"
-              alt=""
-              initial={{ scale: 1.1, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 1, ease: 'easeOut' }}
-              style={{
-                position: 'absolute',
-                top: '10%',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '80vmin',
-                maxWidth: 500,
-                height: 'auto',
-                zIndex: 3,
-                filter: 'drop-shadow(0 8px 30px rgba(0,0,0,0.4))',
-              }}
-            />
-
-            {/* Layer 4: Subtle vignette */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              zIndex: 4,
-              background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)',
-              pointerEvents: 'none',
-            }} />
           </motion.div>
         )}
       </AnimatePresence>
