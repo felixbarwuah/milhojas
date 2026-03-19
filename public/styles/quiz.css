@@ -766,6 +766,9 @@
 .login-input::placeholder {
   color: #999;
 }
+.login-input-single {
+  border-radius: 8px !important;
+}
 .login-btn {
   display: flex;
   width: 100%;

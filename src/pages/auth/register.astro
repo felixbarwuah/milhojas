@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import LoginEmail from '../../components/LoginEmail';
+import LoginForm from '../../components/LoginForm';
 ---
 
-<BaseLayout title="Anmelden">
+<BaseLayout title="Registrieren">
   <div class="login-page">
-    <h1 class="login-title">Willkommen zurück</h1>
-    <p class="login-sub">Melde dich an um weiterzulernen.</p>
+    <h1 class="login-title">Jetzt kostenlos registrieren</h1>
+    <p class="login-sub">Speichere deinen Lernfortschritt und lerne auf allen Geräten.</p>
 
-    <LoginEmail client:load />
+    <LoginForm client:load />
 
-    <p class="login-switch">Noch kein Account? <a href="/auth/register">Jetzt registrieren</a></p>
+    <p class="login-switch">Du hast schon einen Account? <a href="/auth/login">Zum Login</a></p>
   </div>
 </BaseLayout>
 
