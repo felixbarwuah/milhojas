@@ -6,13 +6,8 @@ import Greeting from '../components/Greeting';
 ---
 
 <BaseLayout title="Spanisch lernen">
-  <section class="hero">
+  <div class="container" style="padding-top: var(--space-lg);">
     <Greeting client:load />
-    <h1>Milhojas</h1>
-    <p class="hero-sub" style="text-wrap: balance;">Deine neue Spanischlernapp.</p>
-  </section>
-
-  <div class="container">
     <Dashboard client:load />
 
     <div class="mode-cards four-cols">
